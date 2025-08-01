@@ -3,61 +3,234 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Server Status | AceNodes</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <script defer src="js/scripts.js"></script>
+  <title>AceNodes - Server Status</title>
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: #1db954;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1db954;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: block;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links li a.active,
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background: #1db954;
+      color: #121212;
+      outline: none;
+    }
+
+    /* Main container */
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 3rem auto 4rem auto;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1db954;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Server status grid */
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.75rem;
+    }
+
+    .server-card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 0 15px rgba(29, 185, 84, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #eee;
+      transition: transform 0.3s ease;
+    }
+
+    .server-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
+    }
+
+    .server-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #1db954;
+    }
+
+    .status {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status.online {
+      color: #17a64a;
+    }
+
+    .status.offline {
+      color: #cc3333;
+    }
+
+    .players {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .last-updated {
+      font-size: 0.85rem;
+      color: #666;
+      text-align: right;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #222;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .server-card {
+        padding: 1rem 1.25rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo">AceNodes</a>
-      <ul class="nav-links">
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="custom-plan.html">Custom Plan</a></li>
-        <li><a href="server-status.html" class="active">Server Status</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="server-status-section">
-    <h1>Real-Time Server Status</h1>
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" class="logo">AceNodes</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="custom-plan.html">Custom Plan</a></li>
+      <li><a href="server-status.html" class="active">Server Status</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-    <div class="status-card">
-      <h2>US-East Data Center</h2>
-      <p>Status: <span class="status-online">Online</span></p>
-      <p>CPU Usage: 32%</p>
-      <p>Memory Usage: 4.5 GB / 12 GB</p>
-      <p>Network Latency: 45 ms</p>
-      <p>Active Servers: 45 / 50</p>
-      <button onclick="alert('Redirecting to status logs...')">View Logs</button>
+  <main>
+    <h1>Server Status</h1>
+    <p class="subtitle">Check the real-time status of your Minecraft servers hosted with AceNodes.</p>
+
+    <div class="status-grid" aria-live="polite" aria-label="Minecraft server statuses">
+      <article class="server-card" role="region" aria-labelledby="server1-name">
+        <h2 id="server1-name" class="server-name">Survival Server</h2>
+        <div class="status online" aria-live="assertive" aria-atomic="true">
+          <span>● Online</span>
+        </div>
+        <div class="players">Players online: 18 / 50</div>
+        <div class="last-updated">Last checked: 30 seconds ago</div>
+      </article>
+
+      <article class="server-card" role="region" aria-labelledby="server2-name">
+        <h2 id="server2-name" class="server-name">Creative Server</h2>
+        <div class="status online" aria-live="assertive" aria-atomic="true">
+          <span>● Online</span>
+        </div>
+        <div class="players">Players online: 5 / 30</div>
+        <div class="last-updated">Last checked: 25 seconds ago</div>
+      </article>
+
+      <article class="server-card" role="region" aria-labelledby="server3-name">
+        <h2 id="server3-name" class="server-name">Modded Server</h2>
+        <div class="status offline" aria-live="assertive" aria-atomic="true">
+          <span>● Offline</span>
+        </div>
+        <div class="players">Players online: 0 / 40</div>
+        <div class="last-updated">Last checked: 1 minute ago</div>
+      </article>
     </div>
-
-    <div class="status-card">
-      <h2>EU-West Data Center</h2>
-      <p>Status: <span class="status-online">Online</span></p>
-      <p>CPU Usage: 41%</p>
-      <p>Memory Usage: 6.1 GB / 16 GB</p>
-      <p>Network Latency: 78 ms</p>
-      <p>Active Servers: 60 / 75</p>
-      <button onclick="alert('Redirecting to status logs...')">View Logs</button>
-    </div>
-
-    <div class="status-card">
-      <h2>Asia-Pacific Data Center</h2>
-      <p>Status: <span class="status-maintenance">Maintenance</span></p>
-      <p>CPU Usage: N/A</p>
-      <p>Memory Usage: N/A</p>
-      <p>Network Latency: N/A</p>
-      <p>Active Servers: N/A</p>
-      <button disabled>Unavailable</button>
-    </div>
-  </section>
+  </main>
 
   <footer>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
+  
 </body>
 </html>
