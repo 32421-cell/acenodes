@@ -4,22 +4,173 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FAQ | AceNodes Minecraft Hosting</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: #1db954;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1db954;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: block;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links li a.active,
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background: #1db954;
+      color: #121212;
+      outline: none;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      max-width: 800px;
+      margin: 3rem auto 4rem auto;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    .faq-section h1 {
+      text-align: center;
+      color: #1db954;
+      margin-bottom: 2rem;
+      font-size: 2.8rem;
+      text-shadow: 0 0 6px rgba(29,185,84,0.8);
+    }
+
+    details {
+      background: #1e1e1e;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 0 15px rgba(29, 185, 84, 0.3);
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+
+    details[open] {
+      box-shadow: 0 0 25px rgba(29, 185, 84, 0.6);
+    }
+
+    summary {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1db954;
+      outline: none;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::before {
+      content: '➤';
+      display: inline-block;
+      margin-right: 0.8rem;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease;
+      color: #1db954;
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details p {
+      margin-top: 1rem;
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #222;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .faq-section h1 {
+        font-size: 2rem;
+      }
+
+      details {
+        padding: 1rem 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo">AceNodes</a>
-      <ul class="nav-links">
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="custom-plan.html">Custom Plan</a></li>
-        <li><a href="server-status.html">Server Status</a></li>
-        <li><a href="faq.html" class="active">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" class="logo">AceNodes</a>
+    <ul class="nav-links">
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="custom-plan.html">Custom Plan</a></li>
+      <li><a href="server-status.html">Server Status</a></li>
+      <li><a href="faq.html" class="active">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
   <section class="faq-section">
     <h1>Frequently Asked Questions</h1>
