@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minecraft Hosting - Custom Plan</title>
+  <title>AceNodes - Custom Hosting Plan</title>
   <style>
     /* Reset & base */
     * {
@@ -54,10 +54,6 @@
       gap: 1rem;
     }
 
-    .nav-links li {
-      position: relative;
-    }
-
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
@@ -71,43 +67,6 @@
     .nav-links li a:focus {
       background: #1db954;
       color: #121212;
-    }
-
-    /* Dropdown submenu */
-    .nav-links li ul {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #222;
-      border-radius: 4px;
-      padding: 0.5rem 0;
-      min-width: 150px;
-      z-index: 101;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .nav-links li:hover > ul,
-    .nav-links li:focus-within > ul {
-      display: block;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .nav-links li ul li a {
-      padding: 0.5rem 1rem;
-      white-space: nowrap;
-      display: block;
-      color: #eee;
-    }
-
-    .nav-links li ul li a:hover,
-    .nav-links li ul li a:focus {
-      background: #1db954;
-      color: #121212;
-      text-decoration: none;
       outline: none;
     }
 
@@ -255,26 +214,20 @@
 
   <!-- Navbar -->
   <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <div class="logo" tabindex="0">AceNodes</div>
-    <ul class="nav-links" role="menubar">
-      <li role="none"><a href="#" role="menuitem" tabindex="0" class="active">Home</a></li>
-      <li role="none">
-        <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Hosting Plans ▾</a>
-        <ul role="menu" aria-label="Hosting Plans submenu">
-          <li role="none"><a href="#" role="menuitem" tabindex="-1">Basic</a></li>
-          <li role="none"><a href="#" role="menuitem" tabindex="-1">Standard</a></li>
-          <li role="none"><a href="#" role="menuitem" tabindex="-1">Premium</a></li>
-          <li role="none"><a href="#" role="menuitem" tabindex="-1">Custom Plan</a></li>
-        </ul>
-      </li>
-      <li role="none"><a href="#" role="menuitem" tabindex="0">Features</a></li>
-      <li role="none"><a href="#" role="menuitem" tabindex="0">Support</a></li>
-      <li role="none"><a href="#" role="menuitem" tabindex="0">Contact</a></li>
+    <a href="index.html" class="logo">AceNodes</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="custom-plan.html" class="active">Custom Plan</a></li>
+      <li><a href="server-status.html">Server Status</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Custom Plan Section -->
-  <section id="custom-plan" class="custom-plan-section">
+  <section id="custom-plan" class="custom-plan-section" tabindex="-1">
     <div class="custom-container">
       <h2>Custom Hosting Plan</h2>
       <p>Design your own Minecraft hosting plan tailored to your needs.</p>
@@ -341,12 +294,6 @@
       this.reset();
       updateEstimate();
     });
-
-    // Accessibility: submenu keyboard support
-    document.querySelectorAll('.nav-links > li > a[aria-haspopup="true"]').forEach(link => {
-      link.addEventListener('focus', () => {
-        const submenu = link.nextElementSibling;
-        if (submenu) {
-          submenu.style.display = 'block';
-          link
-
+  </script>
+</body>
+</html>
