@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | AceNodes Minecraft Hosting</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/scripts.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">AceNodes</a>
+      <ul class="nav-links">
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="custom-plan.html">Custom Plan</a></li>
+        <li><a href="server-status.html">Server Status</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="contact-section">
+    <h1>Contact Us</h1>
+    <form id="contact-form" action="#" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <div id="form-status" aria-live="polite"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+  </footer>
+</body>
+</html>
