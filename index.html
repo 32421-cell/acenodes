@@ -3,362 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AceNodes Hosting Plans</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <style>
-    body {
-      background-color: #0a0a0a;
-      color: white;
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      background: #111;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .logo {
-      font-weight: 700;
-      font-size: 24px;
-      color: #00b894;
-      cursor: default;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #00b894;
-    }
-    main {
-      flex-grow: 1;
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px 40px;
-      text-align: center;
-    }
-    h1 {
-      margin-bottom: 30px;
-      color: #00ffb3;
-    }
-    .plan-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 60px;
-    }
-    .plan-card {
-      background: #111;
-      border-radius: 12px;
-      padding: 20px;
-      width: 280px;
-      transition: transform 0.3s ease;
-      box-shadow: 0 0 12px rgba(0, 255, 148, 0.2);
-      cursor: default;
-    }
-    .plan-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 15px rgba(0, 255, 148, 0.5);
-    }
-    .plan-card h2 {
-      margin-top: 0;
-      color: #00b894;
-    }
-    .plan-card ul {
-      text-align: left;
-      padding-left: 20px;
-      margin-top: 15px;
-      margin-bottom: 20px;
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    .btn-secondary, .btn-cart, .btn-custom {
-      background-color: #00b894;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      padding: 12px 24px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 15px;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-secondary:hover, .btn-cart:hover, .btn-custom:hover {
-      background-color: #00ffb3;
-    }
-    .custom-plan-container {
-      background: #111;
-      border-radius: 12px;
-      padding: 30px 20px 40px;
-      max-width: 600px;
-      margin: 0 auto 60px;
-      box-shadow: 0 0 20px rgba(0, 255, 148, 0.15);
-    }
-    .slider-label {
-      font-size: 18px;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-    input[type=range] {
-      width: 100%;
-      margin: 10px 0 0;
-      -webkit-appearance: none;
-      background: transparent;
-      cursor: pointer;
-    }
-    input[type=range]:focus {
-      outline: none;
-    }
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 24px;
-      width: 24px;
-      background: #00b894;
-      border-radius: 50%;
-      cursor: pointer;
-      margin-top: -10px;
-      box-shadow: 0 0 8px #00ffb3;
-      transition: background-color 0.3s ease;
-    }
-    input[type=range]::-webkit-slider-thumb:hover {
-      background-color: #00ffb3;
-    }
-    input[type=range]::-webkit-slider-runnable-track {
-      height: 6px;
-      background: #222;
-      border-radius: 4px;
-    }
-    .timeline {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      color: #666;
-      margin-top: 6px;
-      user-select: none;
-    }
-    .price-display {
-      font-size: 24px;
-      font-weight: 700;
-      margin-top: 20px;
-      color: #00b894;
-    }
-    .custom-plan-container button {
-      margin-top: 30px;
-    }
-    .custom-plan-map {
-      background: url('dark-world-map.png') no-repeat center center;
-      background-size: cover;
-      height: 300px;
-      position: relative;
-      margin-top: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(0, 255, 148, 0.2);
-    }
-    .green-dot {
-      width: 14px;
-      height: 14px;
-      background: #00ff00;
-      border-radius: 50%;
-      position: absolute;
-      top: 45%;
-      left: 28%;
-      cursor: pointer;
-      box-shadow: 0 0 8px #00ff00;
-    }
-    .green-dot:hover::after {
-      content: "US";
-      position: absolute;
-      top: -25px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.75);
-      padding: 4px 8px;
-      font-size: 14px;
-      border-radius: 6px;
-      white-space: nowrap;
-      color: white;
-      pointer-events: none;
-      user-select: none;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    /* Cart icon top-right */
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-      color: #00b894;
-      font-size: 28px;
-      user-select: none;
-    }
-    .cart-count {
-      position: absolute;
-      top: -6px;
-      right: -10px;
-      background: #00ffb3;
-      color: #000;
-      font-weight: 700;
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 50%;
-      box-shadow: 0 0 4px #00ffb3;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #444;
-      font-size: 14px;
-      background: #111;
-      margin-top: auto;
-    }
-    @media(max-width: 720px) {
-      .plan-grid {
-        flex-direction: column;
-        align-items: center;
-      }
-      .plan-card {
-        width: 90%;
-      }
-      .custom-plan-container {
-        width: 90%;
-      }
-      .custom-plan-map {
-        width: 90%;
-      }
-    }
-  </style>
+  <title>AceNodes - Best Minecraft Hosting</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header>
-    <div class="logo">AceNodes</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html">Plans</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="support.html">Support</a></li>
-        <li><a href="login.html">Login</a></li>
+    <nav class="navbar">
+      <a href="index.html" class="logo">AceNodes</a>
+      <ul class="nav-links">
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="custom-plan.html">Custom Plan</a></li>
+        <li><a href="server-status.html">Server Status</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="cart-icon" onclick="location.href='cart.html'" title="View Cart">
-      🛒<span class="cart-count" id="cartCount">0</span>
-    </div>
   </header>
 
-  <main data-aos="fade-up">
-    <h1>Choose Your Plan</h1>
-    <section class="plan-grid" aria-label="Pre-made hosting plans">
-      <article class="plan-card" role="region" aria-labelledby="starter-title">
-        <h2 id="starter-title">Starter</h2>
-        <p>$3.99 / month</p>
-        <ul>
-          <li>2GB RAM</li>
-          <li>10GB Storage</li>
-          <li>1 vCPU Core</li>
-        </ul>
-        <button class="btn-secondary" onclick="addToCart('Starter', 3.99)">Add to Cart</button>
-      </article>
-      <article class="plan-card" role="region" aria-labelledby="pro-title">
-        <h2 id="pro-title">Pro</h2>
-        <p>$6.99 / month</p>
-        <ul>
-          <li>4GB RAM</li>
-          <li>20GB Storage</li>
-          <li>2 vCPU Cores</li>
-        </ul>
-        <button class="btn-secondary" onclick="addToCart('Pro', 6.99)">Add to Cart</button>
-      </article>
-      <article class="plan-card" role="region" aria-labelledby="elite-title">
-        <h2 id="elite-title">Elite</h2>
-        <p>$11.99 / month</p>
-        <ul>
-          <li>8GB RAM</li>
-          <li>Unlimited Storage</li>
-          <li>4 vCPU Cores</li>
-        </ul>
-        <button class="btn-secondary" onclick="addToCart('Elite', 11.99)">Add to Cart</button>
-      </article>
-    </section>
+  <section class="hero">
+    <h1>Reliable Minecraft Hosting at AceNodes</h1>
+    <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support</p>
+    <a href="pricing.html" class="btn">View Plans</a>
+  </section>
 
-    <section aria-label="Custom hosting plan" class="custom-plan-container">
-      <h2>Create Your Custom Plan</h2>
-      <label class="slider-label" for="ramSlider">Select RAM (GB): <span id="ramValue">4</span> GB</label>
-      <input type="range" id="ramSlider" min="2" max="16" step="1" value="4" aria-valuemin="2" aria-valuemax="16" aria-valuenow="4" aria-label="RAM slider" />
-      <div class="timeline" aria-hidden="true">
-        <span>2GB</span><span>4GB</span><span>8GB</span><span>12GB</span><span>16GB</span>
-      </div>
-      <div class="price-display" aria-live="polite" aria-atomic="true">
-        Price: $<span id="price">6.00</span>/month
-      </div>
-      <button class="btn-cart" onclick="addCustomToCart()">Add Custom Plan to Cart</button>
-    </section>
+  <section class="plans-overview">
+    <h2>Popular Plans</h2>
+    <div class="plans-container">
+      <article class="plan-card">
+        <h3>Starter</h3>
+        <p><strong>$5.99 / month</strong></p>
+        <ul>
+          <li>2 GB RAM</li>
+          <li>10 Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>1 CPU Core</li>
+          <li>1 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="pricing.html#starter" class="btn btn-secondary">Order Now</a>
+      </article>
 
-    <section class="custom-plan-map" aria-label="Server locations map">
-      <div class="green-dot" title="US"></div>
-    </section>
-  </main>
+      <article class="plan-card">
+        <h3>Pro</h3>
+        <p><strong>$14.99 / month</strong></p>
+        <ul>
+          <li>6 GB RAM</li>
+          <li>40 Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>4 CPU Cores</li>
+          <li>1 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Priority Support</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="pricing.html#pro" class="btn btn-secondary">Order Now</a>
+      </article>
+
+      <article class="plan-card">
+        <h3>Ultimate</h3>
+        <p><strong>$29.99 / month</strong></p>
+        <ul>
+          <li>12 GB RAM</li>
+          <li>100 Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>8 CPU Cores</li>
+          <li>10 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Dedicated IP</li>
+          <li>24/7 Support & Monitoring</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="pricing.html#ultimate" class="btn btn-secondary">Order Now</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Why Choose AceNodes?</h2>
+    <ul>
+      <li>99.99% Uptime Guarantee</li>
+      <li>Custom Control Panel</li>
+      <li>Multiple Minecraft Versions Supported (Vanilla, Spigot, Bukkit, PaperMC)</li>
+      <li>1-Click Modpack & Plugin Installer</li>
+      <li>Full FTP Access & File Manager</li>
+      <li>Automated Backups & Snapshots</li>
+      <li>Instant Server Restarts & Stops</li>
+      <li>24/7 Customer Support</li>
+    </ul>
+  </section>
 
   <footer>
-    &copy; 2025 AceNodes. All rights reserved.
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-
-    function addToCart(plan, price) {
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-      cart.push({ plan, price: Number(price) });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${plan} added to cart for $${price}/month`);
-      updateCartCount();
-    }
-
-    function addCustomToCart() {
-      const ram = parseInt(document.getElementById('ramSlider').value);
-      const price = (ram * 1.5).toFixed(2);
-      const plan = `Custom Plan (${ram}GB)`;
-      addToCart(plan, price);
-    }
-
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-      const count = cart.length;
-      document.getElementById('cartCount').textContent = count;
-    }
-
-    document.getElementById('ramSlider').addEventListener('input', function () {
-      const ram = this.value;
-      const price = (ram * 1.5).toFixed(2);
-      document.getElementById('ramValue').textContent = ram;
-      document.getElementById('price').textContent = price;
-    });
-
-    // Initialize cart count on load
-    updateCartCount();
-  </script>
 </body>
 </html>
