@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopping Cart | AceNodes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: white;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #111;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 24px;
+      color: #00b894;
+      cursor: default;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #00b894;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px 40px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 40px;
+      color: #00ffb3;
+    }
+    .cart-list {
+      background: #111;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 148, 0.15);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      text-align: left;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #222;
+      align-items: center;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .item-name {
+      font-weight: 600;
+      font-size: 18px;
+      color: #00b894;
+    }
+    .item-price {
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .remove-btn {
+      background: #ff4d4d;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .remove-btn:hover {
+      background: #ff1a1a;
+    }
+    .total-price {
+      font-size: 22px;
+      font-weight: 700;
+      text-align: right;
+      margin-top: 20px;
+      color: #00ffb3;
+    }
+    .btn-checkout {
+      background: #00b894;
+      color: white;
+      padding: 14px 30px;
+      font-weight: 700;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 30px;
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s ease;
+    }
+    .btn-checkout:hover {
+      background-color: #00ffb3;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #444;
+      font-size: 14px;
+      background: #111;
+      margin-top: auto;
+    }
+    @media(max-width: 500px) {
+      .cart-item {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .item-price {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">AceNodes</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Plans</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main data-aos="fade-up">
+    <h1>Your Cart</h1>
+    <section class="cart-list" aria-live="polite" aria-atomic="true" id="cartList">
+      <!-- Items injected by JS -->
+    </section>
+    <div class="total-price" id="totalPrice">Total: $0.00</div>
+    <button class="btn-checkout" onclick="checkout()" aria-label="Proceed to checkout">Checkout</button>
+  </main>
+
+  <footer>
+    &copy; 2025 AceNodes. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const cartList = document.getElementById('cartList');
+      cartList.innerHTML = '';
+      if (cart.length === 0) {
+        cartList.innerHTML = '<p>Your cart is empty.</p>';
+        document.getElementById('totalPrice').textContent = 'Total: $0.00';
+        return;
+      }
+      let total = 0;
+      cart.forEach((item, i) => {
+        total += Number(item.price);
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+          <div class="item-name">${item.plan}</div>
+          <div class="item-price">$${Number(item.price).toFixed(2)}</div>
+          <button class="remove-btn" onclick="removeFromCart(${i})" aria-label="Remove ${item.plan} from cart">Remove</button>
+        `;
+        cartList.appendChild(itemEl);
+      });
+      document.getElementById('totalPrice').textContent = 'Total: $' + total.toFixed(2);
+    }
+
+    function removeFromCart(index) {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+      updateCartIconCount();
+    }
+
+    function checkout() {
+      alert('Checkout is not implemented yet. This is a demo.');
+    }
+
+    function updateCartIconCount() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const count = cart.length;
+      if (window.opener) {
+        // If opened from index page, update its cart count
+        window.opener.postMessage({ type: 'updateCartCount', count }, '*');
+      }
+      // Also update this page's cart count if needed
+    }
+
+    window.addEventListener('message', (event) => {
+      if (event.data?.type === 'updateCartCount') {
+        // Not used here but could be used if this page needs to sync
+      }
+    });
+
+    loadCart();
+  </script>
+</body>
+</html>
