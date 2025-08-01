@@ -5,11 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .logo-img {
+      height: 50px;
+      width: auto;
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-text {
+      color: #00ff88;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-left: 10px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav class="navbar">
-      <a href="index.html" class="logo">AceNodes</a>
+      <a href="index.html" class="logo">
+        <img src="logo-green.png" alt="AceNodes Logo" class="logo-img" />
+        <span class="logo-text">AceNodes</span>
+      </a>
       <ul class="nav-links">
         <li><a href="Plans.html">Plans</a></li>
         <li><a href="custom-plan.html">Custom Plan</a></li>
@@ -75,7 +104,7 @@
           <li>24/7 Support & Monitoring</li>
           <li>Free DDoS Protection</li>
         </ul>
-        <a href="pricing.html#ultimate" class="btn btn-secondary">Order Now</a>
+        <a href="Plans.html#ultimate" class="btn btn-secondary">Order Now</a>
       </article>
     </div>
   </section>
