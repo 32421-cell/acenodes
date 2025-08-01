@@ -1,250 +1,142 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AceNodes - Hosting Plans</title>
-  <style>
-    /* Reset & base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
-      color: #eee;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      color: #1db954;
-      text-decoration: none;
-    }
-
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-      outline: none;
-    }
-
-    /* Navbar */
-    .navbar {
-      background: #222;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .navbar .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #1db954;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-    }
-
-    .nav-links li a {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      display: block;
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-
-    .nav-links li a.active,
-    .nav-links li a:hover,
-    .nav-links li a:focus {
-      background: #1db954;
-      color: #121212;
-      outline: none;
-    }
-
-    /* Main content */
-    main {
-      max-width: 900px;
-      margin: 3rem auto 4rem auto;
-      padding: 0 1rem;
-      width: 100%;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      color: #1db954;
-      text-shadow: 0 0 6px rgba(29,185,84,0.8);
-    }
-
-    p.subtitle {
-      font-size: 1.2rem;
-      margin-bottom: 2.5rem;
-      color: #ccc;
-    }
-
-    .plans-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-    }
-
-    .plan-card {
-      background: #1e1e1e;
-      padding: 1.8rem 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(29, 185, 84, 0.3);
-      color: #eee;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: box-shadow 0.3s ease;
-      cursor: default;
-    }
-
-    .plan-card:hover {
-      box-shadow: 0 0 25px rgba(29, 185, 84, 0.6);
-    }
-
-    .plan-name {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #1db954;
-      margin-bottom: 0.6rem;
-    }
-
-    .plan-specs {
-      font-weight: 600;
-      color: #a8d5a3;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    .plan-desc {
-      font-style: italic;
-      color: #bbb;
-      margin-bottom: 1.6rem;
-      min-height: 3.2rem;
-    }
-
-    .plan-price {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1db954;
-      margin-top: auto;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1rem 0;
-      background: #222;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: auto;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">AceNodes</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="plans.html" class="active">Plans</a></li>
+        <li><a href="custom-plan.html">Custom Plan</a></li>
+        <li><a href="server-status.html">Server Status</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <a href="index.html" class="logo">AceNodes</a>
-    <ul class="nav-links">
-      <li><a href="plans.html" class="active">Plans</a></li>
-      <li><a href="custom-plan.html">Custom Plan</a></li>
-      <li><a href="server-status.html">Server Status</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <main>
+  <section class="hero">
     <h1>Hosting Plans</h1>
-    <p class="subtitle">Choose a plan that fits your server's power and community needs.</p>
+    <p>Choose a plan that fits your server's power and community needs.</p>
+  </section>
 
-    <div class="plans-grid" role="list">
-      <article class="plan-card" role="listitem" tabindex="0">
-        <div class="plan-name">AceLite</div>
-        <div class="plan-specs">1 GB RAM • 10 GB SSD • 1 vCPU • 1 Slot</div>
-        <div class="plan-desc">First-timers, test servers</div>
-        <div class="plan-price">$3.00 / mo</div>
+  <section class="plans-overview">
+    <div class="plans-container">
+      <article class="plan-card">
+        <h3>AceLite</h3>
+        <p><strong>$12.00 / month</strong></p>
+        <ul>
+          <li>1 GB RAM</li>
+          <li>10 GB SSD</li>
+          <li>1 vCPU</li>
+          <li>1 Slot</li>
+          <li>First-timers, test servers</li>
+        </ul>
+        <a href="custom-plan.html" class="btn btn-secondary">Order Now</a>
       </article>
 
-      <article class="plan-card" role="listitem" tabindex="0">
-        <div class="plan-name">AcePlus</div>
-        <div class="plan-specs">2 GB RAM • 20 GB SSD • 1 vCPU • 2 Slots</div>
-        <div class="plan-desc">Plugin-based SMPs, 2–5 friends</div>
-        <div class="plan-price">$6.00 / mo</div>
+      <article class="plan-card">
+        <h3>AcePlus</h3>
+        <p><strong>$24.00 / month</strong></p>
+        <ul>
+          <li>2 GB RAM</li>
+          <li>20 GB SSD</li>
+          <li>1 vCPU</li>
+          <li>2 Slots</li>
+          <li>Plugin-based SMPs, 2–5 friends</li>
+        </ul>
+        <a href="custom-plan.html" class="btn btn-secondary">Order Now</a>
       </article>
 
-      <article class="plan-card" role="listitem" tabindex="0">
-        <div class="plan-name">AceBoost</div>
-        <div class="plan-specs">4 GB RAM • 40 GB SSD • 2 vCPU • 3 Slots</div>
-        <div class="plan-desc">Growing SMPs, public mini-servers</div>
-        <div class="plan-price">$12.00 / mo</div>
+      <article class="plan-card">
+        <h3>AceBoost</h3>
+        <p><strong>$48.00 / month</strong></p>
+        <ul>
+          <li>4 GB RAM</li>
+          <li>40 GB SSD</li>
+          <li>2 vCPU</li>
+          <li>3 Slots</li>
+          <li>Growing SMPs, public mini-servers</li>
+        </ul>
+        <a href="custom-plan.html" class="btn btn-secondary">Order Now</a>
       </article>
 
-      <article class="plan-card" role="listitem" tabindex="0">
-        <div class="plan-name">AceEdge</div>
-        <div class="plan-specs">6 GB RAM • 60 GB SSD • 3 vCPU • 5 Slots</div>
-        <div class="plan-desc">Small modded, survival, or community</div>
-        <div class="plan-price">$18.00 / mo</div>
+      <article class="plan-card">
+        <h3>AceEdge</h3>
+        <p><strong>$72.00 / month</strong></p>
+        <ul>
+          <li>6 GB RAM</li>
+          <li>60 GB SSD</li>
+          <li>3 vCPU</li>
+          <li>5 Slots</li>
+          <li>Small modded, survival, or community</li>
+        </ul>
+        <a href="custom-plan.html" class="btn btn-secondary">Order Now</a>
       </article>
 
-      <article class="plan-card" role="listitem" tabindex="0">
-        <div class="plan-name">AcePrime</div>
-        <div class="plan-specs">8 GB RAM • 80 GB SSD • 4 vCPU • Unlimited</div>
-        <div class="plan-desc">Mid-size servers, 15–30 players</div>
-        <div class="plan-price">$24.00 / mo</div>
+      <article class="plan-card">
+        <h3>AcePrime</h3>
+        <p><strong>$96.00 / month</strong></p>
+        <ul>
+          <li>8 GB RAM</li>
+          <li>80 GB SSD</li>
+          <li>4 vCPU</li>
+          <li>Unlimited Slots</li>
+          <li>Mid-size servers, 15–30 players</li>
+        </ul>
+        <a href="custom-plan.html" class="btn btn-secondary">Order Now</a>
       </article>
 
-      <article class="plan-card" role="listitem" tabindex="0">
-        <div class="plan-name">AceXtreme</div>
-        <div class="plan-specs">12 GB RAM • 120 GB SSD • 4 vCPU • Unlimited</div>
-        <div class="plan-desc">Modpacks (BetterMC, Pixelmon), events</div>
-        <div class="plan-price">$36.00 / mo</div>
+      <article class="plan-card">
+        <h3>AceXtreme</h3>
+        <p><strong>$144.00 / month</strong></p>
+        <ul>
+          <li>12 GB RAM</li>
+          <li>120 GB SSD</li>
+          <li>4 vCPU</li>
+          <li>Unlimited Slots</li>
+          <li>Modpacks (BetterMC, Pixelmon), events</li>
+        </ul>
+        <a href="custom-plan.html" class="btn btn-secondary">Order Now</a>
       </article>
 
-      <article class="plan-card" role="listitem" tabindex="0">
-        <div class="plan-name">AceForge</div>
-        <div class="plan-specs">16 GB RAM • 160 GB SSD • 6 vCPU • Unlimited</div>
-        <div class="plan-desc">Modded networks, heavy world use</div>
-        <div class="plan-price">$48.00 / mo</div>
+      <article class="plan-card">
+        <h3>AceForge</h3>
+        <p><strong>$192.00 / month</strong></p>
+        <ul>
+          <li>16 GB RAM</li>
+          <li>160 GB SSD</li>
+          <li>6 vCPU</li>
+          <li>Unlimited Slots</li>
+          <li>Modded networks, heavy world use</li>
+        </ul>
+        <a href="custom-plan.html" class="btn btn-secondary">Order Now</a>
       </article>
 
-      <article class="plan-card" role="listitem" tabindex="0">
-        <div class="plan-name">AceTitan</div>
-        <div class="plan-specs">24 GB RAM • 240 GB SSD • 8 vCPU • Unlimited</div>
-        <div class="plan-desc">Large networks, streamers, minigames</div>
-        <div class="plan-price">$72.00 / mo</div>
+      <article class="plan-card">
+        <h3>AceTitan</h3>
+        <p><strong>$288.00 / month</strong></p>
+        <ul>
+          <li>24 GB RAM</li>
+          <li>240 GB SSD</li>
+          <li>8 vCPU</li>
+          <li>Unlimited Slots</li>
+          <li>Large networks, streamers, minigames</li>
+        </ul>
+        <a href="custom-plan.html" class="btn btn-secondary">Order Now</a>
       </article>
     </div>
-  </main>
+  </section>
 
   <footer>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
