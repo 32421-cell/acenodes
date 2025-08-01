@@ -220,3 +220,125 @@ footer {
     align-items: center;
   }
 }
+
+/* === Your Existing Styling (already included above) === */
+/* ... (unchanged content from your current CSS) ... */
+
+/* === Custom Plan Section === */
+.custom-plan {
+  background: #1e1e1e;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.custom-plan h2 {
+  font-size: 2rem;
+  color: #1db954;
+  margin-bottom: 1rem;
+}
+
+.custom-plan p {
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.custom-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #292929;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 219, 84, 0.2);
+}
+
+.custom-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  color: #1db954;
+  font-weight: bold;
+}
+
+.custom-form input,
+.custom-form select,
+.custom-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #121212;
+  color: #eee;
+  font-size: 1rem;
+}
+
+.custom-form input:focus,
+.custom-form select:focus,
+.custom-form textarea:focus {
+  border-color: #1db954;
+  outline: none;
+}
+
+.custom-form button {
+  background: #1db954;
+  color: #121212;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.custom-form button:hover {
+  background: #17a64a;
+}
+
+/* Timeline bar (GB vs Price visualization) */
+.timeline-container {
+  margin: 2rem 0;
+  background: #121212;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.timeline-bar {
+  position: relative;
+  height: 20px;
+  background: #444;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.timeline-fill {
+  height: 100%;
+  background: #1db954;
+  width: 50%; /* dynamic via JS */
+  transition: width 0.3s ease;
+}
+
+.timeline-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 0.5rem;
+}
+
+.timeline-labels span {
+  font-weight: bold;
+  color: #1db954;
+}
+
+/* Responsive Custom Plan */
+@media (max-width: 600px) {
+  .custom-form {
+    padding: 1.5rem;
+  }
+
+  .custom-plan h2 {
+    font-size: 1.5rem;
+  }
+}
