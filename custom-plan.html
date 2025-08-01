@@ -24,8 +24,10 @@
       text-decoration: none;
     }
 
-    a:hover {
+    a:hover,
+    a:focus {
       text-decoration: underline;
+      outline: none;
     }
 
     /* Navbar */
@@ -61,10 +63,12 @@
       border-radius: 4px;
       display: block;
       transition: background 0.3s;
+      cursor: pointer;
     }
 
     .nav-links li a.active,
-    .nav-links li a:hover {
+    .nav-links li a:hover,
+    .nav-links li a:focus {
       background: #1db954;
       color: #121212;
     }
@@ -80,20 +84,31 @@
       padding: 0.5rem 0;
       min-width: 150px;
       z-index: 101;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
     }
 
-    .nav-links li:hover > ul {
+    .nav-links li:hover > ul,
+    .nav-links li:focus-within > ul {
       display: block;
+      opacity: 1;
+      visibility: visible;
     }
 
     .nav-links li ul li a {
       padding: 0.5rem 1rem;
       white-space: nowrap;
+      display: block;
+      color: #eee;
     }
 
-    .nav-links li ul li a:hover {
+    .nav-links li ul li a:hover,
+    .nav-links li ul li a:focus {
       background: #1db954;
       color: #121212;
+      text-decoration: none;
+      outline: none;
     }
 
     /* Custom Plan Section */
@@ -239,22 +254,22 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">AceNodes</div>
-    <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
-      <li>
-        <a href="#">Hosting Plans</a>
-        <ul>
-          <li><a href="#">Basic</a></li>
-          <li><a href="#">Standard</a></li>
-          <li><a href="#">Premium</a></li>
-          <li><a href="#">Custom Plan</a></li>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="logo" tabindex="0">AceNodes</div>
+    <ul class="nav-links" role="menubar">
+      <li role="none"><a href="#" role="menuitem" tabindex="0" class="active">Home</a></li>
+      <li role="none">
+        <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">Hosting Plans ▾</a>
+        <ul role="menu" aria-label="Hosting Plans submenu">
+          <li role="none"><a href="#" role="menuitem" tabindex="-1">Basic</a></li>
+          <li role="none"><a href="#" role="menuitem" tabindex="-1">Standard</a></li>
+          <li role="none"><a href="#" role="menuitem" tabindex="-1">Premium</a></li>
+          <li role="none"><a href="#" role="menuitem" tabindex="-1">Custom Plan</a></li>
         </ul>
       </li>
-      <li><a href="#">Features</a></li>
-      <li><a href="#">Support</a></li>
-      <li><a href="#">Contact</a></li>
+      <li role="none"><a href="#" role="menuitem" tabindex="0">Features</a></li>
+      <li role="none"><a href="#" role="menuitem" tabindex="0">Support</a></li>
+      <li role="none"><a href="#" role="menuitem" tabindex="0">Contact</a></li>
     </ul>
   </nav>
 
@@ -286,17 +301,18 @@
         </div>
       </div>
 
-      <form id="customQuoteForm" class="quote-form">
+      <form id="customQuoteForm" class="quote-form" aria-label="Custom plan quote form">
         <h3>Request Your Quote</h3>
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="requirements" placeholder="Tell us your requirements..." rows="4" required></textarea>
+        <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+        <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
+        <textarea name="requirements" placeholder="Tell us your requirements..." rows="4" required aria-required="true"></textarea>
         <button type="submit">Request Quote</button>
       </form>
     </div>
   </section>
 
   <script>
+    // Price calculation
     const ramSlider = document.getElementById('ramRange');
     const ramDisplay = document.getElementById('ramValue');
     const durationSelect = document.getElementById('durationSelect');
@@ -318,14 +334,19 @@
 
     updateEstimate();
 
-    // Optional: handle form submit
+    // Form submit handler
     document.getElementById('customQuoteForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Thank you! Your custom quote request has been submitted.');
       this.reset();
       updateEstimate();
     });
-  </script>
 
-</body>
-</html>
+    // Accessibility: submenu keyboard support
+    document.querySelectorAll('.nav-links > li > a[aria-haspopup="true"]').forEach(link => {
+      link.addEventListener('focus', () => {
+        const submenu = link.nextElementSibling;
+        if (submenu) {
+          submenu.style.display = 'block';
+          link
+
