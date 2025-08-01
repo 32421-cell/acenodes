@@ -107,15 +107,20 @@
       margin-bottom: 40px;
       box-shadow: 0 0 10px rgba(0,219,84,0.5);
       text-align: left;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .slider-box,
-    .dropdown-box {
+    .dropdown-box,
+    .number-box {
       margin-bottom: 25px;
     }
 
     .slider-box label,
-    .dropdown-box label {
+    .dropdown-box label,
+    .number-box label {
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
@@ -124,6 +129,16 @@
 
     .slider-box input[type="range"] {
       width: 100%;
+    }
+
+    .number-box input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #2b2b2b;
+      color: #eee;
+      font-size: 1rem;
     }
 
     .range-display {
@@ -217,7 +232,7 @@
     <a href="index.html" class="logo">AceNodes</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="plans.html">Plans</a></li>
       <li><a href="custom-plan.html" class="active">Custom Plan</a></li>
       <li><a href="server-status.html">Server Status</a></li>
       <li><a href="faq.html">FAQ</a></li>
@@ -232,11 +247,38 @@
       <h2>Custom Hosting Plan</h2>
       <p>Design your own Minecraft hosting plan tailored to your needs.</p>
 
-      <div class="selector-panel">
+      <div class="selector-panel" aria-label="Customize your hosting plan options">
         <div class="slider-box">
-          <label for="ramRange">RAM (GB)</label>
+          <label for="cpuRange">CPU vCores</label>
+          <input type="range" min="1" max="32" step="1" value="1" id="cpuRange" />
+          <div class="range-display"><span id="cpuValue">1</span> vCore(s)</div>
+        </div>
+
+        <div class="slider-box">
+          <label for="ramRange">Memory (GB)</label>
           <input type="range" min="1" max="64" step="1" value="4" id="ramRange" />
           <div class="range-display"><span id="ramValue">4</span> GB</div>
+        </div>
+
+        <div class="slider-box">
+          <label for="storageRange">Storage (GB)</label>
+          <input type="range" min="1" max="200" step="1" value="20" id="storageRange" />
+          <div class="range-display"><span id="storageValue">20</span> GB</div>
+        </div>
+
+        <div class="number-box">
+          <label for="dbInput">Extra Databases</label>
+          <input type="number" min="0" step="1" value="0" id="dbInput" />
+        </div>
+
+        <div class="number-box">
+          <label for="backupInput">Extra Backups</label>
+          <input type="number" min="0" step="1" value="0" id="backupInput" />
+        </div>
+
+        <div class="number-box">
+          <label for="portsInput">Extra Ports</label>
+          <input type="number" min="0" step="1" value="0" id="portsInput" />
         </div>
 
         <div class="dropdown-box">
@@ -265,26 +307,77 @@
   </section>
 
   <script>
-    // Price calculation
+    // Get elements
+    const cpuSlider = document.getElementById('cpuRange');
+    const cpuDisplay = document.getElementById('cpuValue');
     const ramSlider = document.getElementById('ramRange');
     const ramDisplay = document.getElementById('ramValue');
+    const storageSlider = document.getElementById('storageRange');
+    const storageDisplay = document.getElementById('storageValue');
+
+    const dbInput = document.getElementById('dbInput');
+    const backupInput = document.getElementById('backupInput');
+    const portsInput = document.getElementById('portsInput');
+
     const durationSelect = document.getElementById('durationSelect');
     const priceOutput = document.getElementById('priceEstimate');
 
-    const pricePerGB = 3; // Price per GB per month
+    // Pricing model constants
+    const pricePerCpu = 5;       // $5 per vCore per month
+    const pricePerRam = 3;       // $3 per GB RAM per month
+    const pricePerStorage = 0.5; // $0.50 per GB Storage per month
+    const pricePerDb = 2;        // $2 per extra database per month
+    const pricePerBackup = 1.5;  // $1.5 per extra backup per month
+    const pricePerPort = 1;      // $1 per extra port per month
 
     function updateEstimate() {
+      const cpu = parseInt(cpuSlider.value);
       const ram = parseInt(ramSlider.value);
-      const duration = parseInt(durationSelect.value);
-      const totalPrice = ram * pricePerGB * duration;
+      const storage = parseInt(storageSlider.value);
 
+      const db = parseInt(dbInput.value) || 0;
+      const backup = parseInt(backupInput.value) || 0;
+      const ports = parseInt(portsInput.value) || 0;
+
+      const duration = parseInt(durationSelect.value);
+
+      // Update displayed values
+      cpuDisplay.textContent = cpu;
       ramDisplay.textContent = ram;
+      storageDisplay.textContent = storage;
+
+      // Calculate total price
+      const totalPrice =
+        duration * (
+          cpu * pricePerCpu +
+          ram * pricePerRam +
+          storage * pricePerStorage +
+          db * pricePerDb +
+          backup * pricePerBackup +
+          ports * pricePerPort
+        );
+
       priceOutput.textContent = `$${totalPrice.toFixed(2)}`;
     }
 
-    ramSlider.addEventListener('input', updateEstimate);
+    // Attach event listeners
+    [cpuSlider, ramSlider, storageSlider].forEach(slider => {
+      slider.addEventListener('input', updateEstimate);
+    });
+
+    [dbInput, backupInput, portsInput].forEach(input => {
+      input.addEventListener('input', () => {
+        // Prevent negative values by resetting to 0 if less than 0
+        if (parseInt(input.value) < 0 || isNaN(parseInt(input.value))) {
+          input.value = 0;
+        }
+        updateEstimate();
+      });
+    });
+
     durationSelect.addEventListener('change', updateEstimate);
 
+    // Initialize price display
     updateEstimate();
 
     // Form submit handler
