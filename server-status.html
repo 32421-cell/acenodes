@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Server Status | AceNodes</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/scripts.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">AceNodes</a>
+      <ul class="nav-links">
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="custom-plan.html">Custom Plan</a></li>
+        <li><a href="server-status.html" class="active">Server Status</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="server-status-section">
+    <h1>Real-Time Server Status</h1>
+
+    <div class="status-card">
+      <h2>US-East Data Center</h2>
+      <p>Status: <span class="status-online">Online</span></p>
+      <p>CPU Usage: 32%</p>
+      <p>Memory Usage: 4.5 GB / 12 GB</p>
+      <p>Network Latency: 45 ms</p>
+      <p>Active Servers: 45 / 50</p>
+      <button onclick="alert('Redirecting to status logs...')">View Logs</button>
+    </div>
+
+    <div class="status-card">
+      <h2>EU-West Data Center</h2>
+      <p>Status: <span class="status-online">Online</span></p>
+      <p>CPU Usage: 41%</p>
+      <p>Memory Usage: 6.1 GB / 16 GB</p>
+      <p>Network Latency: 78 ms</p>
+      <p>Active Servers: 60 / 75</p>
+      <button onclick="alert('Redirecting to status logs...')">View Logs</button>
+    </div>
+
+    <div class="status-card">
+      <h2>Asia-Pacific Data Center</h2>
+      <p>Status: <span class="status-maintenance">Maintenance</span></p>
+      <p>CPU Usage: N/A</p>
+      <p>Memory Usage: N/A</p>
+      <p>Network Latency: N/A</p>
+      <p>Active Servers: N/A</p>
+      <button disabled>Unavailable</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+  </footer>
+</body>
+</html>
