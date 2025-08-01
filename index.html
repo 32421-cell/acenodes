@@ -4,14 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AceNodes - Best Minecraft Hosting</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0e2e1e;
+      color: #dfffe1;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #102e20;
+      padding: 15px 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.5em;
+      color: #82ff9c;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #dfffe1;
+      font-weight: bold;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #12432d;
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2aff87;
+      color: #003d1f;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    /* Plans Section */
+    .plans-overview {
+      padding: 50px 20px;
+      background-color: #0e2e1e;
+      text-align: center;
+    }
+
+    .plans-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .plan-card {
+      background-color: #154c35;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      color: #dfffe1;
+    }
+
+    .plan-card h3 {
+      font-size: 1.5em;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .plan-card li {
+      margin: 5px 0;
+    }
+
+    .btn-secondary {
+      background-color: #1ed170;
+      margin-top: 15px;
+      display: inline-block;
+    }
+
+    /* Features */
+    .features {
+      padding: 50px 20px;
+      background-color: #12432d;
+      text-align: center;
+    }
+
+    .features ul {
+      max-width: 700px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .features li {
+      margin: 8px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0c2419;
+      text-align: center;
+      padding: 20px;
+      color: #a0cdb4;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
     <nav class="navbar">
-      <a href="index.html" class="logo">AceNodes</a>
+      <a href="home.html" class="logo">
+        <img src="logo-green.png" alt="AceNodes Logo">
+        AceNodes
+      </a>
       <ul class="nav-links">
-        <li><a href="Plans.html">Plans</a></li>
+        <li><a href="https://32421-cell.github.io/acenodes/plans.html">Plans</a></li>
         <li><a href="custom-plan.html">Custom Plan</a></li>
         <li><a href="server-status.html">Server Status</a></li>
         <li><a href="faq.html">FAQ</a></li>
@@ -21,36 +162,41 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Reliable Minecraft Hosting at AceNodes</h1>
-    <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support</p>
-    <a href="pricing.html" class="btn">View Plans</a>
+    <h1>Reliable Minecraft Hosting with AceNodes</h1>
+    <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
+    <a href="plans.html" class="btn">View Plans</a>
   </section>
 
+  <!-- Popular Plans Section -->
   <section class="plans-overview">
     <h2>Popular Plans</h2>
     <div class="plans-container">
+
+      <!-- Starter Plan -->
       <article class="plan-card">
         <h3>Starter</h3>
-        <p><strong>$5.99 / month</strong></p>
+        <p><strong>$12.00 / month</strong></p>
         <ul>
           <li>2 GB RAM</li>
-          <li>10 Slots</li>
+          <li>10 Player Slots</li>
           <li>Unlimited SSD Storage</li>
           <li>1 CPU Core</li>
           <li>1 Gbps Network</li>
           <li>Instant Setup</li>
           <li>Free DDoS Protection</li>
         </ul>
-        <a href="Plans.html#starter" class="btn btn-secondary">Order Now</a>
+        <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
       </article>
 
+      <!-- Pro Plan -->
       <article class="plan-card">
         <h3>Pro</h3>
-        <p><strong>$14.99 / month</strong></p>
+        <p><strong>$36.00 / month</strong></p>
         <ul>
           <li>6 GB RAM</li>
-          <li>40 Slots</li>
+          <li>40 Player Slots</li>
           <li>Unlimited SSD Storage</li>
           <li>4 CPU Cores</li>
           <li>1 Gbps Network</li>
@@ -58,15 +204,16 @@
           <li>Priority Support</li>
           <li>Free DDoS Protection</li>
         </ul>
-        <a href="Plans.html#pro" class="btn btn-secondary">Order Now</a>
+        <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
       </article>
 
+      <!-- Ultimate Plan -->
       <article class="plan-card">
         <h3>Ultimate</h3>
-        <p><strong>$29.99 / month</strong></p>
+        <p><strong>$72.00 / month</strong></p>
         <ul>
           <li>12 GB RAM</li>
-          <li>100 Slots</li>
+          <li>100 Player Slots</li>
           <li>Unlimited SSD Storage</li>
           <li>8 CPU Cores</li>
           <li>10 Gbps Network</li>
@@ -75,27 +222,31 @@
           <li>24/7 Support & Monitoring</li>
           <li>Free DDoS Protection</li>
         </ul>
-        <a href="pricing.html#ultimate" class="btn btn-secondary">Order Now</a>
+        <a href="plans.html#ultimate" class="btn btn-secondary">Order Now</a>
       </article>
+
     </div>
   </section>
 
+  <!-- Features Section -->
   <section class="features">
     <h2>Why Choose AceNodes?</h2>
     <ul>
       <li>99.99% Uptime Guarantee</li>
       <li>Custom Control Panel</li>
-      <li>Multiple Minecraft Versions Supported (Vanilla, Spigot, Bukkit, PaperMC)</li>
+      <li>Supports All Minecraft Versions (Vanilla, Spigot, Bukkit, PaperMC)</li>
       <li>1-Click Modpack & Plugin Installer</li>
       <li>Full FTP Access & File Manager</li>
       <li>Automated Backups & Snapshots</li>
-      <li>Instant Server Restarts & Stops</li>
+      <li>Instant Server Restarts</li>
       <li>24/7 Customer Support</li>
     </ul>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
