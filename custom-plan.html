@@ -1,17 +1,17 @@
 <section id="custom-plan" class="custom-plan-section">
-  <div class="container">
+  <div class="custom-container">
     <h2>Custom Hosting Plan</h2>
-    <p>Design your own Minecraft hosting plan tailored to your server's needs.</p>
+    <p>Design your own Minecraft hosting plan tailored to your needs.</p>
 
-    <div class="timeline-selector">
-      <div class="timeline-track">
-        <label for="ramRange">Select RAM (GB):</label>
-        <input type="range" min="1" max="32" value="4" step="1" id="ramRange" />
-        <span id="ramValue">4 GB</span>
+    <div class="selector-panel">
+      <div class="slider-box">
+        <label for="ramRange">RAM (GB)</label>
+        <input type="range" min="1" max="64" step="1" value="4" id="ramRange" />
+        <div class="range-display"><span id="ramValue">4</span> GB</div>
       </div>
 
-      <div class="timeline-track">
-        <label for="durationSelect">Select Duration:</label>
+      <div class="dropdown-box">
+        <label for="durationSelect">Duration</label>
         <select id="durationSelect">
           <option value="1">1 Month</option>
           <option value="3">3 Months</option>
@@ -20,134 +20,167 @@
         </select>
       </div>
 
-      <div class="timeline-output">
+      <div class="price-box">
         <p><strong>Estimated Price:</strong> <span id="priceEstimate">$12.00</span></p>
       </div>
     </div>
 
-    <form id="customQuoteForm" class="custom-form">
-      <h3>Request a Custom Quote</h3>
+    <form id="customQuoteForm" class="quote-form">
+      <h3>Request Your Quote</h3>
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="requirements" placeholder="Tell us what you need..." rows="4" required></textarea>
-      <button type="submit">Get Quote</button>
+      <textarea name="requirements" placeholder="Tell us your requirements..." rows="4" required></textarea>
+      <button type="submit">Request Quote</button>
     </form>
   </div>
 
+  <!-- Inline Styling -->
   <style>
     .custom-plan-section {
-      background-color: #111;
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
       color: #fff;
-      padding: 60px 20px;
+      padding: 80px 20px;
+      box-sizing: border-box;
+    }
+
+    .custom-container {
+      max-width: 900px;
+      margin: 0 auto;
       text-align: center;
     }
 
-    .custom-plan-section h2 {
-      font-size: 2.5em;
+    .custom-container h2 {
+      font-size: 3rem;
       margin-bottom: 10px;
     }
 
-    .custom-plan-section p {
+    .custom-container p {
+      font-size: 1.1rem;
       color: #ccc;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
-    .timeline-selector {
-      max-width: 600px;
-      margin: 0 auto 40px auto;
+    .selector-panel {
+      background: #191919;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .slider-box,
+    .dropdown-box {
+      margin-bottom: 25px;
       text-align: left;
     }
 
-    .timeline-track {
-      margin-bottom: 20px;
-    }
-
-    .timeline-track label {
+    .slider-box label,
+    .dropdown-box label {
       display: block;
+      margin-bottom: 8px;
       font-weight: bold;
-      margin-bottom: 5px;
+      color: #aaa;
     }
 
-    input[type="range"] {
+    .slider-box input[type="range"] {
       width: 100%;
     }
 
-    #ramValue {
-      display: block;
+    .range-display {
+      margin-top: 5px;
       text-align: right;
-      color: #0f0;
+      color: #00ffcc;
     }
 
-    .timeline-output {
-      text-align: center;
-      font-size: 1.2em;
-      color: #0ff;
-      margin-bottom: 20px;
-    }
-
-    .custom-form {
-      background-color: #1c1c1c;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .custom-form h3 {
-      margin-bottom: 20px;
-      font-size: 1.5em;
-    }
-
-    .custom-form input,
-    .custom-form textarea {
+    .dropdown-box select {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #2b2b2b;
+      color: #fff;
+    }
+
+    .price-box {
+      font-size: 1.2rem;
+      color: #00ffaa;
+      margin-top: 20px;
+    }
+
+    .quote-form {
+      background: #121212;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .quote-form h3 {
+      margin-bottom: 20px;
+      font-size: 1.7rem;
+      color: #00aaff;
+    }
+
+    .quote-form input,
+    .quote-form textarea {
+      width: 100%;
+      padding: 14px;
       margin-bottom: 15px;
-      border: none;
-      border-radius: 5px;
-      background: #333;
+      background: #2b2b2b;
       color: #fff;
+      border: none;
+      border-radius: 6px;
     }
 
-    .custom-form button {
-      background-color: #00aaff;
-      color: #fff;
+    .quote-form button {
+      background: #00aaff;
+      padding: 12px 25px;
       border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
       cursor: pointer;
+      transition: background 0.3s;
     }
 
-    .custom-form button:hover {
-      background-color: #008fcc;
+    .quote-form button:hover {
+      background: #008ecc;
     }
 
     @media (max-width: 600px) {
-      .timeline-selector, .custom-form {
-        padding: 0 10px;
+      .custom-container h2 {
+        font-size: 2rem;
+      }
+
+      .quote-form,
+      .selector-panel {
+        padding: 20px;
       }
     }
   </style>
 
+  <!-- JavaScript Logic -->
   <script>
-    const ramRange = document.getElementById("ramRange");
-    const ramValue = document.getElementById("ramValue");
-    const durationSelect = document.getElementById("durationSelect");
-    const priceEstimate = document.getElementById("priceEstimate");
+    const ramSlider = document.getElementById('ramRange');
+    const ramDisplay = document.getElementById('ramValue');
+    const durationSelect = document.getElementById('durationSelect');
+    const priceOutput = document.getElementById('priceEstimate');
 
-    function updatePrice() {
-      const ram = parseInt(ramRange.value);
+    const pricePerGB = 3; // Price per GB per month
+
+    function updateEstimate() {
+      const ram = parseInt(ramSlider.value);
       const duration = parseInt(durationSelect.value);
-      const monthlyPricePerGB = 3; // $3 per GB
-      const totalPrice = ram * monthlyPricePerGB * duration;
+      const totalPrice = ram * pricePerGB * duration;
 
-      ramValue.textContent = `${ram} GB`;
-      priceEstimate.textContent = `$${totalPrice.toFixed(2)}`;
+      ramDisplay.textContent = ram;
+      priceOutput.textContent = `$${totalPrice.toFixed(2)}`;
     }
 
-    ramRange.addEventListener("input", updatePrice);
-    durationSelect.addEventListener("change", updatePrice);
+    ramSlider.addEventListener('input', updateEstimate);
+    durationSelect.addEventListener('change', updateEstimate);
 
-    updatePrice(); // Initial load
+    updateEstimate(); // Initial call
   </script>
 </section>
