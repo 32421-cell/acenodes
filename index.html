@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Custom Plan | AceNodes</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 30px;
+      background-color: #111;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 255, 170, 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffb3;
+    }
+    .slider-container {
+      margin: 40px 0;
+    }
+    .slider-label {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    .price-display {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .btn-cart {
+      background-color: #00b894;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" data-aos="fade-up">
+    <h1>Create Your Custom Plan</h1>
+    <div class="slider-container">
+      <div class="slider-label">Select RAM (GB): <span id="ramValue">4</span> GB</div>
+      <input type="range" id="ramSlider" min="2" max="16" step="1" value="4">
+      <div class="timeline">
+        <span>2GB</span>
+        <span>4GB</span>
+        <span>8GB</span>
+        <span>12GB</span>
+        <span>16GB</span>
+      </div>
+    </div>
+    <div class="price-display">
+      Price: $<span id="price">6.00</span>/month
+    </div>
+    <button class="btn-cart" onclick="addCustomToCart()">Add Custom Plan to Cart</button>
+  </div>
+
+  <script>
+    AOS.init();
+
+    const slider = document.getElementById("ramSlider");
+    const ramValue = document.getElementById("ramValue");
+    const priceDisplay = document.getElementById("price");
+
+    slider.addEventListener("input", () => {
+      const ram = parseInt(slider.value);
+      const price = (ram * 1.5).toFixed(2);
+      ramValue.textContent = ram;
+      priceDisplay.textContent = price;
+    });
+
+    function addCustomToCart() {
+      const ram = parseInt(slider.value);
+      const price = (ram * 1.5).toFixed(2);
+      const plan = `Custom Plan (${ram}GB)`;
+
+      // Example cart data
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ plan, price });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${plan} added to cart for $${price}/mo`);
+    }
+  </script>
+</body>
+</html>
