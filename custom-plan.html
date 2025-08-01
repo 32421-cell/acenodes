@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Plan | AceNodes Hosting</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f0f0f;
+      color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, nav, footer {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #00ffcc;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+
+    h1, h2 {
+      color: #00ffcc;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: #00ffcc;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      margin: 20px 0;
+      position: relative;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 15px;
+      height: 15px;
+      background: #00ffcc;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd)::before {
+      right: -8px;
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -8px;
+    }
+
+    .timeline-content {
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .cta a {
+      padding: 10px 30px;
+      background: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+      .timeline-item, .timeline-item:nth-child(even), .timeline-item:nth-child(odd) {
+        width: 100%;
+        left: 0;
+        padding-left: 40px;
+      }
+      .timeline-item::before {
+        left: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>AceNodes Hosting</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="plans.html">Hosting Plans</a>
+      <a href="custom-plan.html">Custom Plan</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="timeline">
+      <h2 style="text-align:center;">Build Your Own Hosting Plan</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>1 GB RAM</h3>
+          <p>$2.00/month — Good for small friends-only survival servers.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2 GB RAM</h3>
+          <p>$3.50/month — Supports small plugins, up to 10 players.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>4 GB RAM</h3>
+          <p>$6.50/month — Great for modded servers or 20+ players.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>6 GB RAM</h3>
+          <p>$9.00/month — Excellent for PvP or medium modpacks.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>8 GB RAM</h3>
+          <p>$12.00/month — Ideal for large-scale SMPs or intensive modpacks.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>12 GB RAM</h3>
+          <p>$16.00/month — Best for networks or modded communities.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <a href="contact.html">Get a Custom Quote</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AceNodes Hosting. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
