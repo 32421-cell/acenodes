@@ -1,59 +1,123 @@
-<section id="custom-plan" class="custom-plan-section">
-  <div class="custom-container">
-    <h2>Custom Hosting Plan</h2>
-    <p>Design your own Minecraft hosting plan tailored to your needs.</p>
-
-    <div class="selector-panel">
-      <div class="slider-box">
-        <label for="ramRange">RAM (GB)</label>
-        <input type="range" min="1" max="64" step="1" value="4" id="ramRange" />
-        <div class="range-display"><span id="ramValue">4</span> GB</div>
-      </div>
-
-      <div class="dropdown-box">
-        <label for="durationSelect">Duration</label>
-        <select id="durationSelect">
-          <option value="1">1 Month</option>
-          <option value="3">3 Months</option>
-          <option value="6">6 Months</option>
-          <option value="12">12 Months</option>
-        </select>
-      </div>
-
-      <div class="price-box">
-        <p><strong>Estimated Price:</strong> <span id="priceEstimate">$12.00</span></p>
-      </div>
-    </div>
-
-    <form id="customQuoteForm" class="quote-form">
-      <h3>Request Your Quote</h3>
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="requirements" placeholder="Tell us your requirements..." rows="4" required></textarea>
-      <button type="submit">Request Quote</button>
-    </form>
-  </div>
-
-  <!-- Inline Styling -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minecraft Hosting - Custom Plan</title>
   <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #1db954;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1db954;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .nav-links li a.active,
+    .nav-links li a:hover {
+      background: #1db954;
+      color: #121212;
+    }
+
+    /* Dropdown submenu */
+    .nav-links li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #222;
+      border-radius: 4px;
+      padding: 0.5rem 0;
+      min-width: 150px;
+      z-index: 101;
+    }
+
+    .nav-links li:hover > ul {
+      display: block;
+    }
+
+    .nav-links li ul li a {
+      padding: 0.5rem 1rem;
+      white-space: nowrap;
+    }
+
+    .nav-links li ul li a:hover {
+      background: #1db954;
+      color: #121212;
+    }
+
+    /* Custom Plan Section */
     .custom-plan-section {
       width: 100%;
       min-height: 100vh;
       background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
-      color: #fff;
+      color: #eee;
       padding: 80px 20px;
       box-sizing: border-box;
+      position: relative;
+      z-index: 1;
+      text-align: center;
     }
 
     .custom-container {
       max-width: 900px;
       margin: 0 auto;
-      text-align: center;
     }
 
     .custom-container h2 {
       font-size: 3rem;
       margin-bottom: 10px;
+      color: #1db954;
     }
 
     .custom-container p {
@@ -67,13 +131,13 @@
       padding: 30px;
       border-radius: 12px;
       margin-bottom: 40px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 0 10px rgba(0,219,84,0.5);
+      text-align: left;
     }
 
     .slider-box,
     .dropdown-box {
       margin-bottom: 25px;
-      text-align: left;
     }
 
     .slider-box label,
@@ -81,7 +145,7 @@
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
-      color: #aaa;
+      color: #1db954;
     }
 
     .slider-box input[type="range"] {
@@ -91,7 +155,8 @@
     .range-display {
       margin-top: 5px;
       text-align: right;
-      color: #00ffcc;
+      color: #1db954;
+      font-weight: bold;
     }
 
     .dropdown-box select {
@@ -100,26 +165,33 @@
       border-radius: 5px;
       border: none;
       background: #2b2b2b;
-      color: #fff;
+      color: #eee;
+      font-size: 1rem;
     }
 
     .price-box {
       font-size: 1.2rem;
-      color: #00ffaa;
+      color: #1db954;
       margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
     }
 
     .quote-form {
       background: #121212;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      box-shadow: 0 0 15px rgba(0,219,84,0.4);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
     }
 
     .quote-form h3 {
       margin-bottom: 20px;
       font-size: 1.7rem;
-      color: #00aaff;
+      color: #1db954;
+      text-align: center;
     }
 
     .quote-form input,
@@ -128,13 +200,15 @@
       padding: 14px;
       margin-bottom: 15px;
       background: #2b2b2b;
-      color: #fff;
+      color: #eee;
       border: none;
       border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
     }
 
     .quote-form button {
-      background: #00aaff;
+      background: #1db954;
       padding: 12px 25px;
       border: none;
       border-radius: 6px;
@@ -142,12 +216,14 @@
       font-weight: bold;
       cursor: pointer;
       transition: background 0.3s;
+      width: 100%;
     }
 
     .quote-form button:hover {
-      background: #008ecc;
+      background: #17a64a;
     }
 
+    /* Responsive */
     @media (max-width: 600px) {
       .custom-container h2 {
         font-size: 2rem;
@@ -159,8 +235,67 @@
       }
     }
   </style>
+</head>
+<body>
 
-  <!-- JavaScript Logic -->
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">AceNodes</div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li>
+        <a href="#">Hosting Plans</a>
+        <ul>
+          <li><a href="#">Basic</a></li>
+          <li><a href="#">Standard</a></li>
+          <li><a href="#">Premium</a></li>
+          <li><a href="#">Custom Plan</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Support</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Custom Plan Section -->
+  <section id="custom-plan" class="custom-plan-section">
+    <div class="custom-container">
+      <h2>Custom Hosting Plan</h2>
+      <p>Design your own Minecraft hosting plan tailored to your needs.</p>
+
+      <div class="selector-panel">
+        <div class="slider-box">
+          <label for="ramRange">RAM (GB)</label>
+          <input type="range" min="1" max="64" step="1" value="4" id="ramRange" />
+          <div class="range-display"><span id="ramValue">4</span> GB</div>
+        </div>
+
+        <div class="dropdown-box">
+          <label for="durationSelect">Duration</label>
+          <select id="durationSelect">
+            <option value="1">1 Month</option>
+            <option value="3">3 Months</option>
+            <option value="6">6 Months</option>
+            <option value="12">12 Months</option>
+          </select>
+        </div>
+
+        <div class="price-box">
+          <p><strong>Estimated Price:</strong> <span id="priceEstimate">$12.00</span></p>
+        </div>
+      </div>
+
+      <form id="customQuoteForm" class="quote-form">
+        <h3>Request Your Quote</h3>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="requirements" placeholder="Tell us your requirements..." rows="4" required></textarea>
+        <button type="submit">Request Quote</button>
+      </form>
+    </div>
+  </section>
+
   <script>
     const ramSlider = document.getElementById('ramRange');
     const ramDisplay = document.getElementById('ramValue');
@@ -181,6 +316,16 @@
     ramSlider.addEventListener('input', updateEstimate);
     durationSelect.addEventListener('change', updateEstimate);
 
-    updateEstimate(); // Initial call
+    updateEstimate();
+
+    // Optional: handle form submit
+    document.getElementById('customQuoteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you! Your custom quote request has been submitted.');
+      this.reset();
+      updateEstimate();
+    });
   </script>
-</section>
+
+</body>
+</html>
