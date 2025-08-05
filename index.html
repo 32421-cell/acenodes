@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,7 +7,7 @@
 </head>
 <body>
   <header>
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <nav class="navbar">
       <a href="index.html" class="logo">AceNodes</a>
       <ul class="nav-links">
         <li><a href="plans.html">Plans</a></li>
@@ -16,92 +15,87 @@
         <li><a href="server-status.html">Server Status</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="terms.html">Terms</a></li> <!-- Terms link added -->
+        <li><a href="terms.html">Terms</a></li> <!-- Added Terms link here -->
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="hero" aria-label="Hero section">
-      <h1>Reliable Minecraft Hosting at AceNodes</h1>
-      <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support</p>
-      <a href="plans.html" class="btn" role="button">View Plans</a>
-    </section>
+  <section class="hero">
+    <h1>Reliable Minecraft Hosting at AceNodes</h1>
+    <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support</p>
+    <a href="plans.html" class="btn">View Plans</a>
+  </section>
 
-    <section class="plans-overview" aria-label="Popular hosting plans">
-      <h2>Popular Plans</h2>
-      <div class="plans-container">
+  <section class="plans-overview">
+    <h2>Popular Plans</h2>
+    <div class="plans-container">
+      <article class="plan-card">
+        <h3>Starter</h3>
+        <p><strong>$5.99 / month</strong></p>
+        <ul>
+          <li>2 GB RAM</li>
+          <li>10 Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>1 CPU Core</li>
+          <li>1 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
+      </article>
 
-        <article class="plan-card" aria-labelledby="starter-plan">
-          <h3 id="starter-plan">Starter</h3>
-          <p><strong>$5.99 / month</strong></p>
-          <ul>
-            <li>2 GB RAM</li>
-            <li>10 Slots</li>
-            <li>Unlimited SSD Storage</li>
-            <li>1 CPU Core</li>
-            <li>1 Gbps Network</li>
-            <li>Instant Setup</li>
-            <li>Free DDoS Protection</li>
-          </ul>
-          <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
-        </article>
+      <article class="plan-card">
+        <h3>Pro</h3>
+        <p><strong>$14.99 / month</strong></p>
+        <ul>
+          <li>6 GB RAM</li>
+          <li>40 Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>4 CPU Cores</li>
+          <li>1 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Priority Support</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
+      </article>
 
-        <article class="plan-card" aria-labelledby="pro-plan">
-          <h3 id="pro-plan">Pro</h3>
-          <p><strong>$14.99 / month</strong></p>
-          <ul>
-            <li>6 GB RAM</li>
-            <li>40 Slots</li>
-            <li>Unlimited SSD Storage</li>
-            <li>4 CPU Cores</li>
-            <li>1 Gbps Network</li>
-            <li>Instant Setup</li>
-            <li>Priority Support</li>
-            <li>Free DDoS Protection</li>
-          </ul>
-          <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
-        </article>
+      <article class="plan-card">
+        <h3>Ultimate</h3>
+        <p><strong>$29.99 / month</strong></p>
+        <ul>
+          <li>12 GB RAM</li>
+          <li>100 Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>8 CPU Cores</li>
+          <li>10 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Dedicated IP</li>
+          <li>24/7 Support & Monitoring</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="plans.html#ultimate" class="btn btn-secondary">Order Now</a>
+      </article>
+    </div>
+  </section>
 
-        <article class="plan-card" aria-labelledby="ultimate-plan">
-          <h3 id="ultimate-plan">Ultimate</h3>
-          <p><strong>$29.99 / month</strong></p>
-          <ul>
-            <li>12 GB RAM</li>
-            <li>100 Slots</li>
-            <li>Unlimited SSD Storage</li>
-            <li>8 CPU Cores</li>
-            <li>10 Gbps Network</li>
-            <li>Instant Setup</li>
-            <li>Dedicated IP</li>
-            <li>24/7 Support & Monitoring</li>
-            <li>Free DDoS Protection</li>
-          </ul>
-          <a href="plans.html#ultimate" class="btn btn-secondary">Order Now</a>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="features" aria-label="Features and benefits">
-      <h2>Why Choose AceNodes?</h2>
-      <ul>
-        <li>99.99% Uptime Guarantee</li>
-        <li>Custom Control Panel</li>
-        <li>Multiple Minecraft Versions Supported (Vanilla, Spigot, Bukkit, PaperMC)</li>
-        <li>1-Click Modpack & Plugin Installer</li>
-        <li>Full FTP Access & File Manager</li>
-        <li>Automated Backups & Snapshots</li>
-        <li>Instant Server Restarts & Stops</li>
-        <li>24/7 Customer Support</li>
-      </ul>
-    </section>
-  </main>
+  <section class="features">
+    <h2>Why Choose AceNodes?</h2>
+    <ul>
+      <li>99.99% Uptime Guarantee</li>
+      <li>Custom Control Panel</li>
+      <li>Multiple Minecraft Versions Supported (Vanilla, Spigot, Bukkit, PaperMC)</li>
+      <li>1-Click Modpack & Plugin Installer</li>
+      <li>Full FTP Access & File Manager</li>
+      <li>Automated Backups & Snapshots</li>
+      <li>Instant Server Restarts & Stops</li>
+      <li>24/7 Customer Support</li>
+    </ul>
+  </section>
 
   <footer>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 </body>
 </html>
-
