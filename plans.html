@@ -6,6 +6,7 @@
   <title>AceNodes - Hosting Plans</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
+    /* Inline CSS for plans page */
     .billing-cycle-selector {
       text-align: center;
       margin: 20px 0;
@@ -86,6 +87,7 @@
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo">AceNodes</a>
@@ -101,11 +103,13 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <h1>Hosting Plans</h1>
     <p>Choose a plan that fits your server's power and community needs.</p>
   </section>
 
+  <!-- Billing Cycle Selector -->
   <div class="billing-cycle-selector">
     <button onclick="updatePrices(1)" class="active">1 Month</button>
     <button onclick="updatePrices(3)">3 Months</button>
@@ -113,10 +117,12 @@
     <button onclick="updatePrices(12)">12 Months</button>
   </div>
 
+  <!-- Plans -->
   <section class="plans-overview">
     <div class="plans-container">
+
       <!-- Each plan includes data-price for monthly rate -->
-      <article class="plan-card" data-price="12">
+      <article class="plan-card" data-price="12" id="starter">
         <h3>AceLite</h3>
         <p><strong class="price">$12.00 / month</strong></p>
         <ul>
@@ -129,7 +135,7 @@
         <a href="custom-plan.html" class="btn">Order Now</a>
       </article>
 
-      <article class="plan-card" data-price="24">
+      <article class="plan-card" data-price="24" id="pro">
         <h3>AcePlus</h3>
         <p><strong class="price">$24.00 / month</strong></p>
         <ul>
@@ -155,7 +161,7 @@
         <a href="custom-plan.html" class="btn">Order Now</a>
       </article>
 
-      <article class="plan-card" data-price="72">
+      <article class="plan-card" data-price="72" id="ultimate">
         <h3>AceEdge</h3>
         <p><strong class="price">$72.00 / month</strong></p>
         <ul>
@@ -219,13 +225,16 @@
         </ul>
         <a href="custom-plan.html" class="btn">Order Now</a>
       </article>
+
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
+  <!-- Pricing Script -->
   <script>
     const buttons = document.querySelectorAll(".billing-cycle-selector button");
     const prices = document.querySelectorAll(".plan-card");
