@@ -40,8 +40,11 @@
       animation: slideInUp 1s ease forwards;
       opacity: 0;
       padding: 20px 0;
-      background-color: #242424; /* exact grey */
-      border: none; /* Removed border-top to remove black line */
+      background-color: #242424;
+      border: none;
+      border-top: none !important; /* REMOVE black line */
+      box-shadow: none !important; /* REMOVE shadow if any */
+      margin-top: 0 !important;
     }
 
     @keyframes slideInUp {
@@ -82,7 +85,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #242424; /* exact grey */
+      background-color: #242424;
       padding: 16px 40px;
       border: none;
     }
@@ -169,7 +172,7 @@
       flex-wrap: wrap;
     }
     footer h3 {
-      color: #34d058; /* green headings */
+      color: #34d058;
       margin-bottom: 10px;
       font-weight: 600;
     }
@@ -179,7 +182,7 @@
       margin: 0;
     }
     footer ul li a {
-      color: #fff; /* white links */
+      color: #fff;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease, text-shadow 0.3s ease;
@@ -319,4 +322,5 @@
   </script>
 </body>
 </html>
+
 
