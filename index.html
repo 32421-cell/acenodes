@@ -64,26 +64,40 @@
       }
     }
 
-    /* Navbar logo styles - UPDATED */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;          /* More space between image and text */
-      text-decoration: none;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.5rem;  /* Slightly bigger text */
-    }
-    .logo img {
-      height: 36px;       /* Slightly smaller logo height */
-      width: auto;
-      display: block;
-      object-fit: contain;
-    }
-  </style>
-</head>
+ <style>
 
-<body>
+  /* Navbar logo styles - polished */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.25rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s ease;
+  }
+
+  .logo:hover {
+    color: #00bfff;
+  }
+
+  .logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+    transition: filter 0.3s ease;
+  }
+
+  .logo:hover img {
+    filter: drop-shadow(0 0 8px #00bfff);
+  }
+</style>
+
 
   <!-- Header -->
   <header>
