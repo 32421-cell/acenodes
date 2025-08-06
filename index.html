@@ -64,38 +64,34 @@
       }
     }
 
- <style>
-
-  .logo {
+ .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 1.6rem;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.1rem; /* slightly smaller text */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(90deg, #2eb82e, #009900);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 4px rgba(0, 100, 0, 0.7);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   transition: color 0.3s ease;
 }
 
 .logo:hover {
-  background: linear-gradient(90deg, #33cc33, #00cc00);
-  text-shadow: 0 0 12px #00ff00;
-  -webkit-text-fill-color: transparent;
+  color: #00bfff;
 }
 
 .logo img {
-  height: 52px;
+  height: 50px; /* bigger logo */
   width: auto;
-  filter: drop-shadow(0 0 6px rgba(0, 150, 0, 0.7));
+  display: block;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
   transition: filter 0.3s ease;
 }
 
 .logo:hover img {
-  filter: drop-shadow(0 0 12px #00ff00);
+  filter: drop-shadow(0 0 8px #00bfff);
 }
 
 
