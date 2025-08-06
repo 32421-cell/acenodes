@@ -25,6 +25,7 @@
     a {
       color: #1db954;
       text-decoration: none;
+      cursor: pointer;
       transition: color 0.3s ease, transform 0.3s ease;
       will-change: transform, color;
     }
@@ -55,7 +56,7 @@
       font-weight: bold;
       color: #1db954;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
     .navbar .logo:hover {
       transform: scale(1.1);
@@ -72,7 +73,6 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
-      cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
@@ -95,14 +95,12 @@
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(29, 185, 84, 0.3);
       text-align: left;
-      animation: fadeInUp 0.8s ease forwards;
+
+      /* Start hidden and moved down */
       opacity: 0;
       transform: translateY(30px);
-    }
-
-    .about-section.visible {
-      opacity: 1;
-      transform: translateY(0);
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.3s;
     }
 
     .about-section h1 {
@@ -174,6 +172,7 @@
       transition: color 0.3s ease, transform 0.3s ease;
       display: inline-block;
       margin-bottom: 0.5rem;
+      cursor: pointer;
     }
     footer .support-link:hover,
     footer .support-link:focus {
@@ -252,13 +251,5 @@
     <a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener" class="support-link">Support Discord</a>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Animate about-section on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      const aboutSection = document.querySelector('.about-section');
-      aboutSection.classList.add('visible');
-    });
-  </script>
 </body>
 </html>
