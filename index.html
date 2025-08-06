@@ -39,8 +39,8 @@
       animation: slideInUp 1s ease forwards;
       opacity: 0;
       padding: 20px 0;
-      background-color: #1a1a1a; /* changed from pure black to match grey look */
-      border-top: none; /* removed black line */
+      background-color: #1a1a1a; /* Slight grey */
+      border: none; /* No black line */
     }
 
     @keyframes slideInUp {
@@ -86,7 +86,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #1a1a1a; /* changed from #0f0f0f to lighter grey */
+      background-color: #1a1a1a; /* Slight grey */
       padding: 16px 40px;
     }
 
@@ -102,12 +102,20 @@
       color: #34d058;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
+      transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease;
+      padding: 6px 10px;
+      border-radius: 4px;
     }
 
     .nav-links li a:hover {
       color: #2ccf4f;
       text-shadow: 0 0 6px rgba(76, 220, 100, 0.4);
+    }
+
+    /* Active page highlight */
+    .nav-links li a.active {
+      background-color: #2ccf4f;
+      color: #000;
     }
 
     body {
@@ -156,7 +164,7 @@
     }
 
     footer h3 {
-      color: #fff; /* changed from green to white */
+      color: #34d058; /* Green headings */
       margin-bottom: 10px;
       font-weight: 600;
     }
@@ -168,21 +176,22 @@
     }
 
     footer ul li a {
-      color: #fff; /* changed from green to white */
+      color: #fff; /* White links */
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
+    /* Green glow hover like navbar */
     footer ul li a:hover,
     footer ul li a:focus {
-      color: #00ffcc;
-      text-decoration: underline;
+      color: #2ccf4f;
+      text-shadow: 0 0 6px rgba(76, 220, 100, 0.4);
     }
 
     footer p {
       text-align: center;
-      color: #999; /* lighter grey for copyright text */
+      color: #999;
       margin-top: 20px;
       font-size: 0.9rem;
     }
@@ -197,6 +206,7 @@
         <span>AceNodes</span>
       </a>
       <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
         <li><a href="plans.html">Plans</a></li>
         <li><a href="custom-plan.html">Custom Plan</a></li>
         <li><a href="server-status.html">Server Status</a></li>
@@ -299,7 +309,14 @@
     </div>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Auto-highlight active page
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      if (link.href === window.location.href) {
+        link.classList.add('active');
+      }
+    });
+  </script>
 </body>
 </html>
-
-
