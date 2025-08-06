@@ -25,11 +25,13 @@
     a {
       color: #1db954;
       text-decoration: none;
+      transition: transform 0.3s ease;
     }
 
     a:hover,
     a:focus {
       text-decoration: underline;
+      transform: scale(1.05);
       outline: none;
     }
 
@@ -61,8 +63,7 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
-      transition: background 0.3s;
-      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
     }
 
     .nav-links li a.active,
@@ -70,7 +71,7 @@
     .nav-links li a:focus {
       background: #1db954;
       color: #121212;
-      outline: none;
+      transform: scale(1.05);
     }
 
     /* FAQ Section */
@@ -97,6 +98,7 @@
       box-shadow: 0 0 15px rgba(29, 185, 84, 0.3);
       cursor: pointer;
       transition: box-shadow 0.3s ease;
+      overflow: hidden;
     }
 
     details[open] {
@@ -133,7 +135,14 @@
       color: #ccc;
       font-size: 1rem;
       line-height: 1.5;
-      user-select: text;
+      opacity: 0;
+      max-height: 0;
+      transition: opacity 0.4s ease, max-height 0.4s ease;
+    }
+
+    details[open] p {
+      opacity: 1;
+      max-height: 1000px;
     }
 
     /* Footer */
@@ -173,6 +182,7 @@
     </ul>
   </nav>
 
+  <!-- FAQ Section -->
   <section class="faq-section">
     <h1>Frequently Asked Questions</h1>
 
