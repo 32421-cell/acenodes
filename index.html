@@ -6,193 +6,114 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* Animations */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
-    }
-    .fade-in.delay-1 { animation-delay: 0.3s; }
-    .fade-in.delay-2 { animation-delay: 0.6s; }
-    .fade-in.delay-3 { animation-delay: 0.9s; }
-
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .plan-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .plan-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px rgba(0, 219, 84, 0.4);
-    }
-
-    .btn, .btn-secondary {
-      transition: transform 0.2s ease;
-    }
-    .btn:hover, .btn-secondary:hover {
-      transform: scale(1.05);
-    }
-
-    /* Footer */
-    footer {
-      animation: slideInUp 1s ease forwards;
-      opacity: 0;
-      padding: 20px 0;
-      background-color: #242424; /* exact grey */
-      border: none;
-    }
-
-    @keyframes slideInUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Logo style */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.6rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #34d058;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .logo span { margin-left: -6px; }
-    .logo:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
-    }
-    .logo img {
-      height: 48px;
-      width: auto;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-      transition: filter 0.3s ease;
-    }
-    .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
-    }
-
-    /* Navbar */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #242424; /* exact grey */
-      padding: 16px 40px;
-      border: none;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    .nav-links li a {
-      color: #34d058;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease;
-      padding: 6px 10px;
-      border-radius: 4px;
-    }
-    .nav-links li a:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 6px rgba(76, 220, 100, 0.4);
-    }
-    .nav-links li a.active {
-      background-color: #2ccf4f;
-      color: #000;
     }
 
     body {
-      margin: 0;
-      background-color: #0d0d0d;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #f0f0f0;
+      line-height: 1.6;
+      background-color: #0d1117;
+      color: #c9d1d9;
     }
 
-    /* Sections */
-    .hero, .plans-overview, .features {
-      padding: 40px;
+    header {
+      background-color: #161b22;
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 1px solid #30363d;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+      color: #58a6ff;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #8b949e;
+    }
+
+    nav {
+      background-color: #21262d;
+      padding: 10px 0;
       text-align: center;
     }
 
-    /* Last section matches footer to remove black bar */
+    nav a {
+      color: #58a6ff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #79c0ff;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
     .features {
-      background-color: #242424;
-      margin-bottom: 0;
-      padding-bottom: 40px;
-    }
-    .features h2,
-    .features ul {
-      margin-bottom: 0;
-    }
-
-    .plans-container {
       display: flex;
-      justify-content: center;
-      gap: 30px;
       flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      background-color: #242424; /* matching footer background */
     }
 
-    .plan-card {
-      background-color: #1a1a1a;
+    .feature {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
       padding: 20px;
-      border-radius: 12px;
-      width: 280px;
+      margin: 10px;
+      flex: 1 1 calc(33% - 40px);
+      min-width: 280px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
     }
 
-    .btn, .btn-secondary {
-      background-color: #00cc66;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
+    .feature:hover {
+      transform: translateY(-5px);
     }
 
-    /* Footer Styles */
-    footer .footer-container {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-    footer h3 {
-      color: #34d058; /* green headings */
+    .feature h3 {
+      color: #58a6ff;
       margin-bottom: 10px;
-      font-weight: 600;
     }
-    footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+
+    .feature p {
+      color: #8b949e;
     }
-    footer ul li a {
-      color: #fff; /* white links */
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-    footer ul li a:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 6px rgba(76, 220, 100, 0.4);
-    }
-    footer p {
+
+    footer {
+      background-color: #161b22;
+      color: #8b949e;
       text-align: center;
-      color: #999;
-      margin-top: 20px;
-      font-size: 0.9rem;
+      padding: 20px 10px;
+      margin-top: 0;
+      font-size: 0.9em;
+      border-top: 1px solid #30363d;
+    }
+
+    footer a {
+      color: #58a6ff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
