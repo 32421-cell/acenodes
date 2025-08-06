@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact - AceNodes</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Contact Us | AceNodes Minecraft Hosting</title>
   <style>
+    /* Reset & base */
     * {
       margin: 0;
       padding: 0;
@@ -14,162 +14,287 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d1117;
-      color: #c9d1d9;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    header {
-      background-color: #161b22;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-      border-bottom: 1px solid #30363d;
+    a {
+      color: #1db954;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
-    nav {
-      background-color: #21262d;
-      padding: 10px 20px;
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      color: #17a64a;
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #222;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
 
-    nav .logo {
-      display: flex;
-      align-items: center;
-      font-size: 1.5em;
-      color: #58a6ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav .logo img {
-      height: 32px;
-      margin-right: 10px;
-    }
-
-    nav ul {
+    .nav-links {
       list-style: none;
       display: flex;
+      gap: 1rem;
     }
 
-    nav ul li {
-      margin-left: 20px;
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: block;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
-    nav ul li a {
-      color: #c9d1d9;
+    .nav-links li a.active,
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background: #1db954;
+      color: #121212;
+      outline: none;
+      transform: scale(1.1);
+      box-shadow: 0 0 8px #1db954;
+    }
+
+    /* Logo style */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #34d058;
       text-decoration: none;
-      font-weight: bold;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    nav ul li a:hover {
-      color: #58a6ff;
+    .logo span {
+      margin-left: -6px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+    .logo:hover {
+      color: #2ccf4f;
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
 
-    .contact-form {
-      background-color: #161b22;
-      padding: 30px;
-      border-radius: 8px;
-      border: 1px solid #30363d;
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      transition: filter 0.3s ease;
     }
 
-    .contact-form h2 {
-      margin-bottom: 20px;
-      color: #58a6ff;
+    .logo:hover img {
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
 
-    .contact-form input,
-    .contact-form textarea {
+    /* Contact Section */
+    .contact-section {
+      max-width: 600px;
+      margin: 3rem auto 4rem auto;
+      padding: 0 1rem;
       width: 100%;
-      padding: 10px;
-      margin: 10px 0 20px;
-      background-color: #0d1117;
-      border: 1px solid #30363d;
-      border-radius: 5px;
-      color: white;
-    }
-
-    .contact-form button {
-      background-color: #58a6ff;
-      border: none;
-      color: #0d1117;
-      padding: 12px 25px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .contact-form button:hover {
-      background-color: #79c0ff;
-    }
-
-    footer {
-      background-color: #161b22;
-      color: #8b949e;
       text-align: center;
-      padding: 20px 10px;
-      font-size: 0.9em;
-      border-top: 1px solid #30363d;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.2s;
     }
 
-    footer a {
-      color: #58a6ff;
-      text-decoration: none;
-      margin: 0 10px;
+    .contact-section h1 {
+      font-size: 2.8rem;
+      color: #1db954;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 6px rgba(29, 185, 84, 0.8);
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    form {
+      background: #1e1e1e;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    label {
+      color: #1db954;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: none;
+      background: #292929;
+      color: #eee;
+      font-size: 1rem;
+      transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.3s ease;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      box-shadow: 0 0 6px 2px #1db954aa;
+      background: #333;
+      transform: scale(1.01);
+    }
+
+    button.btn {
+      background: #1db954;
+      color: #121212;
+      font-weight: bold;
+      padding: 14px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button.btn:hover,
+    button.btn:focus {
+      background: #17a64a;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    #form-status {
+      margin-top: 20px;
+      font-weight: 600;
+      color: #1db954;
+      min-height: 24px;
+      text-align: center;
+      user-select: none;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #222;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: inset 0 1px 0 #333;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .contact-section h1 {
+        font-size: 2rem;
+      }
+
+      form {
+        padding: 25px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Contact Us</h1>
-    <p>We're here to help. Get in touch!</p>
-  </header>
-
-  <nav>
-    <a href="index.html" class="logo">
-      <img src="images/logo.png" alt="AceNodes Logo">
-      AceNodes
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" class="logo" aria-label="AceNodes Homepage">
+      <img src="https://i.imgur.com/Ia65rfD.png" alt="AceNodes Logo" />
+      <span>AceNodes</span>
     </a>
-    <ul>
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="plans.html">Plans</a></li>
       <li><a href="custom-plan.html">Custom Plan</a></li>
       <li><a href="server-status.html">Server Status</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
   </nav>
 
-  <div class="container">
-    <div class="contact-form">
-      <h2>Send us a message</h2>
-      <form action="#" method="post">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </div>
+  <!-- Contact Section -->
+  <section class="contact-section" tabindex="-1">
+    <h1>Contact Us</h1>
+    <form id="contact-form" action="#" method="POST" novalidate>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required autocomplete="name" />
 
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required autocomplete="email" />
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <div id="form-status" aria-live="polite" role="status"></div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>
-      <a href="support.html">Support</a> |
-      <a href="https://discord.gg/yourdiscord" target="_blank">Support Discord</a> |
-      <a href="terms.html">Terms of Service</a> |
-      <a href="privacy.html">Privacy Policy</a>
-    </p>
-    <p>&copy; 2025 AceNodes. All rights reserved.</p>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
+
+  <!-- Simple JS form simulation -->
+  <script>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      status.textContent = 'Sending your message...';
+      status.style.opacity = '1';
+
+      setTimeout(() => {
+        status.textContent = 'Thank you! Your message has been sent.';
+        form.reset();
+      }, 1500);
+    });
+  </script>
 </body>
 </html>
