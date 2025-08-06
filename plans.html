@@ -84,6 +84,13 @@
       background: #111;
       color: #ccc;
     }
+
+    /* Disable nav link animations only on Plans page */
+    /* Assuming your original animation was on links inside .nav-links */
+    .nav-links a {
+      animation: none !important;
+      transition: none !important;
+    }
   </style>
 </head>
 <body>
@@ -111,10 +118,10 @@
 
   <!-- Billing Cycle Selector -->
   <div class="billing-cycle-selector">
-    <button onclick="updatePrices(1)" class="active">1 Month</button>
-    <button onclick="updatePrices(3)">3 Months</button>
-    <button onclick="updatePrices(6)">6 Months</button>
-    <button onclick="updatePrices(12)">12 Months</button>
+    <button class="active">1 Month</button>
+    <button>3 Months</button>
+    <button>6 Months</button>
+    <button>12 Months</button>
   </div>
 
   <!-- Plans -->
@@ -239,23 +246,36 @@
     const buttons = document.querySelectorAll(".billing-cycle-selector button");
     const prices = document.querySelectorAll(".plan-card");
 
-    function updatePrices(months) {
-      buttons.forEach(btn => btn.classList.remove("active"));
-      event.target.classList.add("active");
+    function updatePrices(months, event) {
+      if(event) {
+        buttons.forEach(btn => btn.classList.remove("active"));
+        event.target.classList.add("active");
+      }
 
       prices.forEach(card => {
         const monthly = parseFloat(card.dataset.price);
         const total = (monthly * months).toFixed(2);
-        const perMonth = (monthly).toFixed(2);
+        const perMonth = monthly.toFixed(2);
         const priceEl = card.querySelector(".price");
 
-        let label = "";
-        if (months === 1) label = " / month";
-        else label = ` / ${months} mo`;
-
-        priceEl.textContent = `$${total} (${perMonth}/mo${months > 1 ? ` x${months}` : ""})`;
+        if (months === 1) {
+          priceEl.textContent = `$${total} / month`;
+        } else {
+          priceEl.textContent = `$${total} (${perMonth}/mo x${months})`;
+        }
       });
     }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const months = parseInt(button.textContent);
+        updatePrices(months, event);
+      });
+    });
+
+    // Initialize prices to 1 month on load
+    updatePrices(1);
   </script>
 </body>
 </html>
+
