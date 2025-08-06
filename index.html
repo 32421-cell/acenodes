@@ -44,30 +44,41 @@
     }
 
     /* Logo style */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: -2px; /* very close */
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.6rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #34d058;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-.logo:hover {
-  color: #2ccf4f;
-  text-shadow: 0 0 1px rgba(76, 220, 100, 0.15); /* very subtle glow */
-}
-.logo img {
-  height: 45px;
-  width: auto;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
-  transition: filter 0.3s ease;
-}
-.logo:hover img {
-  filter: drop-shadow(0 0 2px rgba(76, 220, 100, 0.15)); /* very subtle glow */
-}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0; /* no gap */
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.6rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #34d058;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .logo span {
+      margin-left: -6px; /* really close to the image */
+    }
+    .logo:hover {
+      color: #2ccf4f;
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4); /* softer glow */
+    }
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      transition: filter 0.3s ease;
+    }
+    .logo:hover img {
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4)); /* softer glow */
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #0f0f0f;
+      padding: 16px 40px;
+    }
 
     .nav-links {
       list-style: none;
@@ -154,6 +165,8 @@
   <section class="plans-overview fade-in delay-2">
     <h2>Popular Plans</h2>
     <div class="plans-container">
+      <!-- Plan cards... (unchanged) -->
+      <!-- STARTER PLAN -->
       <article class="plan-card">
         <h3>Starter</h3>
         <p><strong>$12.00 / month</strong></p>
@@ -169,6 +182,7 @@
         <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
       </article>
 
+      <!-- PRO PLAN -->
       <article class="plan-card">
         <h3>Pro</h3>
         <p><strong>$36.00 / month</strong></p>
@@ -185,6 +199,7 @@
         <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
       </article>
 
+      <!-- ULTIMATE PLAN -->
       <article class="plan-card">
         <h3>Ultimate</h3>
         <p><strong>$72.00 / month</strong></p>
