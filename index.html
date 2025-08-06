@@ -35,12 +35,13 @@
       transform: scale(1.05);
     }
 
+    /* Footer */
     footer {
       animation: slideInUp 1s ease forwards;
       opacity: 0;
       padding: 20px 0;
-      background-color: #1a1a1a; /* Slight grey */
-      border: none; /* No black line */
+      background-color: #242424; /* exact grey */
+      border: none;
     }
 
     @keyframes slideInUp {
@@ -61,22 +62,17 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    .logo span {
-      margin-left: -6px;
-    }
-
+    .logo span { margin-left: -6px; }
     .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
-
     .logo img {
       height: 48px;
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
       transition: filter 0.3s ease;
     }
-
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
@@ -86,8 +82,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #1a1a1a; /* Slight grey */
+      background-color: #242424; /* exact grey */
       padding: 16px 40px;
+      border: none;
     }
 
     .nav-links {
@@ -106,13 +103,10 @@
       padding: 6px 10px;
       border-radius: 4px;
     }
-
     .nav-links li a:hover {
       color: #2ccf4f;
       text-shadow: 0 0 6px rgba(76, 220, 100, 0.4);
     }
-
-    /* Active page highlight */
     .nav-links li a.active {
       background-color: #2ccf4f;
       color: #000;
@@ -125,9 +119,13 @@
       color: #f0f0f0;
     }
 
+    /* Sections */
     .hero, .plans-overview, .features {
       padding: 40px;
       text-align: center;
+    }
+    .features {
+      background-color: #242424; /* match footer to remove line effect */
     }
 
     .plans-container {
@@ -162,33 +160,26 @@
       gap: 60px;
       flex-wrap: wrap;
     }
-
     footer h3 {
-      color: #34d058; /* Green headings */
+      color: #34d058; /* green headings */
       margin-bottom: 10px;
       font-weight: 600;
     }
-
     footer ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
     footer ul li a {
-      color: #fff; /* White links */
+      color: #fff; /* white links */
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-
-    /* Green glow hover like navbar */
-    footer ul li a:hover,
-    footer ul li a:focus {
+    footer ul li a:hover {
       color: #2ccf4f;
       text-shadow: 0 0 6px rgba(76, 220, 100, 0.4);
     }
-
     footer p {
       text-align: center;
       color: #999;
