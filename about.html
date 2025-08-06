@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,12 +25,16 @@
     a {
       color: #1db954;
       text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+      will-change: transform, color;
     }
 
     a:hover,
     a:focus {
       text-decoration: underline;
+      color: #17a64a;
       outline: none;
+      transform: scale(1.05);
     }
 
     /* Navbar */
@@ -44,12 +47,19 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.6);
     }
 
     .navbar .logo {
       font-size: 1.8rem;
       font-weight: bold;
       color: #1db954;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .navbar .logo:hover {
+      transform: scale(1.1);
+      color: #17a64a;
     }
 
     .nav-links {
@@ -62,8 +72,8 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
-      transition: background 0.3s;
       cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
     .nav-links li a.active,
@@ -72,6 +82,8 @@
       background: #1db954;
       color: #121212;
       outline: none;
+      transform: scale(1.1);
+      box-shadow: 0 0 8px #1db954;
     }
 
     /* About Section */
@@ -83,6 +95,14 @@
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(29, 185, 84, 0.3);
       text-align: left;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .about-section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .about-section h1 {
@@ -134,11 +154,40 @@
     /* Footer */
     footer {
       text-align: center;
-      padding: 1rem 0;
+      padding: 1.5rem 0;
       background: #222;
       color: #777;
       font-size: 0.9rem;
       margin-top: auto;
+      box-shadow: inset 0 1px 0 #333;
+      position: relative;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Support link in footer */
+    footer .support-link {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    footer .support-link:hover,
+    footer .support-link:focus {
+      color: #1db954;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Responsive */
@@ -154,6 +203,15 @@
 
       .about-section h2 {
         font-size: 1.5rem;
+      }
+
+      .nav-links {
+        gap: 0.5rem;
+      }
+
+      .nav-links li a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -191,7 +249,16 @@
 
   <!-- Footer -->
   <footer>
+    <a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener" class="support-link">Support Discord</a>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Animate about-section on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const aboutSection = document.querySelector('.about-section');
+      aboutSection.classList.add('visible');
+    });
+  </script>
 </body>
 </html>
