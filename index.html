@@ -64,42 +64,49 @@
       }
     }
 
- .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 1.1rem; /* slightly smaller text */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  letter-spacing: 0.02em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-  transition: color 0.3s ease;
-}
+    /* Updated Logo Styles */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.6rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(90deg, #2eb82e, #009900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0, 100, 0, 0.7);
+      transition: background 0.3s ease, text-shadow 0.3s ease;
+      cursor: pointer;
+      width: fit-content;
+    }
 
-.logo:hover {
-  color: #00bfff;
-}
+    .logo:hover {
+      background: linear-gradient(90deg, #33cc33, #00cc00);
+      text-shadow: 0 0 12px #00ff00;
+      -webkit-text-fill-color: transparent;
+    }
 
-.logo img {
-  height: 50px; /* bigger logo */
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
-  transition: filter 0.3s ease;
-}
+    .logo img {
+      height: 52px;
+      width: auto;
+      filter: drop-shadow(0 0 6px rgba(0, 150, 0, 0.7));
+      transition: filter 0.3s ease;
+      display: block;
+    }
 
-.logo:hover img {
-  filter: drop-shadow(0 0 8px #00bfff);
-}
-
-
+    .logo:hover img {
+      filter: drop-shadow(0 0 12px #00ff00);
+    }
+  </style>
+</head>
+<body>
 
   <!-- Header -->
   <header>
     <nav class="navbar">
-      <a href="home.html" class="logo">
+      <a href="home.html" class="logo" aria-label="AceNodes Homepage">
         <img src="https://i.imgur.com/Ia65rfD.png" alt="AceNodes Logo" />
         <span>AceNodes</span>
       </a>
