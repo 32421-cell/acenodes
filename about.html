@@ -3,14 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About - AceNodes</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>About Us | AceNodes Minecraft Hosting</title>
   <style>
-    /* Logo style */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: #1db954;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #0f0f0f;
+      padding: 16px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Logo Style */
     .logo {
       display: flex;
       align-items: center;
-      gap: 0; /* no gap */
+      gap: 0;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.6rem;
@@ -20,12 +60,12 @@
     }
 
     .logo span {
-      margin-left: -6px; /* really close to the image */
+      margin-left: -6px;
     }
 
     .logo:hover {
       color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4); /* softer glow */
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
 
     .logo img {
@@ -36,53 +76,181 @@
     }
 
     .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4)); /* softer glow */
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
 
-    .navbar {
+    .nav-links {
+      list-style: none;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #0f0f0f;
-      padding: 16px 40px;
+      gap: 1rem;
     }
 
-    body {
-      margin: 0;
-      background-color: #121212;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: block;
+      transition: background 0.3s, transform 0.3s;
     }
 
-    .content {
-      padding: 40px;
-      max-width: 1000px;
-      margin: auto;
+    .nav-links li a.active,
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background: #1db954;
+      color: #121212;
+      transform: scale(1.05);
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #34d058;
+    /* About Section */
+    .about-section {
+      max-width: 800px;
+      margin: 3rem auto 4rem auto;
+      padding: 0 1.5rem;
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(29, 185, 84, 0.2);
+      text-align: left;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.3s;
     }
 
-    p {
-      line-height: 1.6;
+    .about-section h1 {
+      font-size: 2.8rem;
+      color: #1db954;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 5px rgba(29,185,84,0.5);
+      text-align: center;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .about-section h2 {
+      font-size: 2rem;
+      color: #1db954;
+      margin: 2rem 0 1rem 0;
+      text-shadow: 0 0 4px rgba(29,185,84,0.4);
+    }
+
+    .about-section ul {
+      list-style: none;
+      padding-left: 1.2rem;
+    }
+
+    .about-section ul li {
+      position: relative;
+      font-size: 1.1rem;
+      color: #eee;
+      margin-bottom: 0.8rem;
+      padding-left: 1.8rem;
+    }
+
+    .about-section ul li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #1db954;
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      background: #222;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    footer .support-link {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    footer .support-link:hover,
+    footer .support-link:focus {
+      color: #1db954;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-section {
+        margin: 2rem 1rem 3rem 1rem;
+        padding: 1.5rem;
+      }
+
+      .about-section h1 {
+        font-size: 2rem;
+      }
+
+      .about-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        gap: 0.5rem;
+      }
+
+      .nav-links li a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <a href="index.html" class="logo">
-      <img src="assets/logo.png" alt="AceNodes Logo">
+      <img src="images/logo.png" alt="AceNodes Logo">
       <span>AceNodes</span>
     </a>
-  </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="custom-plan.html">Custom Plan</a></li>
+      <li><a href="server-status.html">Server Status</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-  <div class="content">
+  <section class="about-section" tabindex="-1">
     <h1>About AceNodes</h1>
-    <p>Welcome to AceNodes, your ultimate solution for powerful, reliable, and affordable Minecraft server hosting.</p>
-    <p>We are committed to delivering top-tier hosting services with unmatched customer support, advanced control panels, and performance you can count on.</p>
-    <p>Whether you're starting a small survival server or launching a massive modded world, AceNodes is here to help you every step of the way.</p>
-  </div>
+    <p>Founded in 2018, AceNodes is a premium Minecraft hosting provider dedicated to delivering high-performance servers at affordable prices.</p>
+    <p>Our mission is to empower gamers worldwide with reliable, scalable, and user-friendly hosting services. We operate multiple data centers globally to ensure low latency and redundancy.</p>
+    <p>We pride ourselves on our customer service, 24/7 support, and innovative control panel that makes managing your Minecraft server easy.</p>
+
+    <h2>Our Values</h2>
+    <ul>
+      <li>Customer satisfaction</li>
+      <li>Reliability and uptime</li>
+      <li>Security and DDoS protection</li>
+      <li>Continuous innovation</li>
+    </ul>
+  </section>
+
+  <footer>
+    <a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener" class="support-link">Support Discord</a>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+  </footer>
 </body>
 </html>
