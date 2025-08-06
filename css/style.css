@@ -582,3 +582,21 @@ footer {
   border-top: 1px solid #333;
   padding-top: 1rem;
 }
+
+/* Disable nav links animations and transitions only on plans page */
+.plans-page .nav-links > li {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.plans-page .nav-links a {
+  transition: none !important;
+  transform: none !important;
+}
+
+.plans-page .nav-links a:hover,
+.plans-page .nav-links a:focus {
+  transform: none !important;
+  text-decoration: underline; /* keep underline or remove if you want */
+}
