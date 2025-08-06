@@ -63,6 +63,22 @@
         opacity: 0;
       }
     }
+
+    /* Navbar logo styles */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
   </style>
 </head>
 
@@ -71,7 +87,10 @@
   <!-- Header -->
   <header>
     <nav class="navbar">
-      <a href="home.html" class="logo">AceNodes</a>
+      <a href="home.html" class="logo">
+        <img src="images/logo.png" alt="AceNodes Logo" />
+        <span>AceNodes</span>
+      </a>
       <ul class="nav-links">
         <li><a href="https://32421-cell.github.io/acenodes/plans.html">Plans</a></li>
         <li><a href="custom-plan.html">Custom Plan</a></li>
@@ -162,6 +181,7 @@
       <li>24/7 Customer Support</li>
     </ul>
   </section>
+
   <!-- Footer -->
   <footer>
     <div style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;">
@@ -186,23 +206,3 @@
 
 </body>
 </html>
-
-
-<!-- Header -->
-<header>
-  <nav class="navbar">
-    <a href="home.html" class="logo" style="display: flex; align-items: center; gap: 8px;">
-      <img src="images/logo.png" alt="AceNodes Logo" style="height: 40px; width: auto;" />
-      <span style="font-size: 1.5em; font-weight: bold; color: #fff;">AceNodes</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="https://32421-cell.github.io/acenodes/plans.html">Plans</a></li>
-      <li><a href="custom-plan.html">Custom Plan</a></li>
-      <li><a href="server-status.html">Server Status</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="#terms">Terms</a></li>
-    </ul>
-  </nav>
-</header>
