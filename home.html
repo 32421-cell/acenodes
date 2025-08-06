@@ -6,225 +6,39 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
-      color: #eee;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
+    /* Green color for sublink titles on homepage */
+    h3 {
       color: #34d058;
-      transition: color 0.3s ease;
     }
-
-    a:hover,
-    a:focus {
-      color: #00ffcc;
+    .footer-column h4 {
+      color: #34d058;
+    }
+    .footer-column ul li a {
+      color: #34d058; /* default green */
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+    .footer-column ul li a:hover,
+    .footer-column ul li a:focus {
+      color: #00ffcc; /* lighter green on hover */
       text-decoration: underline;
     }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #0f0f0f;
-      padding: 16px 40px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: #34d058;
-    }
-
-    .logo img {
-      height: 48px;
-      width: auto;
-      margin-right: -6px;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-    }
-
-    .nav-links li a {
-      padding: 0.5rem 1rem;
-      color: #34d058;
-      transition: background 0.3s, transform 0.3s;
-      border-radius: 4px;
-    }
-
-    .nav-links li a:hover,
-    .nav-links li a:focus {
-      background: #1db954;
-      color: #121212;
-      transform: scale(1.05);
-    }
-
-    .hero {
-      text-align: center;
-      padding: 4rem 1rem 3rem;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #1db954;
-      color: #121212;
-      padding: 0.75rem 1.5rem;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: transform 0.3s ease;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    .plans-overview {
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .plans-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .plan-card {
-      background: #1e1e1e;
-      padding: 1.5rem;
-      border-radius: 12px;
-      width: 300px;
-      box-shadow: 0 0 10px rgba(29, 185, 84, 0.2);
-    }
-
-    .plan-card h3 {
-      color: #34d058;
-      margin-bottom: 0.5rem;
-    }
-
-    .plan-card ul {
-      text-align: left;
-      padding-left: 1.2rem;
-      margin: 1rem 0;
-      color: #ccc;
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid #34d058;
-      color: #34d058;
-    }
-
-    .btn-secondary:hover {
-      background: #34d058;
-      color: #121212;
-    }
-
-    .features, .policy {
-      padding: 2rem;
-    }
-
-    .features ul,
-    .policy ul {
-      padding-left: 1.2rem;
-      margin-top: 0.5rem;
-      color: #ccc;
-    }
-
-    .policy h3 {
-      color: #34d058;
-      margin-top: 2rem;
-    }
-
-    /* Footer Fixes */
-    .footer {
-      background: #fff;
-      color: #121212;
-      padding: 2rem 1rem;
-      margin-top: 4rem;
-    }
-
-    .footer-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin-bottom: 1rem;
-    }
-
-    .footer-column h4 {
-      color: #34d058;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-column ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-column ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-column ul li a {
-      color: #121212;
-      transition: color 0.3s ease;
-    }
-
-    .footer-column ul li a:hover {
-      color: #34d058;
-    }
-
     .footer-bottom {
+      color: #666;
       text-align: center;
+      margin-top: 20px;
       font-size: 0.9rem;
-      color: #444;
-    }
-
-    @media (max-width: 768px) {
-      .plans-container {
-        flex-direction: column;
-        align-items: center;
-      }
     }
   </style>
 </head>
-<body>
+<body class="home">
 
   <!-- Header -->
   <header>
     <nav class="navbar">
       <a href="home.html" class="logo">
-        <img src="images/logo.png" alt="AceNodes Logo" />
+        <img src="images/logo.png" alt="AceNodes Logo" class="logo-img" />
         <span>AceNodes</span>
       </a>
       <ul class="nav-links">
@@ -240,16 +54,15 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Reliable Minecraft Hosting with AceNodes</h1>
-    <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
-    <a href="https://32421-cell.github.io/acenodes/plans.html" class="btn">View Plans</a>
+    <h1 class="fade-in delay-1">Reliable Minecraft Hosting with AceNodes</h1>
+    <p class="fade-in delay-2">Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
+    <a href="https://32421-cell.github.io/acenodes/plans.html" class="btn fade-in delay-3">View Plans</a>
   </section>
 
-  <!-- Plans -->
+  <!-- Popular Plans Section -->
   <section class="plans-overview">
     <h2>Popular Plans</h2>
     <div class="plans-container">
-      <!-- Plan Cards -->
       <!-- Starter Plan -->
       <article class="plan-card">
         <h3>Starter</h3>
@@ -318,7 +131,7 @@
     </ul>
   </section>
 
-  <!-- Policies -->
+  <!-- Policies Section -->
   <section id="terms" class="policy">
     <h2>Policies & Legal</h2>
 
@@ -330,6 +143,7 @@
       <li>Sending unsolicited bulk emails</li>
       <li>Any activity violating laws or regulations</li>
     </ul>
+    <p><strong>Enforcement:</strong> Violations may result in suspension or termination of service.</p>
 
     <h3>Cookie Policy</h3>
     <p>We use small text files (cookies) to improve site functionality.</p>
@@ -338,6 +152,7 @@
       <li>Analytics cookies</li>
       <li>Preference cookies</li>
     </ul>
+    <p>Users can manage cookies through their browser settings.</p>
 
     <h3>Data Retention & Deletion Policy</h3>
     <ul>
@@ -348,6 +163,12 @@
 
     <h3>DMCA & Abuse Reporting</h3>
     <p>Report DMCA notices to: <a href="mailto:abuse@acenodes.co.uk">abuse@acenodes.co.uk</a></p>
+    <p>We investigate abuse complaints involving spam, hacking, or illegal content.</p>
+    <ul>
+      <li>Temporary suspension</li>
+      <li>Permanent termination</li>
+      <li>Notification to legal authorities if required</li>
+    </ul>
 
     <h3>Security Policy</h3>
     <ul>
@@ -355,6 +176,7 @@
       <li>Regular updates and encrypted backups</li>
       <li>Role-based access control</li>
     </ul>
+    <p>Security incidents are investigated and logged according to legal requirements.</p>
 
     <h3>Service Level Agreement (SLA)</h3>
     <ul>
@@ -362,6 +184,7 @@
       <li>Critical support issues: &lt;1 hour response</li>
       <li>Non-critical issues: &lt;24 hours response</li>
     </ul>
+    <p>Excludes downtime from third parties, maintenance, or user error.</p>
   </section>
 
   <!-- Footer -->
@@ -370,7 +193,7 @@
       <div class="footer-column">
         <h4>Support</h4>
         <ul>
-          <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener">Support Discord</a></li>
+          <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener noreferrer">Support Discord</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -388,4 +211,3 @@
 
 </body>
 </html>
-
