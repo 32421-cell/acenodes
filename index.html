@@ -65,43 +65,41 @@
     }
 
     /* Logo styles */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.6rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(90deg, #2eb82e, #009900);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 4px rgba(0, 100, 0, 0.7);
-      transition: background 0.3s ease, text-shadow 0.3s ease;
-      cursor: pointer;
-      width: fit-content;
-    }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(90deg, #34d058, #28a745);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s ease, text-shadow 0.3s ease;
+  width: fit-content;
+  cursor: pointer;
+}
 
-    .logo:hover {
-      background: linear-gradient(90deg, #33cc33, #00cc00);
-      text-shadow: 0 0 12px #00ff00;
-      -webkit-text-fill-color: transparent;
-    }
+.logo:hover {
+  background: linear-gradient(90deg, #4ae168, #2ccf4f);
+  text-shadow: 0 0 8px rgba(76, 220, 100, 0.8);
+  -webkit-text-fill-color: transparent;
+}
 
-    .logo img {
-      height: 52px;
-      width: auto;
-      filter: drop-shadow(0 0 6px rgba(0, 150, 0, 0.7));
-      transition: filter 0.3s ease;
-      display: block;
-    }
+.logo img {
+  height: 48px;
+  width: auto;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+  transition: filter 0.3s ease;
+  display: block;
+}
 
-    .logo:hover img {
-      filter: drop-shadow(0 0 12px #00ff00);
-    }
-  </style>
-</head>
-<body>
+.logo:hover img {
+  filter: drop-shadow(0 0 8px rgba(76, 220, 100, 0.6));
+}
+
 
   <!-- Header -->
   <header>
