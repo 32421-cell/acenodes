@@ -15,10 +15,14 @@ body {
 a {
   color: #1db954;
   text-decoration: none;
+  transition: transform 0.3s ease;
 }
 
-a:hover {
+a:hover,
+a:focus {
   text-decoration: underline;
+  transform: scale(1.05);
+  outline: none;
 }
 
 .navbar {
@@ -47,15 +51,20 @@ a:hover {
 .nav-links li a {
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: background 0.3s;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .nav-links li a.active,
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li a:focus {
   background: #1db954;
   color: #121212;
+  transform: scale(1.05);
+  outline: none;
 }
 
+/* Hero Section */
 .hero {
   background: url('https://i.imgur.com/J0kYqAv.jpg') no-repeat center center/cover;
   height: 60vh;
@@ -87,11 +96,14 @@ a:hover {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
   background: #17a64a;
+  transform: scale(1.05);
+  outline: none;
 }
 
 .btn-secondary {
@@ -100,16 +112,23 @@ a:hover {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 4px;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:focus {
   background: #666;
+  transform: scale(1.03);
+  outline: none;
 }
 
 /* Plans Overview Section */
 .plans-overview {
   padding: 3rem 2rem;
   background: #1e1e1e;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.1s;
 }
 
 .plans-overview h2 {
@@ -117,6 +136,9 @@ a:hover {
   margin-bottom: 2rem;
   font-size: 2rem;
   color: #1db954;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
 }
 
 .plans-container {
@@ -136,6 +158,14 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover,
+.plan-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
+  outline: none;
 }
 
 .plan-card h3 {
@@ -169,16 +199,23 @@ a:hover {
   color: #1db954;
 }
 
+/* Features Section */
 .features {
   padding: 3rem 2rem;
   background: #121212;
   text-align: center;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.1s;
 }
 
 .features h2 {
   color: #1db954;
   font-size: 2rem;
   margin-bottom: 1rem;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
 }
 
 .features ul {
@@ -211,6 +248,9 @@ footer {
   color: #777;
   margin-top: 3rem;
   font-size: 0.9rem;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
 }
 
 /* Responsive */
@@ -221,78 +261,178 @@ footer {
   }
 }
 
-/* === Your Existing Styling (already included above) === */
-/* ... (unchanged content from your current CSS) ... */
-
-/* === Custom Plan Section === */
-.custom-plan {
-  background: #1e1e1e;
-  padding: 3rem 2rem;
-  text-align: center;
-}
-
-.custom-plan h2 {
-  font-size: 2rem;
-  color: #1db954;
-  margin-bottom: 1rem;
-}
-
-.custom-plan p {
-  color: #ccc;
-  margin-bottom: 2rem;
-}
-
-.custom-form {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #292929;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 219, 84, 0.2);
-}
-
-.custom-form label {
-  display: block;
-  text-align: left;
-  margin-bottom: 0.5rem;
-  color: #1db954;
-  font-weight: bold;
-}
-
-.custom-form input,
-.custom-form select,
-.custom-form textarea {
+/* Custom Plan Section */
+.custom-plan-section {
   width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #444;
-  border-radius: 6px;
-  background: #121212;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
+  color: #eee;
+  padding: 80px 20px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.1s;
+}
+
+.custom-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.custom-container h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #1db954;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+.custom-container p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 50px;
+}
+
+.selector-panel {
+  background: #191919;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 10px rgba(0,219,84,0.5);
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slider-box,
+.dropdown-box,
+.number-box {
+  margin-bottom: 25px;
+}
+
+.slider-box label,
+.dropdown-box label,
+.number-box label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #1db954;
+}
+
+.slider-box input[type="range"] {
+  width: 100%;
+}
+
+.number-box input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background: #2b2b2b;
   color: #eee;
   font-size: 1rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.custom-form input:focus,
-.custom-form select:focus,
-.custom-form textarea:focus {
-  border-color: #1db954;
+.number-box input[type="number"]:hover,
+.number-box input[type="number"]:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(29, 185, 84, 0.4);
   outline: none;
 }
 
-.custom-form button {
-  background: #1db954;
-  color: #121212;
-  padding: 0.75rem 1.5rem;
+.dropdown-box select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background: #2b2b2b;
+  color: #eee;
   font-size: 1rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-box select:hover,
+.dropdown-box select:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(29, 185, 84, 0.4);
+  outline: none;
+}
+
+.price-box {
+  font-size: 1.2rem;
+  color: #1db954;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.quote-form {
+  background: #121212;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,219,84,0.4);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.15s;
+}
+
+.quote-form h3 {
+  margin-bottom: 20px;
+  font-size: 1.7rem;
+  color: #1db954;
+  text-align: center;
+}
+
+.quote-form input,
+.quote-form textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  background: #2b2b2b;
+  color: #eee;
   border: none;
   border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.quote-form input:hover,
+.quote-form input:focus,
+.quote-form textarea:hover,
+.quote-form textarea:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(29, 185, 84, 0.4);
+  outline: none;
+}
+
+.quote-form button {
+  background: #1db954;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
 }
 
-.custom-form button:hover {
+.quote-form button:hover,
+.quote-form button:focus {
   background: #17a64a;
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(29, 185, 84, 0.6);
+  outline: none;
 }
 
 /* Timeline bar (GB vs Price visualization) */
@@ -302,6 +442,9 @@ footer {
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #333;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
 }
 
 .timeline-bar {
@@ -338,12 +481,43 @@ footer {
     padding: 1.5rem;
   }
 
-  .custom-plan h2 {
-    font-size: 1.5rem;
+  .custom-container h2 {
+    font-size: 2rem;
+  }
+
+  .plans-container {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
-/* Improved Footer */
+/* Fade-In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation Links Animation */
+.nav-links li {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.nav-links li:nth-child(1) { animation-delay: 0.1s; }
+.nav-links li:nth-child(2) { animation-delay: 0.2s; }
+.nav-links li:nth-child(3) { animation-delay: 0.3s; }
+.nav-links li:nth-child(4) { animation-delay: 0.4s; }
+.nav-links li:nth-child(5) { animation-delay: 0.5s; }
+.nav-links li:nth-child(6) { animation-delay: 0.6s; }
+
+/* Footer improvements */
 .footer {
   background-color: #1a1a1a;
   color: #ccc;
@@ -400,68 +574,3 @@ footer {
   padding-top: 1rem;
 }
 
-/* === Fade-In Animation === */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Apply fade-in to main sections */
-.custom-plan,
-.plans-overview,
-.features,
-footer,
-.timeline-container,
-.custom-form {
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-  animation-delay: 0.1s;
-}
-
-/* Add fade-in to all section headers */
-h1, h2, h3 {
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-  animation-delay: 0.2s;
-}
-
-/* === Navigation Links Animation === */
-.nav-links li {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.nav-links li:nth-child(1) { animation-delay: 0.1s; }
-.nav-links li:nth-child(2) { animation-delay: 0.2s; }
-.nav-links li:nth-child(3) { animation-delay: 0.3s; }
-.nav-links li:nth-child(4) { animation-delay: 0.4s; }
-.nav-links li:nth-child(5) { animation-delay: 0.5s; }
-.nav-links li:nth-child(6) { animation-delay: 0.6s; }
-
-/* === Hover Glow Effect for Interactive Inputs === */
-input[type="text"],
-input[type="email"],
-input[type="number"],
-textarea,
-select {
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-input:hover,
-textarea:hover,
-select:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 8px rgba(29, 185, 84, 0.4);
-}
-
-button:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 10px rgba(29, 185, 84, 0.6);
-}
