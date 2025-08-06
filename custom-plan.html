@@ -22,11 +22,13 @@
     a {
       color: #1db954;
       text-decoration: none;
+      transition: transform 0.3s ease;
     }
 
     a:hover,
     a:focus {
       text-decoration: underline;
+      transform: scale(1.05);
       outline: none;
     }
 
@@ -58,7 +60,7 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
-      transition: background 0.3s;
+      transition: background 0.3s ease, transform 0.3s ease;
       cursor: pointer;
     }
 
@@ -67,6 +69,7 @@
     .nav-links li a:focus {
       background: #1db954;
       color: #121212;
+      transform: scale(1.05);
       outline: none;
     }
 
@@ -390,3 +393,4 @@
   </script>
 </body>
 </html>
+
