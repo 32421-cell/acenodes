@@ -86,14 +86,19 @@
     }
 
     /* Disable nav link animations only on Plans page */
-    /* Assuming your original animation was on links inside .nav-links */
-    .nav-links a {
+    body.plans-page .nav-links > li {
       animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    body.plans-page .nav-links li a {
       transition: none !important;
+      transform: none !important;
     }
   </style>
 </head>
-<body>
+<body class="plans-page">
   <!-- Header -->
   <header>
     <nav class="navbar">
@@ -118,10 +123,10 @@
 
   <!-- Billing Cycle Selector -->
   <div class="billing-cycle-selector">
-    <button class="active">1 Month</button>
-    <button>3 Months</button>
-    <button>6 Months</button>
-    <button>12 Months</button>
+    <button class="active" data-months="1">1 Month</button>
+    <button data-months="3">3 Months</button>
+    <button data-months="6">6 Months</button>
+    <button data-months="12">12 Months</button>
   </div>
 
   <!-- Plans -->
@@ -268,7 +273,7 @@
 
     buttons.forEach(button => {
       button.addEventListener('click', (event) => {
-        const months = parseInt(button.textContent);
+        const months = parseInt(button.dataset.months, 10);
         updatePrices(months, event);
       });
     });
@@ -278,4 +283,3 @@
   </script>
 </body>
 </html>
-
