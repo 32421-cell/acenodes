@@ -503,7 +503,7 @@ footer {
   }
 }
 
-/* Navigation Links Animation ONLY on HOME page */
+/* Navigation Links Animation ONLY ON HOME PAGE */
 .home .nav-links li {
   opacity: 0;
   transform: translateY(-10px);
