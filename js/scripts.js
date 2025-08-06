@@ -1,27 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Pricing Page toggle
-  const pricingPage = document.querySelector('.pricing-plans');
-  if (pricingPage) {
-    const radios = document.querySelectorAll('input[name="billing"]');
-    const prices = document.querySelectorAll('.price');
+  // Plans Page billing cycle buttons
+  const billingButtons = document.querySelectorAll(".billing-cycle-selector button");
+  const planCards = document.querySelectorAll(".plan-card");
 
-    function updatePrices() {
-      const billingType = [...radios].find(r => r.checked).value;
-      prices.forEach(priceElem => {
-        const monthly = parseFloat(priceElem.dataset.monthly);
-        const yearly = monthly * 12 * 0.85; // 15% discount
-
-        if (billingType === 'monthly') {
-          priceElem.textContent = `$${monthly.toFixed(2)} / month`;
-        } else {
-          priceElem.textContent = `$${yearly.toFixed(2)} / year`;
-        }
-      });
+  function updatePrices(months, event) {
+    if (event) {
+      billingButtons.forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
     }
 
-    radios.forEach(radio => radio.addEventListener('change', updatePrices));
-    updatePrices();
+    planCards.forEach(card => {
+      const monthlyPrice = parseFloat(card.dataset.price);
+      const totalPrice = (monthlyPrice * months).toFixed(2);
+      const priceEl = card.querySelector(".price");
+
+      const perMonth = monthlyPrice.toFixed(2);
+      const label = months === 1 ? " / month" : ` / ${months} mo`;
+
+      priceEl.textContent = `$${totalPrice} (${perMonth}/mo${months > 1 ? ` x${months}` : ""})`;
+    });
   }
+
+  billingButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+      const months = parseInt(event.target.textContent);
+      updatePrices(months, event);
+    });
+  });
+
+  // Initialize prices on page load with 1 month selected
+  updatePrices(1);
 
   // Custom Plan price calculator
   const customPlanForm = document.getElementById('custom-plan-form');
