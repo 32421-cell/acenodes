@@ -48,6 +48,21 @@ a:focus {
   gap: 1rem;
 }
 
+/* Navigation Links Animation - APPLIED TO ALL PAGES */
+.nav-links li {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Stagger animation delay for each link */
+.nav-links li:nth-child(1) { animation-delay: 0.1s; }
+.nav-links li:nth-child(2) { animation-delay: 0.25s; }
+.nav-links li:nth-child(3) { animation-delay: 0.4s; }
+.nav-links li:nth-child(4) { animation-delay: 0.55s; }
+.nav-links li:nth-child(5) { animation-delay: 0.7s; }
+.nav-links li:nth-child(6) { animation-delay: 0.85s; }
+
 .nav-links li a {
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -502,20 +517,6 @@ footer {
     transform: translateY(0);
   }
 }
-
-/* Navigation Links Animation ONLY ON HOME PAGE */
-.home .nav-links li {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.home .nav-links li:nth-child(1) { animation-delay: 0.1s; }
-.home .nav-links li:nth-child(2) { animation-delay: 0.2s; }
-.home .nav-links li:nth-child(3) { animation-delay: 0.3s; }
-.home .nav-links li:nth-child(4) { animation-delay: 0.4s; }
-.home .nav-links li:nth-child(5) { animation-delay: 0.5s; }
-.home .nav-links li:nth-child(6) { animation-delay: 0.6s; }
 
 /* Footer improvements */
 .footer {
