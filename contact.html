@@ -6,7 +6,6 @@
   <title>Contact - AceNodes</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* Base Reset */
     * {
       margin: 0;
       padding: 0;
@@ -17,101 +16,97 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #0d1117;
       color: #c9d1d9;
-      line-height: 1.6;
     }
 
     header {
       background-color: #161b22;
-      padding: 15px 0;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
       border-bottom: 1px solid #30363d;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-container img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    .logo-container span {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #58a6ff;
     }
 
     nav {
       background-color: #21262d;
-      text-align: center;
-      padding: 10px 0;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    nav a {
+    nav .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5em;
       color: #58a6ff;
       text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
     }
 
-    nav a:hover {
-      color: #79c0ff;
+    nav .logo img {
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #c9d1d9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      color: #58a6ff;
     }
 
     .container {
-      max-width: 700px;
+      max-width: 900px;
       margin: 40px auto;
       padding: 20px;
-      background-color: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
     }
 
-    h2 {
-      text-align: center;
+    .contact-form {
+      background-color: #161b22;
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+    }
+
+    .contact-form h2 {
       margin-bottom: 20px;
       color: #58a6ff;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      margin-top: 10px;
-      margin-bottom: 5px;
-      color: #8b949e;
-    }
-
-    input, textarea {
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
       padding: 10px;
+      margin: 10px 0 20px;
+      background-color: #0d1117;
       border: 1px solid #30363d;
       border-radius: 5px;
-      background-color: #0d1117;
-      color: #c9d1d9;
+      color: white;
     }
 
-    textarea {
-      resize: vertical;
-      height: 120px;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
+    .contact-form button {
       background-color: #58a6ff;
-      color: #fff;
-      font-size: 1rem;
+      border: none;
+      color: #0d1117;
+      padding: 12px 25px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-weight: bold;
     }
 
-    button:hover {
+    .contact-form button:hover {
       background-color: #79c0ff;
     }
 
@@ -137,41 +132,44 @@
 </head>
 <body>
   <header>
-    <div class="logo-container">
-      <img src="images/logo.png" alt="AceNodes Logo" />
-      <span>AceNodes</span>
-    </div>
+    <h1>Contact Us</h1>
+    <p>We're here to help. Get in touch!</p>
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="plans.html">Plans</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="AceNodes Logo">
+      AceNodes
+    </a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="custom-plan.html">Custom Plan</a></li>
+      <li><a href="server-status.html">Server Status</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
   </nav>
 
   <div class="container">
-    <h2>Contact Us</h2>
-    <form action="#" method="post">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="message">Your Message</label>
-      <textarea id="message" name="message" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
+    <div class="contact-form">
+      <h2>Send us a message</h2>
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </div>
 
   <footer>
     <p>
-      <a href="#">Support</a> |
-      <a href="#">Support Discord</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Privacy Policy</a>
+      <a href="support.html">Support</a> |
+      <a href="https://discord.gg/yourdiscord" target="_blank">Support Discord</a> |
+      <a href="terms.html">Terms of Service</a> |
+      <a href="privacy.html">Privacy Policy</a>
     </p>
+    <p>&copy; 2025 AceNodes. All rights reserved.</p>
   </footer>
 </body>
 </html>
