@@ -37,6 +37,8 @@
     footer {
       animation: slideInUp 1s ease forwards;
       opacity: 0;
+      padding: 20px 0;
+      background-color: #0f0f0f;
     }
     @keyframes slideInUp {
       from { transform: translateY(40px); opacity: 0; }
@@ -47,7 +49,7 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0; /* no gap */
+      gap: 0;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.6rem;
@@ -56,11 +58,11 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     .logo span {
-      margin-left: -6px; /* really close to the image */
+      margin-left: -6px;
     }
     .logo:hover {
       color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4); /* softer glow */
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
     .logo img {
       height: 48px;
@@ -69,7 +71,7 @@
       transition: filter 0.3s ease;
     }
     .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4)); /* softer glow */
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
 
     .navbar {
@@ -133,6 +135,41 @@
       text-decoration: none;
       display: inline-block;
       margin-top: 10px;
+    }
+
+    /* Footer Styles */
+    footer .footer-container {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+    footer h3 {
+      color: #34d058;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    footer ul li a {
+      color: #34d058;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    footer ul li a:hover,
+    footer ul li a:focus {
+      color: #00ffcc;
+      text-decoration: underline;
+    }
+    footer p {
+      text-align: center;
+      color: #666;
+      margin-top: 20px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -234,22 +271,22 @@
   </section>
 
   <footer>
-    <div style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;">
+    <div class="footer-container">
       <div>
-        <h3 style="color: #fff; margin-bottom: 10px;">Support</h3>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-          <li><a href="https://discord.gg/your-discord-link" target="_blank" style="color: #ccc; text-decoration: none;">Support Discord</a></li>
+        <h3>Support</h3>
+        <ul>
+          <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener noreferrer">Support Discord</a></li>
         </ul>
       </div>
       <div>
-        <h3 style="color: #fff; margin-bottom: 10px;">Legal</h3>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-          <li><a href="terms.html" style="color: #ccc; text-decoration: none;">Terms of Service</a></li>
-          <li><a href="privacy.html" style="color: #ccc; text-decoration: none;">Privacy Policy</a></li>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
-    <p style="text-align: center; color: #666; margin-top: 20px;">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 </body>
 </html>
