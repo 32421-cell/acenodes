@@ -44,38 +44,31 @@
     }
 
     /* Logo style */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px; /* Closer spacing */
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.6rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #34d058;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-    .logo:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4); /* Softer glow */
-    }
-    .logo img {
-      height: 45px;
-      width: auto;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-      transition: filter 0.3s ease;
-    }
-    .logo:hover img {
-      filter: drop-shadow(0 0 5px rgba(76, 220, 100, 0.5));
-    }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* closer spacing */
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.6rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #34d058;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.logo:hover {
+  color: #2ccf4f;
+  text-shadow: 0 0 2px rgba(76, 220, 100, 0.3); /* much softer glow */
+}
+.logo img {
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease;
+}
+.logo:hover img {
+  filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.3)); /* softer glow */
+}
 
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #0f0f0f;
-      padding: 16px 40px;
-    }
 
     .nav-links {
       list-style: none;
