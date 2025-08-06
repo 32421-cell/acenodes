@@ -25,11 +25,13 @@
     a {
       color: #1db954;
       text-decoration: none;
+      transition: transform 0.3s ease;
     }
 
     a:hover,
     a:focus {
       text-decoration: underline;
+      transform: scale(1.05);
       outline: none;
     }
 
@@ -61,8 +63,7 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
-      transition: background 0.3s;
-      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .nav-links li a.active,
@@ -70,7 +71,7 @@
     .nav-links li a:focus {
       background: #1db954;
       color: #121212;
-      outline: none;
+      transform: scale(1.05);
     }
 
     /* Main container */
@@ -194,6 +195,7 @@
     </ul>
   </nav>
 
+  <!-- Main -->
   <main>
     <h1>Server Status</h1>
     <p class="subtitle">Check the real-time status of your Minecraft servers hosted with AceNodes.</p>
@@ -231,6 +233,6 @@
   <footer>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
-  
+
 </body>
 </html>
