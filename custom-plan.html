@@ -73,6 +73,29 @@
       outline: none;
     }
 
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+    .delay-5 { animation-delay: 1s; }
+
     /* Custom Plan Section */
     .custom-plan-section {
       width: 100%;
@@ -245,45 +268,44 @@
   </nav>
 
   <!-- Custom Plan Section -->
-  <section id="custom-plan" class="custom-plan-section" tabindex="-1">
+  <section id="custom-plan" class="custom-plan-section fade-in delay-1" tabindex="-1">
     <div class="custom-container">
-      <h2>Custom Hosting Plan</h2>
-      <p>Design your own Minecraft hosting plan tailored to your needs.</p>
+      <h2 class="fade-in delay-2">Custom Hosting Plan</h2>
+      <p class="fade-in delay-3">Design your own Minecraft hosting plan tailored to your needs.</p>
 
-      <div class="selector-panel" aria-label="Customize your hosting plan options">
+      <div class="selector-panel fade-in delay-4" aria-label="Customize your hosting plan options">
+        <!-- Sliders -->
         <div class="slider-box">
           <label for="cpuRange">CPU vCores</label>
           <input type="range" min="1" max="32" step="1" value="1" id="cpuRange" />
           <div class="range-display"><span id="cpuValue">1</span> vCore(s)</div>
         </div>
-
         <div class="slider-box">
           <label for="ramRange">Memory (GB)</label>
           <input type="range" min="1" max="64" step="1" value="4" id="ramRange" />
           <div class="range-display"><span id="ramValue">4</span> GB</div>
         </div>
-
         <div class="slider-box">
           <label for="storageRange">Storage (GB)</label>
           <input type="range" min="1" max="200" step="1" value="20" id="storageRange" />
           <div class="range-display"><span id="storageValue">20</span> GB</div>
         </div>
 
+        <!-- Number Inputs -->
         <div class="number-box">
           <label for="dbInput">Extra Databases</label>
           <input type="number" min="0" step="1" value="0" id="dbInput" />
         </div>
-
         <div class="number-box">
           <label for="backupInput">Extra Backups</label>
           <input type="number" min="0" step="1" value="0" id="backupInput" />
         </div>
-
         <div class="number-box">
           <label for="portsInput">Extra Ports</label>
           <input type="number" min="0" step="1" value="0" id="portsInput" />
         </div>
 
+        <!-- Duration -->
         <div class="dropdown-box">
           <label for="durationSelect">Duration</label>
           <select id="durationSelect">
@@ -299,7 +321,7 @@
         </div>
       </div>
 
-      <form id="customQuoteForm" class="quote-form" aria-label="Custom plan quote form">
+      <form id="customQuoteForm" class="quote-form fade-in delay-5" aria-label="Custom plan quote form">
         <h3>Request Your Quote</h3>
         <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
         <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
@@ -310,81 +332,69 @@
   </section>
 
   <script>
-    // Get elements
-    const cpuSlider = document.getElementById('cpuRange');
-    const cpuDisplay = document.getElementById('cpuValue');
-    const ramSlider = document.getElementById('ramRange');
-    const ramDisplay = document.getElementById('ramValue');
-    const storageSlider = document.getElementById('storageRange');
-    const storageDisplay = document.getElementById('storageValue');
+    // Animate fade-ins
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        el.style.animationPlayState = 'running';
+      });
+    });
 
+    // Estimate Logic
+    const cpuSlider = document.getElementById('cpuRange');
+    const ramSlider = document.getElementById('ramRange');
+    const storageSlider = document.getElementById('storageRange');
     const dbInput = document.getElementById('dbInput');
     const backupInput = document.getElementById('backupInput');
     const portsInput = document.getElementById('portsInput');
-
     const durationSelect = document.getElementById('durationSelect');
     const priceOutput = document.getElementById('priceEstimate');
 
-    // Pricing model constants
-    const pricePerCpu = 5;       // $5 per vCore per month
-    const pricePerRam = 3;       // $3 per GB RAM per month
-    const pricePerStorage = 0.5; // $0.50 per GB Storage per month
-    const pricePerDb = 2;        // $2 per extra database per month
-    const pricePerBackup = 1.5;  // $1.5 per extra backup per month
-    const pricePerPort = 1;      // $1 per extra port per month
+    const cpuDisplay = document.getElementById('cpuValue');
+    const ramDisplay = document.getElementById('ramValue');
+    const storageDisplay = document.getElementById('storageValue');
+
+    const pricePerCpu = 5;
+    const pricePerRam = 3;
+    const pricePerStorage = 0.5;
+    const pricePerDb = 2;
+    const pricePerBackup = 1.5;
+    const pricePerPort = 1;
 
     function updateEstimate() {
       const cpu = parseInt(cpuSlider.value);
       const ram = parseInt(ramSlider.value);
       const storage = parseInt(storageSlider.value);
-
       const db = parseInt(dbInput.value) || 0;
       const backup = parseInt(backupInput.value) || 0;
       const ports = parseInt(portsInput.value) || 0;
-
       const duration = parseInt(durationSelect.value);
 
-      // Update displayed values
       cpuDisplay.textContent = cpu;
       ramDisplay.textContent = ram;
       storageDisplay.textContent = storage;
 
-      // Calculate total price
-      const totalPrice =
-        duration * (
-          cpu * pricePerCpu +
-          ram * pricePerRam +
-          storage * pricePerStorage +
-          db * pricePerDb +
-          backup * pricePerBackup +
-          ports * pricePerPort
-        );
+      const totalPrice = duration * (
+        cpu * pricePerCpu +
+        ram * pricePerRam +
+        storage * pricePerStorage +
+        db * pricePerDb +
+        backup * pricePerBackup +
+        ports * pricePerPort
+      );
 
       priceOutput.textContent = `$${totalPrice.toFixed(2)}`;
     }
 
-    // Attach event listeners
-    [cpuSlider, ramSlider, storageSlider].forEach(slider => {
-      slider.addEventListener('input', updateEstimate);
-    });
-
-    [dbInput, backupInput, portsInput].forEach(input => {
-      input.addEventListener('input', () => {
-        // Prevent negative values by resetting to 0 if less than 0
-        if (parseInt(input.value) < 0 || isNaN(parseInt(input.value))) {
-          input.value = 0;
-        }
-        updateEstimate();
-      });
-    });
-
+    [cpuSlider, ramSlider, storageSlider].forEach(el => el.addEventListener('input', updateEstimate));
+    [dbInput, backupInput, portsInput].forEach(el => el.addEventListener('input', () => {
+      if (parseInt(el.value) < 0 || isNaN(parseInt(el.value))) el.value = 0;
+      updateEstimate();
+    }));
     durationSelect.addEventListener('change', updateEstimate);
 
-    // Initialize price display
     updateEstimate();
 
-    // Form submit handler
-    document.getElementById('customQuoteForm').addEventListener('submit', function(e) {
+    document.getElementById('customQuoteForm').addEventListener('submit', function (e) {
       e.preventDefault();
       alert('Thank you! Your custom quote request has been submitted.');
       this.reset();
@@ -393,4 +403,3 @@
   </script>
 </body>
 </html>
-
