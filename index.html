@@ -47,7 +47,7 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 4px; /* closer spacing */
+  gap: 2px; /* very close */
   text-decoration: none;
   font-weight: 700;
   font-size: 1.6rem;
@@ -57,18 +57,17 @@
 }
 .logo:hover {
   color: #2ccf4f;
-  text-shadow: 0 0 2px rgba(76, 220, 100, 0.3); /* much softer glow */
+  text-shadow: 0 0 1px rgba(76, 220, 100, 0.15); /* very subtle glow */
 }
 .logo img {
   height: 45px;
   width: auto;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
   transition: filter 0.3s ease;
 }
 .logo:hover img {
-  filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.3)); /* softer glow */
+  filter: drop-shadow(0 0 2px rgba(76, 220, 100, 0.15)); /* very subtle glow */
 }
-
 
     .nav-links {
       list-style: none;
