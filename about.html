@@ -45,39 +45,37 @@
       z-index: 100;
     }
 
-    /* Logo style */
+    /* Logo style (added) */
     .logo {
       display: flex;
       align-items: center;
       gap: 0;
-      text-decoration: none;
       font-weight: 700;
       font-size: 1.6rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
+      text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-
     .logo span {
-      margin-left: -6px;
+      margin-left: -6px; /* pull text closer to logo */
     }
-
     .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
-
     .logo img {
       height: 48px;
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
       transition: filter 0.3s ease;
     }
-
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
-
+  </style>
+</head>
+<body class="plans-page">
     .nav-links {
       list-style: none;
       display: flex;
