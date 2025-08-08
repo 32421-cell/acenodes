@@ -52,37 +52,37 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Logo style (added) */
+    /* Logo style */
     .logo {
       display: flex;
       align-items: center;
-      gap: 0;
+      gap: 4px;               /* closer gap */
+      text-decoration: none;
       font-weight: 700;
-      font-size: 1.6rem;
+      font-size: 1.8rem;      /* bigger font size */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
-      text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
+
     .logo span {
-      margin-left: -6px; /* pull text closer to logo */
+      margin-left: 0;         /* reset negative margin */
+      line-height: 1;
     }
     .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
     .logo img {
-      height: 48px;
+      height: 52px;           /* bigger logo height */
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
       transition: filter 0.3s ease;
+      display: block;
     }
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
-  </style>
-</head>
-<body class="plans-page">
 
     /* Navbar */
     .navbar {
@@ -323,4 +323,3 @@
   </script>
 </body>
 </html>
-
