@@ -35,31 +35,33 @@
     }
 
     .navbar {
+      background: #222;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      background-color: #222;
-      padding: 10px 40px;
+      align-items: center;
+      padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 100;
+      /* Optional box shadow for subtle depth */
+      /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); */
     }
 
-    /* Matched logo style from Server Status page */
+    /* Logo style - matched to Server Status page */
     .logo {
       display: flex;
       align-items: center;
-      gap: 4px;
-      text-decoration: none;
+      gap: 0;
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
+      text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
     .logo span {
-      line-height: 1;
+      margin-left: -6px;
     }
 
     .logo:hover {
@@ -68,7 +70,7 @@
     }
 
     .logo img {
-      height: 52px;
+      height: 48px;
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
       transition: filter 0.3s ease;
@@ -89,9 +91,10 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
-      transition: background 0.3s, transform 0.3s, color 0.3s ease;
+      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
       color: #34d058;
       font-weight: 600;
+      cursor: pointer;
     }
 
     .nav-links li a.active,
@@ -100,6 +103,7 @@
       background: #1db954;
       color: #121212;
       transform: scale(1.05);
+      outline: none;
     }
 
     .about-section {
@@ -255,3 +259,4 @@
   </footer>
 </body>
 </html>
+
