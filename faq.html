@@ -60,7 +60,7 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     .logo span {
-      margin-left: -6px; /* Pull text closer to logo */
+      margin-left: -6px;
     }
     .logo:hover {
       color: #2ccf4f;
@@ -184,14 +184,42 @@
     /* Footer */
     footer {
       text-align: center;
-      padding: 1rem 0;
-      background: #222;
+      padding: 2rem 1rem;
+      background: #1a1a1a;
       color: #777;
       font-size: 0.9rem;
       margin-top: auto;
+      box-shadow: inset 0 1px 0 #333;
     }
 
-    /* Responsive */
+    .footer-columns {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-columns div {
+      text-align: center;
+    }
+
+    .footer-columns h4 {
+      color: #00ff66;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-columns a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-columns a:hover {
+      color: #00ff66;
+    }
+
     @media (max-width: 600px) {
       .faq-section h1 {
         font-size: 2rem;
@@ -200,6 +228,11 @@
       details {
         padding: 1rem 1.2rem;
       }
+
+      .footer-columns {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -207,9 +240,9 @@
   <!-- Navbar -->
   <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <a href="index.html" class="logo" aria-label="AceNodes Homepage">
-        <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
-        <span>AceNodes</span>
-      </a>
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+      <span>AceNodes</span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="plans.html">Plans</a></li>
@@ -256,7 +289,19 @@
     </details>
   </section>
 
+  <!-- Footer -->
   <footer>
+    <div class="footer-columns">
+      <div>
+        <h4>Support</h4>
+        <a href="#">Support Discord</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Terms of Service</a><br>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 </body>
