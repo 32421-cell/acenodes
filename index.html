@@ -40,7 +40,7 @@
       animation: slideInUp 1s ease forwards;
       opacity: 0;
       padding: 20px 0;
-      background-color: #1a1a1a; /* blackish gray like plan cards */
+      background-color: #1a1a1a;
       border: none;
       border-top: none !important;
       box-shadow: none !important;
@@ -56,10 +56,10 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 6px; /* spacing between logo and text */
+      gap: 4px; /* slightly closer gap */
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.6rem;
+      font-size: 1.8rem; /* slightly bigger text */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
       transition: color 0.3s ease, text-shadow 0.3s ease;
@@ -71,7 +71,7 @@
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
     .logo img {
-      height: 48px;
+      height: 56px; /* bigger logo */
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
       transition: filter 0.3s ease;
@@ -85,7 +85,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #242424; /* exact grey */
+      background-color: #242424;
       padding: 16px 40px;
       border: none;
     }
@@ -128,7 +128,6 @@
       text-align: center;
     }
 
-    /* Last section matches footer to remove black bar */
     .features {
       background-color: #242424;
       margin-bottom: 0;
@@ -164,7 +163,6 @@
       margin-top: 10px;
     }
 
-    /* Footer Styles */
     footer .footer-container {
       display: flex;
       justify-content: center;
@@ -172,7 +170,7 @@
       flex-wrap: wrap;
     }
     footer h3 {
-      color: #34d058; /* green headings */
+      color: #34d058;
       margin-bottom: 10px;
       font-weight: 600;
     }
@@ -182,7 +180,7 @@
       margin: 0;
     }
     footer ul li a {
-      color: #fff; /* white links */
+      color: #fff;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease, text-shadow 0.3s ease;
@@ -313,7 +311,6 @@
   </footer>
 
   <script>
-    // Auto-highlight active page
     document.querySelectorAll('.nav-links a').forEach(link => {
       if (link.href === window.location.href) {
         link.classList.add('active');
