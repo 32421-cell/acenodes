@@ -52,21 +52,33 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Logo style */
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #121212; /* unified dark background */
+      padding: 16px 40px;
+      border: none;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Logo */
     .logo {
       display: flex;
       align-items: center;
-      gap: 4px;               /* closer gap */
+      gap: 4px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.8rem;      /* bigger font size */
+      font-size: 1.8rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-
     .logo span {
-      margin-left: 0;         /* reset negative margin */
+      margin-left: 0;
       line-height: 1;
     }
     .logo:hover {
@@ -74,7 +86,7 @@
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
     .logo img {
-      height: 52px;           /* bigger logo height */
+      height: 52px; /* unified logo size */
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
       transition: filter 0.3s ease;
@@ -84,16 +96,7 @@
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #242424;
-      padding: 16px 40px;
-      border: none;
-    }
-
+    /* Nav links */
     .nav-links {
       list-style: none;
       display: flex;
@@ -109,6 +112,7 @@
       transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease;
       padding: 6px 10px;
       border-radius: 4px;
+      display: block;
     }
     .nav-links li a:hover {
       color: #2ccf4f;
@@ -119,9 +123,10 @@
       color: #000;
     }
 
+    /* Body */
     body {
       margin: 0;
-      background-color: #0d0d0d;
+      background-color: #121212; /* unified background */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #f0f0f0;
     }
@@ -300,7 +305,7 @@
       <div>
         <h3>Support</h3>
         <ul>
-          <li><a href="https://discord.gg/your-discord-link" target="_blank">Support Discord</a></li>
+          <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener">Support Discord</a></li>
         </ul>
       </div>
       <div>
@@ -315,11 +320,18 @@
   </footer>
 
   <script>
+    // Highlight current page nav link
+    const currentPath = window.location.pathname.split('/').pop(); // e.g., "index.html"
     document.querySelectorAll('.nav-links a').forEach(link => {
-      if (link.href === window.location.href) {
+      const linkPath = link.getAttribute('href');
+      if (linkPath === currentPath) {
         link.classList.add('active');
       }
     });
+  </script>
+</body>
+</html>
+
   </script>
 </body>
 </html>
