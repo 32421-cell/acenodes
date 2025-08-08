@@ -45,24 +45,24 @@
       z-index: 100;
     }
 
-    /* Logo style (added) */
+    /* Logo style */
     .logo {
       display: flex;
       align-items: center;
-      gap: 0;
+      gap: 0; /* no gap */
+      text-decoration: none;
       font-weight: 700;
       font-size: 1.6rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
-      text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     .logo span {
-      margin-left: -6px; /* pull text closer to logo */
+      margin-left: -6px; /* really close to the image */
     }
     .logo:hover {
       color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4); /* softer glow */
     }
     .logo img {
       height: 48px;
@@ -71,11 +71,14 @@
       transition: filter 0.3s ease;
     }
     .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4)); /* softer glow */
     }
-  </style>
-</head>
-<body class="plans-page">
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
     .nav-links {
       list-style: none;
       display: flex;
