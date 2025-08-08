@@ -117,10 +117,38 @@
     }
 
     footer {
+      background-color: #242424;
+      padding: 20px 0;
+      color: #fff;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+    footer h4 {
+      color: #34d058;
+      margin-bottom: 10px;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    footer ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer ul li a:hover {
+      color: #2ccf4f;
+    }
+    .footer-bottom {
       text-align: center;
-      padding: 20px;
-      background: #111;
-      color: #ccc;
+      margin-top: 20px;
+      color: #999;
+      font-size: 0.9rem;
     }
 
     /* Disable nav link animations only on Plans page */
@@ -323,44 +351,29 @@
     </div>
   </section>
 
-  /* Footer */
-    footer {
-      background-color: #242424;
-      padding: 20px 0;
-      color: #fff;
-    }
-    .footer-container {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-    footer h4 {
-      color: #34d058;
-      margin-bottom: 10px;
-    }
-    footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    footer ul li a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    footer ul li a:hover {
-      color: #2ccf4f;
-    }
-    .footer-bottom {
-      text-align: center;
-      margin-top: 20px;
-      color: #999;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body class="home">
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="server-status.html">Server Status</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 AceNodes. All rights reserved.
+    </div>
+  </footer>
 
   <!-- Pricing Script -->
   <script>
