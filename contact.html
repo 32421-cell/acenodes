@@ -204,12 +204,28 @@
     /* Footer */
     footer {
       text-align: center;
-      padding: 1rem 0;
-      background: #222;
+      padding: 2rem 1rem;
+      background: #1a1a1a;
       color: #777;
       font-size: 0.9rem;
       margin-top: auto;
       box-shadow: inset 0 1px 0 #333;
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-columns div {
+      text-align: center;
+    }
+
+    .footer-columns h4 {
+      color: #1db954;
+      margin-bottom: 0.5rem;
     }
 
     /* Animation */
@@ -232,6 +248,11 @@
 
       form {
         padding: 25px 20px;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        gap: 1.5rem;
       }
     }
   </style>
@@ -277,6 +298,17 @@
 
   <!-- Footer -->
   <footer>
+    <div class="footer-columns">
+      <div>
+        <h4>Support</h4>
+        <a href="#">Support Discord</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Terms of Service</a><br>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
