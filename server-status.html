@@ -47,20 +47,18 @@
       z-index: 100;
     }
 
-    /* Logo style (added) */
     .logo {
       display: flex;
       align-items: center;
       gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     .logo span {
-      margin-left: -6px; /* pull text closer to logo */
+      margin-left: -6px;
     }
     .logo:hover {
       color: #2ccf4f;
@@ -105,7 +103,6 @@
       margin: 3rem auto 4rem auto;
       padding: 0 1rem;
       width: 100%;
-
       opacity: 0;
       animation: fadeInUp 0.8s ease forwards;
       animation-delay: 0.1s;
@@ -142,21 +139,13 @@
       justify-content: space-between;
       color: #eee;
       transition: transform 0.3s ease;
-
       opacity: 0;
       animation: fadeInUp 0.6s ease forwards;
     }
 
-    /* Staggered animation delays for each card */
-    .server-card:nth-child(1) {
-      animation-delay: 0.2s;
-    }
-    .server-card:nth-child(2) {
-      animation-delay: 0.4s;
-    }
-    .server-card:nth-child(3) {
-      animation-delay: 0.6s;
-    }
+    .server-card:nth-child(1) { animation-delay: 0.2s; }
+    .server-card:nth-child(2) { animation-delay: 0.4s; }
+    .server-card:nth-child(3) { animation-delay: 0.6s; }
 
     .server-card:hover {
       transform: translateY(-6px);
@@ -179,13 +168,8 @@
       gap: 10px;
     }
 
-    .status.online {
-      color: #17a64a;
-    }
-
-    .status.offline {
-      color: #cc3333;
-    }
+    .status.online { color: #17a64a; }
+    .status.offline { color: #cc3333; }
 
     .players {
       font-size: 1rem;
@@ -202,45 +186,48 @@
 
     /* Footer */
     footer {
+      background: #1db954;
+      color: #fff;
+      padding: 1.5rem 0;
       text-align: center;
-      padding: 1rem 0;
-      background: #222;
-      color: #777;
-      font-size: 0.9rem;
+      margin-top: auto;
+    }
+    footer .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+    footer .footer-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+    footer p {
+      margin-top: 1rem;
+      font-size: 0.85rem;
     }
 
     /* Responsive */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .server-card {
-        padding: 1rem 1.25rem;
-      }
+      h1 { font-size: 2rem; }
+      .server-card { padding: 1rem 1.25rem; }
     }
 
-    /* Fade-In Animation */
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <a href="index.html" class="logo" aria-label="AceNodes Homepage">
-        <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
-        <span>AceNodes</span>
-      </a>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+      <span>AceNodes</span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="plans.html">Plans</a></li>
@@ -257,37 +244,37 @@
     <h1>Server Status</h1>
     <p class="subtitle">Check the real-time status of your Minecraft servers hosted with AceNodes.</p>
 
-    <div class="status-grid" aria-live="polite" aria-label="Minecraft server statuses">
-      <article class="server-card" role="region" aria-labelledby="server1-name">
-        <h2 id="server1-name" class="server-name">Survival Server</h2>
-        <div class="status online" aria-live="assertive" aria-atomic="true">
-          <span>● Online</span>
-        </div>
+    <div class="status-grid">
+      <article class="server-card">
+        <h2 class="server-name">Survival Server</h2>
+        <div class="status online"><span>● Online</span></div>
         <div class="players">Players online: 18 / 50</div>
         <div class="last-updated">Last checked: 30 seconds ago</div>
       </article>
 
-      <article class="server-card" role="region" aria-labelledby="server2-name">
-        <h2 id="server2-name" class="server-name">Creative Server</h2>
-        <div class="status online" aria-live="assertive" aria-atomic="true">
-          <span>● Online</span>
-        </div>
+      <article class="server-card">
+        <h2 class="server-name">Creative Server</h2>
+        <div class="status online"><span>● Online</span></div>
         <div class="players">Players online: 5 / 30</div>
         <div class="last-updated">Last checked: 25 seconds ago</div>
       </article>
 
-      <article class="server-card" role="region" aria-labelledby="server3-name">
-        <h2 id="server3-name" class="server-name">Modded Server</h2>
-        <div class="status offline" aria-live="assertive" aria-atomic="true">
-          <span>● Offline</span>
-        </div>
+      <article class="server-card">
+        <h2 class="server-name">Modded Server</h2>
+        <div class="status offline"><span>● Offline</span></div>
         <div class="players">Players online: 0 / 40</div>
         <div class="last-updated">Last checked: 1 minute ago</div>
       </article>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
+    <div class="footer-links">
+      <a href="support-discord.html">Support Discord</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
