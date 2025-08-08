@@ -201,32 +201,69 @@
       transition: opacity 0.3s ease;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #1a1a1a;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: auto;
-      box-shadow: inset 0 1px 0 #333;
-    }
+    <!-- Footer -->
+<footer>
+  <div class="footer-columns">
+    <div>
+      <h4>Support</h4>
+      <a href="#">Support Discord</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Terms of Service</a><br>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+</footer>
 
+<style>
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #1a1a1a;
+    color: #777;
+    font-size: 0.9rem;
+    margin-top: auto;
+    box-shadow: inset 0 1px 0 #333;
+  }
+
+  .footer-columns {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-columns div {
+    text-align: center;
+  }
+
+  .footer-columns h4 {
+    color: #00ff66; /* Green section titles */
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .footer-columns a {
+    color: white; /* White clickable links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+  }
+
+  .footer-columns a:hover {
+    color: #00ff66; /* Hover turns green */
+  }
+
+  @media (max-width: 600px) {
     .footer-columns {
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      margin-bottom: 1rem;
+      flex-direction: column;
+      gap: 1.5rem;
     }
+  }
+</style>
 
-    .footer-columns div {
-      text-align: center;
-    }
-
-    .footer-columns h4 {
-      color: #1db954;
-      margin-bottom: 0.5rem;
-    }
 
     /* Animation */
     @keyframes fadeInUp {
