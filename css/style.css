@@ -38,29 +38,37 @@ a:focus {
   z-index: 100;
 }
 
-.navbar .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #1db954;
+/* Logo Styling like Server Status */
+.logo {
   display: flex;
   align-items: center;
+  gap: 0; /* NO gap between img and text */
+  font-weight: 700;
+  font-size: 1.6rem; /* smaller font size */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #34d058;
   text-decoration: none;
-  gap: 8px; /* unified gap */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.navbar .logo img {
-  height: 48px; /* unified logo height */
+.logo span {
+  margin-left: -6px; /* pull text closer to logo */
+  line-height: 1;
+}
+
+.logo img {
+  height: 48px; /* smaller logo image height */
   width: auto;
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
   transition: filter 0.3s ease;
 }
 
-.navbar .logo:hover {
+.logo:hover {
   color: #2ccf4f;
   text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
 }
 
-.navbar .logo:hover img {
+.logo:hover img {
   filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
 }
 
@@ -364,32 +372,6 @@ footer {
 .plans-page .nav-links a:focus {
   transform: none !important;
   text-decoration: underline;
-}
-
-/* Logo Styling */
-.logo {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  text-decoration: none;
-  color: #1db954; /* keep same green as nav links */
-  gap: 8px; /* uniform spacing */
-}
-
-.logo img {
-  height: 48px; /* unified logo height */
-  width: auto;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-  transition: filter 0.3s ease;
-}
-
-.logo:hover {
-  color: #2ccf4f;
-  text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
-}
-
-.logo:hover img {
-  filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
 }
 
 /* Simple Fade-In Animation */
