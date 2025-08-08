@@ -116,46 +116,6 @@
       font-size: 1.2rem;
     }
 
-    /* Footer */
-    footer {
-      background-color: #242424;
-      padding: 20px 0;
-      color: #fff;
-      border-top: none;
-      box-shadow: none;
-      margin-top: 0;
-      text-align: center;
-    }
-    .footer-container {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-    footer h4 {
-      color: #34d058;
-      margin-bottom: 10px;
-    }
-    footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    footer ul li a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    footer ul li a:hover {
-      color: #2ccf4f;
-    }
-    .footer-bottom {
-      text-align: center;
-      margin-top: 20px;
-      color: #999;
-      font-size: 0.9rem;
-    }
-
     /* Disable nav link animations only on Plans page */
     body.plans-page .nav-links > li {
       animation: none !important;
@@ -208,6 +168,52 @@
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1a1a1a;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: inset 0 1px 0 #333;
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-columns div {
+      text-align: center;
+    }
+
+    .footer-columns h4 {
+      color: #00ff66;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-columns a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-columns a:hover {
+      color: #00ff66;
+    }
+
+    @media (max-width: 600px) {
+      .footer-columns {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body class="plans-page">
@@ -248,7 +254,6 @@
   <section class="plans-overview">
     <div class="plans-container">
 
-      <!-- Each plan includes data-price for monthly rate -->
       <article class="plan-card" data-price="12" id="starter">
         <h3>AceLite</h3>
         <p><strong class="price">$12.00 / month</strong></p>
@@ -358,28 +363,18 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-container">
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="plans.html">Plans</a></li>
-          <li><a href="custom-plan.html">Custom Plan</a></li>
-          <li><a href="server-status.html">Server Status</a></li>
-        </ul>
-      </div>
+    <div class="footer-columns">
       <div>
         <h4>Support</h4>
-        <ul>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
+        <a href="support-discord.html">Support Discord</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="terms.html">Terms of Service</a><br />
+        <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2025 AceNodes. All rights reserved.
-    </div>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
   <!-- Pricing Script -->
@@ -419,4 +414,3 @@
   </script>
 </body>
 </html>
-
