@@ -38,7 +38,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #0f0f0f;
+      background-color: #222; /* Changed from #0f0f0f to #222 for uniformity */
       padding: 16px 40px;
       position: sticky;
       top: 0;
@@ -49,7 +49,7 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0; /* no gap */
+      gap: 4px; /* Slight gap between logo and text */
       text-decoration: none;
       font-weight: 700;
       font-size: 1.6rem;
@@ -58,11 +58,11 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     .logo span {
-      margin-left: -6px; /* really close to the image */
+      margin-left: -6px; /* close to the image */
     }
     .logo:hover {
       color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4); /* softer glow */
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
     .logo img {
       height: 48px;
@@ -71,12 +71,7 @@
       transition: filter 0.3s ease;
     }
     .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4)); /* softer glow */
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
 
     .nav-links {
@@ -165,7 +160,7 @@
     footer {
       text-align: center;
       padding: 1.5rem 0;
-      background: #222;
+      background: #222; /* same dark bg as navbar */
       color: #777;
       font-size: 0.9rem;
       margin-top: auto;
@@ -220,9 +215,9 @@
 <body>
   <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <a href="index.html" class="logo" aria-label="AceNodes Homepage">
-        <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
-        <span>AceNodes</span>
-      </a>
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+      <span>AceNodes</span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="plans.html">Plans</a></li>
