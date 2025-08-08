@@ -17,6 +17,9 @@
       background: #121212;
       color: #eee;
       line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     a {
@@ -44,7 +47,6 @@
       z-index: 100;
     }
 
-    /* Logo Styling like Server Status */
     .logo {
       display: flex;
       align-items: center;
@@ -129,7 +131,6 @@
     /* Custom Plan Section */
     .custom-plan-section {
       width: 100%;
-      min-height: 100vh;
       background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
       color: #eee;
       padding: 80px 20px;
@@ -137,6 +138,7 @@
       position: relative;
       z-index: 1;
       text-align: center;
+      flex: 1;
     }
 
     .custom-container {
@@ -268,48 +270,45 @@
       background: #17a64a;
     }
 
-    /* Footer Styling */
-    .site-footer {
-      background: #181818;
-      padding: 30px 20px;
+    /* Footer (copied from contact.html) */
+    footer {
       text-align: center;
-      margin-top: 50px;
+      padding: 2rem 1rem;
+      background: #1a1a1a;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: inset 0 1px 0 #333;
     }
 
-    .footer-links {
+    .footer-columns {
       display: flex;
       justify-content: center;
-      gap: 100px;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
+      gap: 4rem;
+      margin-bottom: 1rem;
     }
 
-    .footer-column h3 {
-      color: #1db954;
-      margin-bottom: 10px;
-      font-weight: bold;
+    .footer-columns div {
+      text-align: center;
     }
 
-    .footer-column a {
-      display: block;
+    .footer-columns h4 {
+      color: #00ff66;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-columns a {
       color: white;
-      font-weight: bold;
-      margin-bottom: 5px;
       text-decoration: none;
-      transition: transform 0.3s ease, text-decoration 0.3s ease;
-    }
-
-    .footer-column a:hover {
-      text-decoration: underline;
-      transform: scale(1.05);
-    }
-
-    .footer-copy {
-      color: #aaa;
+      transition: color 0.3s ease;
       font-size: 0.95rem;
     }
 
-    /* Responsive */
+    .footer-columns a:hover {
+      color: #00ff66;
+    }
+
     @media (max-width: 600px) {
       .custom-container h2 {
         font-size: 2rem;
@@ -318,6 +317,11 @@
       .quote-form,
       .selector-panel {
         padding: 20px;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        gap: 1.5rem;
       }
     }
   </style>
@@ -406,19 +410,19 @@
   </section>
 
   <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-links">
-      <div class="footer-column">
-        <h3>Support</h3>
+  <footer>
+    <div class="footer-columns">
+      <div>
+        <h4>Support</h4>
         <a href="#">Support Discord</a>
       </div>
-      <div class="footer-column">
-        <h3>Legal</h3>
-        <a href="#">Terms of Service</a>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Terms of Service</a><br>
         <a href="#">Privacy Policy</a>
       </div>
     </div>
-    <p class="footer-copy">© 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
   <script>
@@ -493,4 +497,3 @@
   </script>
 </body>
 </html>
-
