@@ -420,14 +420,32 @@ footer {
   }
 }
 
-/* ---- NEW: Disable navbar animation and transitions on homepage ONLY ---- */
+/* ---- FIX: Make nav links on home page look like plans page nav links ---- */
+body.home .nav-links li a {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  color: #1db954; /* green text */
+  background: transparent;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+/* Active, hover and focus states */
+body.home .nav-links li a.active,
+body.home .nav-links li a:hover,
+body.home .nav-links li a:focus {
+  background: #1db954;
+  color: #121212;
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Disable animations on home page nav items but keep style */
 body.home .nav-links > li {
   animation: none !important;
   transform: none !important;
   opacity: 1 !important;
-}
-
-body.home .nav-links li a {
-  transition: none !important;
-  transform: none !important;
 }
