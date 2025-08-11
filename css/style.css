@@ -416,6 +416,19 @@ footer {
 
   .plans-container {
     flex-direction: column;
+
+/* Disable navbar animations and transitions ONLY on homepage */
+body.home .nav-links > li {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+body.home .nav-links li a {
+  transition: none !important;
+  transform: none !important;
+}
+
     align-items: center;
   }
 }
