@@ -112,36 +112,29 @@
       align-items: center;
     }
 
-    /* Disable animations on nav links for home page */
-    body.home .nav-links > li {
-      opacity: 1 !important;
-      transform: none !important;
-      animation: none !important;
-    }
-
-    /* Disable hover scaling and background on nav links for home page */
-    body.home .nav-links li a:hover,
-    body.home .nav-links li a:focus,
-    body.home .nav-links li a.active {
-      background: none !important;
-      color: #1db954 !important;
-      transform: none !important;
-      outline: none !important;
-    }
-
-    /* Default navbar links styling */
+    /* Navbar links styling exactly like plans page */
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
       cursor: pointer;
-      color: #1db954;
+      color: #34d058;          /* bright green */
       text-decoration: none;
       transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
       display: flex;
       align-items: center;
       font-weight: 500;
     }
-    
+
+    /* Hover and active states */
+    .nav-links li a:hover,
+    .nav-links li a:focus,
+    .nav-links li a.active {
+      background-color: #2ccf4f;  /* lighter green */
+      color: white;
+      transform: scale(1.05);
+      outline: none;
+    }
+
     /* BODY & Sections */
     body {
       margin: 0;
@@ -225,7 +218,7 @@
   </style>
 </head>
 
-<body class="home">
+<body>
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo" aria-label="AceNodes Homepage">
@@ -349,6 +342,4 @@
 </body>
 </html>
 
-</body>
-</html>
 
