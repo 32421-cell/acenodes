@@ -6,16 +6,9 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    body {
-      margin: 0;
-      background-color: #0d0d0d;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #f0f0f0;
-    }
-
-    /* Updated Navbar styles matching plans page */
+    /* === NAVBAR CSS copied from plans page === */
     .navbar {
-      background: #222; /* unified dark gray */
+      background: #222;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -25,6 +18,7 @@
       z-index: 100;
       min-height: 64px;
     }
+
     .logo {
       display: flex;
       align-items: center;
@@ -36,23 +30,30 @@
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
+
     .logo img {
       height: 48px;
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
       transition: filter 0.3s ease;
     }
+
     .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
+
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
+
     .logo span {
       margin-left: -6px;
       line-height: 1;
+      display: flex;
+      align-items: center;
     }
+
     .nav-links {
       list-style: none;
       display: flex;
@@ -62,16 +63,7 @@
       flex-wrap: nowrap;
       align-items: center;
     }
-    /* Disable animations on home page */
-    body.home .nav-links > li {
-      animation: none !important;
-      transform: none !important;
-      opacity: 1 !important;
-    }
-    body.home .nav-links li a {
-      transition: none !important;
-      transform: none !important;
-    }
+
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
@@ -83,6 +75,7 @@
       align-items: center;
       font-weight: 500;
     }
+
     .nav-links li a:hover,
     .nav-links li a:focus {
       background: #1db954;
@@ -90,13 +83,21 @@
       transform: scale(1.05);
       outline: none;
     }
+
     .nav-links li a.active {
       background: #1db954;
       color: #121212;
       transform: scale(1.05);
     }
 
-    /* Sections (unchanged from your home page) */
+    /* === Rest of your existing CSS === */
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f0f0f0;
+    }
+
     .hero {
       padding: 40px;
       text-align: center;
@@ -127,6 +128,7 @@
       display: inline-block;
       margin-top: 10px;
     }
+
     .features, .policy {
       background-color: #242424;
       margin-bottom: 0;
@@ -136,6 +138,7 @@
     .policy *:last-child {
       margin-bottom: 0;
     }
+
     footer {
       background-color: #242424;
       padding: 20px 0;
@@ -172,9 +175,9 @@
     }
   </style>
 </head>
-<body class="home">
+<body>
 
-  <!-- Header -->
+  <!-- Navbar exactly like plans page -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo" aria-label="AceNodes Homepage">
@@ -182,7 +185,7 @@
         <span>AceNodes</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="plans.html">Plans</a></li>
         <li><a href="custom-plan.html">Custom Plan</a></li>
         <li><a href="server-status.html">Server Status</a></li>
@@ -193,14 +196,13 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Your full home page content -->
   <section class="hero">
     <h1>Reliable Minecraft Hosting with AceNodes</h1>
     <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
     <a href="plans.html" class="btn">View Plans</a>
   </section>
 
-  <!-- Popular Plans Section -->
   <section class="plans-overview">
     <h2>Popular Plans</h2>
     <div class="plans-container">
@@ -254,7 +256,6 @@
     </div>
   </section>
 
-  <!-- Features Section -->
   <section class="features">
     <h2>Why Choose AceNodes?</h2>
     <ul>
@@ -269,7 +270,6 @@
     </ul>
   </section>
 
-  <!-- Policies Section -->
   <section id="terms" class="policy">
     <h2>Policies & Legal</h2>
     <h3>Acceptable Use Policy</h3>
@@ -314,13 +314,12 @@
     </ul>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-container">
       <div class="footer-column">
         <h4>Support</h4>
         <ul>
-          <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener">Support Discord</a></li>
+          <li><a href="https://discord.gg/your-discord-link" target="_blank">Support Discord</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -335,6 +334,21 @@
       &copy; 2025 AceNodes Minecraft Hosting. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    // Highlight active nav link exactly like plans page
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        const href = link.getAttribute('href').split('/').pop() || 'index.html';
+        if (href === currentPage) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
