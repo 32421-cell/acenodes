@@ -112,12 +112,24 @@
       align-items: center;
     }
 
-    .nav-links li {
-      opacity: 1; /* disable fade animations */
-      transform: none;
+    /* Disable animations on nav links for home page */
+    body.home .nav-links > li {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
     }
 
-    /* Default navbar links styling with hover animations */
+    /* Disable hover scaling and background on nav links for home page */
+    body.home .nav-links li a:hover,
+    body.home .nav-links li a:focus,
+    body.home .nav-links li a.active {
+      background: none !important;
+      color: #1db954 !important;
+      transform: none !important;
+      outline: none !important;
+    }
+
+    /* Default navbar links styling */
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
@@ -129,19 +141,7 @@
       align-items: center;
       font-weight: 500;
     }
-    .nav-links li a:hover,
-    .nav-links li a:focus {
-      background: #1db954;
-      color: #121212;
-      transform: scale(1.05);
-      outline: none;
-    }
-    .nav-links li a.active {
-      background: #1db954;
-      color: #121212;
-      transform: scale(1.05);
-    }
-
+    
     /* BODY & Sections */
     body {
       margin: 0;
@@ -222,20 +222,10 @@
       margin-top: 20px;
       font-size: 0.9rem;
     }
-
-    /* DISABLE navbar hover animations ONLY on home page (index.html) */
-    body.homepage .nav-links li a:hover,
-    body.homepage .nav-links li a:focus,
-    body.homepage .nav-links li a.active {
-      background: none !important;
-      color: #1db954 !important;
-      transform: none !important;
-      outline: none !important;
-    }
   </style>
 </head>
 
-<body class="homepage">
+<body class="home">
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo" aria-label="AceNodes Homepage">
@@ -356,6 +346,9 @@
       }
     });
   </script>
+</body>
+</html>
+
 </body>
 </html>
 
