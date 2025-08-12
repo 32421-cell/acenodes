@@ -16,7 +16,7 @@ body {
 a {
   color: #1db954;
   text-decoration: none;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 a:hover,
@@ -28,7 +28,7 @@ a:focus {
 
 /* Navbar */
 .navbar {
-  background: #222; /* unified dark gray for all pages */
+  background: #222; /* unified dark gray */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,28 +36,29 @@ a:focus {
   position: sticky;
   top: 0;
   z-index: 100;
+  min-height: 64px;
 }
 
-/* Logo Styling like Server Status */
+/* Logo Styling */
 .logo {
   display: flex;
   align-items: center;
-  gap: 0; /* NO gap between img and text */
+  gap: 0;
   font-weight: 700;
-  font-size: 1.6rem; /* smaller font size */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.6rem;
   color: #34d058;
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logo span {
-  margin-left: -6px; /* pull text closer to logo */
+  margin-left: -6px;
   line-height: 1;
 }
 
 .logo img {
-  height: 48px; /* smaller logo image height */
+  height: 48px;
   width: auto;
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
   transition: filter 0.3s ease;
@@ -72,13 +73,18 @@ a:focus {
   filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
 }
 
+/* Nav links container */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
-/* Animate main nav links ONLY */
+/* Nav links */
 .nav-links > li {
   opacity: 0;
   transform: translateY(-10px);
@@ -91,22 +97,26 @@ a:focus {
 .nav-links > li:nth-child(4) { animation-delay: 0.55s; }
 .nav-links > li:nth-child(5) { animation-delay: 0.7s; }
 .nav-links > li:nth-child(6) { animation-delay: 0.85s; }
+.nav-links > li:nth-child(7) { animation-delay: 1s; }
 
-/* Disable animations for plans sublinks */
-.plans-sublinks li {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-}
+/* Disable animations on nav links if desired */
+/* .nav-links > li { animation: none !important; opacity: 1 !important; transform: none !important; } */
 
 /* Nav links styling */
 .nav-links li a {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  color: #1db954;
+  background: transparent;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
 }
 
+/* Active, hover, and focus states */
 .nav-links li a.active,
 .nav-links li a:hover,
 .nav-links li a:focus {
@@ -337,7 +347,7 @@ footer {
 }
 
 .footer-column ul li a {
-  color: #34d058;  /* green color for footer links */
+  color: #34d058;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
@@ -351,27 +361,9 @@ footer {
   text-align: center;
   color: #777;
   font-size: 0.85rem;
-  border-top: none; /* 🛑 Removed black line */
-  background: transparent; /* ✅ Make sure it's not black */
+  border-top: none;
+  background: transparent;
   padding-top: 1rem;
-}
-
-/* Disable nav links animations and transitions ONLY on plans page */
-.plans-page .nav-links > li {
-  animation: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-.plans-page .nav-links a {
-  transition: none !important;
-  transform: none !important;
-}
-
-.plans-page .nav-links a:hover,
-.plans-page .nav-links a:focus {
-  transform: none !important;
-  text-decoration: underline;
 }
 
 /* Simple Fade-In Animation */
@@ -420,32 +412,3 @@ footer {
   }
 }
 
-/* ---- FIX: Make nav links on home page look like plans page nav links ---- */
-body.home .nav-links li a {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-  color: #1db954; /* green text */
-  background: transparent;
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-}
-
-/* Active, hover and focus states */
-body.home .nav-links li a.active,
-body.home .nav-links li a:hover,
-body.home .nav-links li a:focus {
-  background: #1db954;
-  color: #121212;
-  transform: scale(1.05);
-  outline: none;
-}
-
-/* Disable animations on home page nav items but keep style */
-body.home .nav-links > li {
-  animation: none !important;
-  transform: none !important;
-  opacity: 1 !important;
-}
