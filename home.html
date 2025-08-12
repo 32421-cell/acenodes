@@ -6,7 +6,7 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* === NAVBAR CSS copied from plans page === */
+    /* === NAVBAR CSS from plans page === */
     .navbar {
       background: #222;
       display: flex;
@@ -88,6 +88,18 @@
       background: #1db954;
       color: #121212;
       transform: scale(1.05);
+    }
+
+    /* === Disable nav link animations exactly like plans page === */
+    body.home .nav-links > li {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    body.home .nav-links li a {
+      transition: none !important;
+      transform: none !important;
     }
 
     /* === Rest of your existing CSS === */
@@ -175,13 +187,14 @@
     }
   </style>
 </head>
-<body>
+<body class="home">
 
   <!-- Navbar exactly like plans page -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo" aria-label="AceNodes Homepage">
-        <img src="images/logo.png" alt="AceNodes Logo" />
+        <!-- Use the same logo image URL as plans page for consistency -->
+        <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
         <span>AceNodes</span>
       </a>
       <ul class="nav-links">
@@ -319,7 +332,7 @@
       <div class="footer-column">
         <h4>Support</h4>
         <ul>
-          <li><a href="https://discord.gg/your-discord-link" target="_blank">Support Discord</a></li>
+          <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener noreferrer">Support Discord</a></li>
         </ul>
       </div>
       <div class="footer-column">
