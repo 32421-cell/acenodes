@@ -6,9 +6,85 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* Only keep page-specific styles unrelated to navbar */
+    /* NAVBAR styles - exactly like server-status page */
+    .navbar {
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 64px;
+    }
 
-    /* Animations for fade-in sections */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .logo span {
+      margin-left: -6px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+      transition: filter 0.3s ease;
+      display: block;
+    }
+    .logo:hover {
+      color: #2ccf4f;
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
+    }
+    .logo:hover img {
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    /* Nav links styling exactly like server-status */
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #34d058;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+    .nav-links li a:hover,
+    .nav-links li a:focus,
+    .nav-links li a.active {
+      background-color: #2ccf4f;
+      color: white;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Other CSS from your current index */
+
+    /* Animations */
     .fade-in {
       opacity: 0;
       transform: translateY(10px);
@@ -29,53 +105,139 @@
       }
     }
 
-    /* Hero Section */
-    .hero {
-      background: url('https://i.imgur.com/J0kYqAv.jpg') no-repeat center center/cover;
-      height: 60vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    /* Body and general styles */
+    body {
+      margin: 0;
+      background-color: #121212;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f0f0f0;
+    }
+
+    .hero, .plans-overview, .features {
+      padding: 40px;
       text-align: center;
-      padding: 0 2rem;
+    }
+    .features {
+      background-color: #242424;
+      margin-bottom: 0;
+      padding-bottom: 40px;
+    }
+    .features h2,
+    .features ul {
+      margin-bottom: 0;
+    }
+    .plans-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .plan-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 219, 84, 0.4);
+    }
+    .btn, .btn-secondary {
+      background-color: #00cc66;
       color: #fff;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      margin: 1rem 0 2rem;
-      text-shadow: 0 0 5px rgba(0,0,0,0.6);
-    }
-
-    /* Button styling (make sure it matches your CSS) */
-    .btn {
-      background: #1db954;
-      color: #121212;
-      padding: 0.75rem 1.5rem;
-      font-size: 1.1rem;
+      padding: 10px 20px;
       border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
+      border-radius: 6px;
       text-decoration: none;
       display: inline-block;
+      margin-top: 10px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .btn:hover, .btn-secondary:hover {
+      transform: scale(1.05);
+    }
+    .btn-secondary {
+      background-color: #444;
+      color: #eee;
+    }
+    .features ul {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .features ul li {
+      margin: 0.75rem 0;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .features ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #1db954;
+      font-weight: bold;
     }
 
-    .btn:hover,
-    .btn:focus {
-      background: #17a64a;
-      transform: scale(1.05);
-      outline: none;
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      background: #1a1a1a;
+      color: #ccc;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      animation-delay: 0.3s;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-column {
+      min-width: 150px;
+      text-align: left;
+    }
+    .footer-column h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #1db954;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-column ul li {
+      margin-bottom: 0.75rem;
+    }
+    .footer-column ul li a {
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+    .footer-column ul li a:hover {
+      color: #00ffcc;
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      text-align: center;
+      color: #777;
+      font-size: 0.85rem;
+      border-top: none;
+      background: transparent;
+      padding-top: 1rem;
     }
   </style>
 </head>
-
 <body>
   <header>
     <nav class="navbar">
@@ -184,23 +346,17 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2025 AceNodes Minecraft Hosting. All rights reserved.
-    </div>
+    <div class="footer-bottom">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</div>
   </footer>
 
   <script>
-    // Highlight active nav link exactly like plans page
-    document.addEventListener('DOMContentLoaded', () => {
-      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        const href = link.getAttribute('href').split('/').pop() || 'index.html';
-        if (href === currentPage) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
+    // Highlight current page nav link
+    const currentPath = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      const linkPath = link.getAttribute('href');
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+      }
     });
   </script>
 </body>
