@@ -4,38 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AceNodes - Best Minecraft Hosting</title>
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* Reset & base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
-      color: #eee;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      color: #1db954;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-    }
-
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-      transform: scale(1.05);
-      outline: none;
-    }
-
-    /* Navbar */
+    /* NAVBAR styles - exactly like server-status page */
     .navbar {
       background: #222;
       display: flex;
@@ -45,6 +16,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      min-height: 64px;
     }
 
     .logo {
@@ -53,27 +25,28 @@
       gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-
     .logo span {
       margin-left: -6px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
     }
-
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+      transition: filter 0.3s ease;
+      display: block;
+    }
     .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
-
-    .logo img {
-      height: 48px;
-      width: auto;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-      transition: filter 0.3s ease;
-    }
-
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
@@ -82,299 +55,306 @@
       list-style: none;
       display: flex;
       gap: 1rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      align-items: center;
     }
 
+    /* Nav links styling exactly like server-status */
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
-      display: block;
-      transition: background 0.3s ease, transform 0.3s ease;
       cursor: pointer;
-      color: #1db954;
+      color: #34d058;
       text-decoration: none;
-    }
-
-    .nav-links li a.active,
-    .nav-links li a:hover,
-    .nav-links li a:focus {
-      background: #1db954;
-      color: #121212;
-      transform: scale(1.05);
-    }
-
-    /* Main content */
-    main {
-      flex-grow: 1;
-      max-width: 900px;
-      margin: 3rem auto 4rem auto;
-      padding: 0 1rem;
-      width: 100%;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards;
-      animation-delay: 0.1s;
-    }
-
-    h1 {
-      text-align: center;
-      color: #1db954;
-      margin-bottom: 1rem;
-      font-size: 2.5rem;
-    }
-
-    p.subtitle {
-      text-align: center;
-      color: #aaa;
-      margin-bottom: 3rem;
-      font-size: 1.1rem;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: url('https://i.imgur.com/J0kYqAv.jpg') no-repeat center center/cover;
-      height: 60vh;
+      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 0 2rem;
-      color: #fff;
+      font-weight: 500;
     }
-
-    .hero h1 {
-      font-size: 3rem;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      margin: 1rem 0 2rem;
-      text-shadow: 0 0 5px rgba(0,0,0,0.6);
-    }
-
-    /* Buttons */
-    .btn {
-      background: #1db954;
-      color: #121212;
-      padding: 0.75rem 1.5rem;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn:hover,
-    .btn:focus {
-      background: #17a64a;
+    .nav-links li a:hover,
+    .nav-links li a:focus,
+    .nav-links li a.active {
+      background-color: #2ccf4f;
+      color: white;
       transform: scale(1.05);
       outline: none;
     }
 
-    /* Plans Overview Section */
-    .plans-overview {
-      padding: 3rem 2rem;
-      background: #1e1e1e;
-      border-radius: 12px;
-      animation: fadeInUp 0.8s ease forwards;
+    /* Other CSS from your current index */
+
+    /* Animations */
+    .fade-in {
       opacity: 0;
-      animation-delay: 0.2s;
-      max-width: 900px;
-      margin: 2rem auto;
+      transform: translateY(10px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.3s; }
+    .delay-2 { animation-delay: 0.6s; }
+    .delay-3 { animation-delay: 0.9s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .plans-overview h2 {
+    /* Body and general styles */
+    body {
+      margin: 0;
+      background-color: #121212;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f0f0f0;
+    }
+
+    .hero, .plans-overview, .features {
+      padding: 40px;
       text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      color: #1db954;
     }
-
+    .features {
+      background-color: #242424;
+      margin-bottom: 0;
+      padding-bottom: 40px;
+    }
+    .features h2,
+    .features ul {
+      margin-bottom: 0;
+    }
     .plans-container {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 30px;
       flex-wrap: wrap;
     }
-
     .plan-card {
-      background: #292929;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 280px;
-      flex-grow: 1;
-      box-shadow: 0 0 15px rgba(0, 219, 84, 0.3);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      width: 280px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .plan-card:hover,
-    .plan-card:focus-within {
-      transform: translateY(-6px);
-      box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
-      outline: none;
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 219, 84, 0.4);
     }
-
-    .plan-card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #1db954;
+    .btn, .btn-secondary {
+      background-color: #00cc66;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
     }
-
-    .plan-card p {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
+    .btn:hover, .btn-secondary:hover {
+      transform: scale(1.05);
     }
-
-    .plan-card ul {
+    .btn-secondary {
+      background-color: #444;
+      color: #eee;
+    }
+    .features ul {
       list-style: none;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-      padding-left: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0;
     }
-
-    .plan-card ul li {
+    .features ul li {
+      margin: 0.75rem 0;
+      font-size: 1.1rem;
       position: relative;
-      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
     }
-
-    .plan-card ul li::before {
-      content: '✔';
+    .features ul li::before {
+      content: '✓';
       position: absolute;
-      left: -1.25rem;
+      left: 0;
       color: #1db954;
+      font-weight: bold;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 2rem 2rem;
       background: #1a1a1a;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: auto;
-      box-shadow: inset 0 1px 0 #333;
+      color: #ccc;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      animation-delay: 0.3s;
     }
-
-    footer a {
+    .footer-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-column {
+      min-width: 150px;
+      text-align: left;
+    }
+    .footer-column h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
       color: #1db954;
-      text-decoration: none;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
     }
-
-    footer a:hover {
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-column ul li {
+      margin-bottom: 0.75rem;
+    }
+    .footer-column ul li a {
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+    .footer-column ul li a:hover {
+      color: #00ffcc;
       text-decoration: underline;
     }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      .plans-container {
-        flex-direction: column;
-        align-items: center;
-      }
+    .footer-bottom {
+      text-align: center;
+      color: #777;
+      font-size: 0.85rem;
+      border-top: none;
+      background: transparent;
+      padding-top: 1rem;
     }
   </style>
 </head>
 <body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo" aria-label="AceNodes Homepage">
+        <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+        <span>AceNodes</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="plans.html">Plans</a></li>
+        <li><a href="custom-plan.html">Custom Plan</a></li>
+        <li><a href="server-status.html">Server Status</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
-      <span>AceNodes</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="plans.html">Plans</a></li>
-      <li><a href="custom-plan.html">Custom Plan</a></li>
-      <li><a href="server-status.html">Server Status</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+  <section class="hero fade-in delay-1">
+    <h1>Reliable Minecraft Hosting with AceNodes</h1>
+    <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
+    <a href="plans.html" class="btn">View Plans</a>
+  </section>
+
+  <section class="plans-overview fade-in delay-2">
+    <h2>Popular Plans</h2>
+    <div class="plans-container">
+      <article class="plan-card">
+        <h3>Starter</h3>
+        <p><strong>$12.00 / month</strong></p>
+        <ul>
+          <li>2 GB RAM</li>
+          <li>10 Player Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>1 CPU Core</li>
+          <li>1 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
+      </article>
+
+      <article class="plan-card">
+        <h3>Pro</h3>
+        <p><strong>$36.00 / month</strong></p>
+        <ul>
+          <li>6 GB RAM</li>
+          <li>40 Player Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>4 CPU Cores</li>
+          <li>1 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Priority Support</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
+      </article>
+
+      <article class="plan-card">
+        <h3>Ultimate</h3>
+        <p><strong>$72.00 / month</strong></p>
+        <ul>
+          <li>12 GB RAM</li>
+          <li>100 Player Slots</li>
+          <li>Unlimited SSD Storage</li>
+          <li>8 CPU Cores</li>
+          <li>10 Gbps Network</li>
+          <li>Instant Setup</li>
+          <li>Dedicated IP</li>
+          <li>24/7 Support & Monitoring</li>
+          <li>Free DDoS Protection</li>
+        </ul>
+        <a href="plans.html#ultimate" class="btn btn-secondary">Order Now</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="features fade-in delay-3">
+    <h2>Why Choose AceNodes?</h2>
+    <ul>
+      <li>99.99% Uptime Guarantee</li>
+      <li>Custom Control Panel</li>
+      <li>Supports All Minecraft Versions (Vanilla, Spigot, Bukkit, PaperMC)</li>
+      <li>1-Click Modpack & Plugin Installer</li>
+      <li>Full FTP Access & File Manager</li>
+      <li>Automated Backups & Snapshots</li>
+      <li>Instant Server Restarts</li>
+      <li>24/7 Customer Support</li>
     </ul>
-  </nav>
+  </section>
 
-  <!-- Main content -->
-  <main>
-    <section class="hero">
-      <h1>Reliable Minecraft Hosting with AceNodes</h1>
-      <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
-      <a href="plans.html" class="btn">View Plans</a>
-    </section>
-
-    <section class="plans-overview">
-      <h2>Popular Plans</h2>
-      <div class="plans-container">
-        <article class="plan-card">
-          <h3>Starter</h3>
-          <p><strong>$12.00 / month</strong></p>
-          <ul>
-            <li>2 GB RAM</li>
-            <li>10 Player Slots</li>
-            <li>Unlimited SSD Storage</li>
-            <li>1 CPU Core</li>
-            <li>1 Gbps Network</li>
-            <li>Instant Setup</li>
-            <li>Free DDoS Protection</li>
-          </ul>
-          <a href="plans.html#starter" class="btn">Order Now</a>
-        </article>
-
-        <article class="plan-card">
-          <h3>Pro</h3>
-          <p><strong>$36.00 / month</strong></p>
-          <ul>
-            <li>6 GB RAM</li>
-            <li>40 Player Slots</li>
-            <li>Unlimited SSD Storage</li>
-            <li>4 CPU Cores</li>
-            <li>1 Gbps Network</li>
-            <li>Instant Setup</li>
-            <li>Priority Support</li>
-            <li>Free DDoS Protection</li>
-          </ul>
-          <a href="plans.html#pro" class="btn">Order Now</a>
-        </article>
-
-        <article class="plan-card">
-          <h3>Ultimate</h3>
-          <p><strong>$72.00 / month</strong></p>
-          <ul>
-            <li>12 GB RAM</li>
-            <li>100 Player Slots</li>
-            <li>Unlimited SSD Storage</li>
-            <li>8 CPU Cores</li>
-            <li>10 Gbps Network</li>
-            <li>Instant Setup</li>
-            <li>Dedicated IP</li>
-            <li>24/7 Support & Monitoring</li>
-            <li>Free DDoS Protection</li>
-          </ul>
-          <a href="plans.html#ultimate" class="btn">Order Now</a>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener noreferrer">Support Discord</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</div>
   </footer>
 
   <script>
     // Highlight current page nav link
-    const currentPage = window.location.pathname.split("/").pop();
+    const currentPath = window.location.pathname.split('/').pop();
     document.querySelectorAll('.nav-links a').forEach(link => {
-      if (link.getAttribute('href') === currentPage || 
-          (currentPage === '' && link.getAttribute('href') === 'index.html')) {
+      const linkPath = link.getAttribute('href');
+      if (linkPath === currentPath) {
         link.classList.add('active');
       }
     });
