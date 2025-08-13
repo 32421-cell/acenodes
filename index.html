@@ -6,9 +6,55 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
+    /* Animations (only for sections, not navbar) */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .fade-in.delay-1 { animation-delay: 0.3s; }
+    .fade-in.delay-2 { animation-delay: 0.6s; }
+    .fade-in.delay-3 { animation-delay: 0.9s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .plan-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 219, 84, 0.4);
+    }
+
+    .btn, .btn-secondary {
+      transition: transform 0.2s ease;
+    }
+    .btn:hover, .btn-secondary:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      animation: slideInUp 1s ease forwards;
+      opacity: 0;
+      padding: 20px 0;
+      background-color: #1a1a1a;
+      border: none;
+      border-top: none !important;
+      box-shadow: none !important;
+      margin-top: 0 !important;
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     /* Navbar */
     .navbar {
-      background: #222;
+      background: #222; /* unified dark gray */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -19,11 +65,11 @@
       min-height: 64px;
     }
 
-    /* Logo */
+    /* Logo Styling */
     .logo {
       display: flex;
       align-items: center;
-      gap: 0;
+      gap: 0; 
       font-weight: 700;
       font-size: 1.6rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -72,10 +118,10 @@
       cursor: pointer;
       color: #34d058;
       text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
       display: flex;
       align-items: center;
       font-weight: 500;
-      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
     }
 
     .nav-links li a:hover,
@@ -87,6 +133,24 @@
       outline: none;
     }
 
+    /* Disable navbar animations on homepage */
+    body.home .nav-links li a,
+    body.home .logo,
+    body.home .logo img {
+      transition: none !important;
+    }
+
+    body.home .nav-links li a:hover,
+    body.home .logo:hover,
+    body.home .logo:hover img {
+      transform: none !important;
+      color: #34d058 !important;
+      text-shadow: none !important;
+      filter: none !important;
+      background-color: transparent !important;
+    }
+
+    /* BODY & Sections */
     body {
       margin: 0;
       background-color: #121212;
@@ -94,17 +158,19 @@
       color: #f0f0f0;
     }
 
-    /* Sections */
     .hero, .plans-overview, .features {
       padding: 40px;
       text-align: center;
     }
 
-    /* Match footer background to remove black line */
     .features {
-      background-color: #1a1a1a;
+      background-color: #242424;
       margin-bottom: 0;
       padding-bottom: 40px;
+    }
+    .features h2,
+    .features ul {
+      margin-bottom: 0;
     }
 
     .plans-container {
@@ -119,12 +185,6 @@
       padding: 20px;
       border-radius: 12px;
       width: 280px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .plan-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px rgba(0, 219, 84, 0.4);
     }
 
     .btn, .btn-secondary {
@@ -136,20 +196,6 @@
       text-decoration: none;
       display: inline-block;
       margin-top: 10px;
-      transition: transform 0.2s ease;
-    }
-
-    .btn:hover, .btn-secondary:hover {
-      transform: scale(1.05);
-    }
-
-    /* Footer */
-    footer {
-      padding: 20px 0;
-      background-color: #1a1a1a;
-      border-top: none !important;
-      box-shadow: none !important;
-      margin-top: 0 !important;
     }
 
     footer .footer-container {
@@ -187,7 +233,7 @@
   </style>
 </head>
 
-<body>
+<body class="home">
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo" aria-label="AceNodes Homepage">
@@ -206,13 +252,13 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero fade-in delay-1">
     <h1>Reliable Minecraft Hosting with AceNodes</h1>
     <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
     <a href="plans.html" class="btn">View Plans</a>
   </section>
 
-  <section class="plans-overview">
+  <section class="plans-overview fade-in delay-2">
     <h2>Popular Plans</h2>
     <div class="plans-container">
       <article class="plan-card">
@@ -229,6 +275,7 @@
         </ul>
         <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
       </article>
+
       <article class="plan-card">
         <h3>Pro</h3>
         <p><strong>$36.00 / month</strong></p>
@@ -244,6 +291,7 @@
         </ul>
         <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
       </article>
+
       <article class="plan-card">
         <h3>Ultimate</h3>
         <p><strong>$72.00 / month</strong></p>
@@ -263,7 +311,7 @@
     </div>
   </section>
 
-  <section class="features">
+  <section class="features fade-in delay-3">
     <h2>Why Choose AceNodes?</h2>
     <ul>
       <li>99.99% Uptime Guarantee</li>
@@ -298,7 +346,7 @@
 
   <script>
     // Highlight current page nav link
-    const currentPath = window.location.pathname.split('/').pop();
+    const currentPath = window.location.pathname.split('/').pop(); // e.g., "index.html"
     document.querySelectorAll('.nav-links a').forEach(link => {
       const linkPath = link.getAttribute('href');
       if (linkPath === currentPath) {
@@ -308,3 +356,4 @@
   </script>
 </body>
 </html>
+
