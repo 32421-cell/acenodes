@@ -6,7 +6,7 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* Animations (only for sections, not navbar) */
+    /* Animations */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -37,24 +37,16 @@
 
     /* Footer */
     footer {
-      animation: slideInUp 1s ease forwards;
-      opacity: 0;
       padding: 20px 0;
       background-color: #1a1a1a;
-      border: none;
-      border-top: none !important;
+      border: none !important;
       box-shadow: none !important;
       margin-top: 0 !important;
     }
 
-    @keyframes slideInUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     /* Navbar */
     .navbar {
-      background: #222; /* unified dark gray */
+      background: #222;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -65,11 +57,10 @@
       min-height: 64px;
     }
 
-    /* Logo Styling */
     .logo {
       display: flex;
       align-items: center;
-      gap: 0; 
+      gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -131,23 +122,6 @@
       color: white;
       transform: scale(1.05);
       outline: none;
-    }
-
-    /* Disable navbar animations on homepage */
-    body.home .nav-links li a,
-    body.home .logo,
-    body.home .logo img {
-      transition: none !important;
-    }
-
-    body.home .nav-links li a:hover,
-    body.home .logo:hover,
-    body.home .logo:hover img {
-      transform: none !important;
-      color: #34d058 !important;
-      text-shadow: none !important;
-      filter: none !important;
-      background-color: transparent !important;
     }
 
     /* BODY & Sections */
@@ -229,6 +203,18 @@
       color: #999;
       margin-top: 20px;
       font-size: 0.9rem;
+    }
+
+    /* --- DISABLE NAVBAR ANIMATIONS ONLY ON HOMEPAGE --- */
+    body.home .nav-links li a,
+    body.home .logo,
+    body.home .nav-links li a:hover,
+    body.home .logo:hover {
+      transition: none !important;
+      transform: none !important;
+      color: #34d058 !important;
+      background: none !important;
+      text-shadow: none !important;
     }
   </style>
 </head>
@@ -345,15 +331,12 @@
   </footer>
 
   <script>
-    // Highlight current page nav link
-    const currentPath = window.location.pathname.split('/').pop(); // e.g., "index.html"
+    const currentPath = window.location.pathname.split('/').pop();
     document.querySelectorAll('.nav-links a').forEach(link => {
-      const linkPath = link.getAttribute('href');
-      if (linkPath === currentPath) {
+      if (link.getAttribute('href') === currentPath) {
         link.classList.add('active');
       }
     });
   </script>
 </body>
 </html>
-
