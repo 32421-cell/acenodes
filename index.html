@@ -6,48 +6,34 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    body.home {
-      /* mark homepage for CSS targeting */
-    }
-
-    /* Animations removed from homepage hero/buttons */
+    /* Disable homepage animations */
     body.home .fade-in {
       opacity: 1 !important;
       transform: none !important;
       animation: none !important;
     }
 
-    /* Plan cards hover animation (keep if you want) */
-    .plan-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .plan-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px rgba(0, 219, 84, 0.4);
-    }
-
-    /* Buttons hover animation (can keep) */
-    .btn, .btn-secondary {
-      transition: transform 0.2s ease;
-    }
-    .btn:hover, .btn-secondary:hover {
-      transform: scale(1.05);
-    }
-
-    /* Footer */
-    footer {
-      opacity: 1 !important;
+    /* Completely disable navbar/link animations on homepage */
+    body.home .nav-links li a,
+    body.home .nav-links li a:hover,
+    body.home .nav-links li a:focus,
+    body.home .nav-links li a.active {
+      transition: none !important;
       transform: none !important;
-      padding: 20px 0;
-      background-color: #1a1a1a;
-      border: none !important;
-      box-shadow: none !important;
-      margin-top: 0 !important;
+      background-color: transparent !important;
+      color: #34d058 !important;
     }
 
-    /* Navbar */
+    /* General Styles */
+    body {
+      margin: 0;
+      background-color: #121212;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f0f0f0;
+    }
+
     .navbar {
-      background: #222; 
+      background: #222;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -61,20 +47,12 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0; 
+      gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
       text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .logo span {
-      margin-left: -6px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
     }
 
     .logo img {
@@ -82,16 +60,6 @@
       width: auto;
       display: block;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-      transition: filter 0.3s ease;
-    }
-
-    .logo:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
-    }
-
-    .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
 
     .nav-links {
@@ -104,51 +72,7 @@
       align-items: center;
     }
 
-    /* Navbar links styling */
-    .nav-links li a {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      color: #34d058;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      font-weight: 500;
-    }
-
-    /* Disable all navbar animations specifically on homepage */
-    body.home .nav-links li a,
-    body.home .nav-links li a:hover,
-    body.home .nav-links li a:focus,
-    body.home .nav-links li a.active {
-      transition: none !important;
-      transform: none !important;
-      background-color: transparent !important;
-      color: #34d058 !important;
-    }
-
-    body {
-      margin: 0;
-      background-color: #121212;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #f0f0f0;
-    }
-
-    .hero, .plans-overview, .features {
-      padding: 40px;
-      text-align: center;
-    }
-
-    .features {
-      background-color: #242424;
-      margin-bottom: 0;
-      padding-bottom: 40px;
-    }
-    .features h2,
-    .features ul {
-      margin-bottom: 0;
-    }
-
+    /* Plan Cards */
     .plans-container {
       display: flex;
       justify-content: center;
@@ -161,6 +85,12 @@
       padding: 20px;
       border-radius: 12px;
       width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 219, 84, 0.4);
     }
 
     .btn, .btn-secondary {
@@ -172,6 +102,20 @@
       text-decoration: none;
       display: inline-block;
       margin-top: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover, .btn-secondary:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px 0;
+      background-color: #1a1a1a;
+      margin-top: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
     footer .footer-container {
@@ -180,26 +124,31 @@
       gap: 60px;
       flex-wrap: wrap;
     }
+
     footer h3 {
       color: #34d058;
       margin-bottom: 10px;
       font-weight: 600;
     }
+
     footer ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     footer ul li a {
       color: #fff;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
+
     footer ul li a:hover {
       color: #2ccf4f;
       text-shadow: 0 0 6px rgba(76, 220, 100, 0.4);
     }
+
     footer p {
       text-align: center;
       color: #999;
@@ -208,128 +157,124 @@
     }
   </style>
 </head>
-
 <body class="home">
-  <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo" aria-label="AceNodes Homepage">
-        <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
-        <span>AceNodes</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="plans.html">Plans</a></li>
-        <li><a href="custom-plan.html">Custom Plan</a></li>
-        <li><a href="server-status.html">Server Status</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>Reliable Minecraft Hosting with AceNodes</h1>
-    <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
-    <a href="plans.html" class="btn">View Plans</a>
-  </section>
-
-  <section class="plans-overview">
-    <h2>Popular Plans</h2>
-    <div class="plans-container">
-      <article class="plan-card">
-        <h3>Starter</h3>
-        <p><strong>$12.00 / month</strong></p>
-        <ul>
-          <li>2 GB RAM</li>
-          <li>10 Player Slots</li>
-          <li>Unlimited SSD Storage</li>
-          <li>1 CPU Core</li>
-          <li>1 Gbps Network</li>
-          <li>Instant Setup</li>
-          <li>Free DDoS Protection</li>
-        </ul>
-        <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
-      </article>
-
-      <article class="plan-card">
-        <h3>Pro</h3>
-        <p><strong>$36.00 / month</strong></p>
-        <ul>
-          <li>6 GB RAM</li>
-          <li>40 Player Slots</li>
-          <li>Unlimited SSD Storage</li>
-          <li>4 CPU Cores</li>
-          <li>1 Gbps Network</li>
-          <li>Instant Setup</li>
-          <li>Priority Support</li>
-          <li>Free DDoS Protection</li>
-        </ul>
-        <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
-      </article>
-
-      <article class="plan-card">
-        <h3>Ultimate</h3>
-        <p><strong>$72.00 / month</strong></p>
-        <ul>
-          <li>12 GB RAM</li>
-          <li>100 Player Slots</li>
-          <li>Unlimited SSD Storage</li>
-          <li>8 CPU Cores</li>
-          <li>10 Gbps Network</li>
-          <li>Instant Setup</li>
-          <li>Dedicated IP</li>
-          <li>24/7 Support & Monitoring</li>
-          <li>Free DDoS Protection</li>
-        </ul>
-        <a href="plans.html#ultimate" class="btn btn-secondary">Order Now</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="features">
-    <h2>Why Choose AceNodes?</h2>
-    <ul>
-      <li>99.99% Uptime Guarantee</li>
-      <li>Custom Control Panel</li>
-      <li>Supports All Minecraft Versions (Vanilla, Spigot, Bukkit, PaperMC)</li>
-      <li>1-Click Modpack & Plugin Installer</li>
-      <li>Full FTP Access & File Manager</li>
-      <li>Automated Backups & Snapshots</li>
-      <li>Instant Server Restarts</li>
-      <li>24/7 Customer Support</li>
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="logo" aria-label="AceNodes Homepage">
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+      <span>AceNodes</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="custom-plan.html">Custom Plan</a></li>
+      <li><a href="server-status.html">Server Status</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
-  </section>
+  </nav>
+</header>
 
-  <footer>
-    <div class="footer-container">
-      <div>
-        <h3>Support</h3>
-        <ul>
-          <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener">Support Discord</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-        </ul>
-      </div>
+<section class="hero">
+  <h1>Reliable Minecraft Hosting with AceNodes</h1>
+  <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
+  <a href="plans.html" class="btn">View Plans</a>
+</section>
+
+<section class="plans-overview">
+  <h2>Popular Plans</h2>
+  <div class="plans-container">
+    <article class="plan-card">
+      <h3>Starter</h3>
+      <p><strong>$12.00 / month</strong></p>
+      <ul>
+        <li>2 GB RAM</li>
+        <li>10 Player Slots</li>
+        <li>Unlimited SSD Storage</li>
+        <li>1 CPU Core</li>
+        <li>1 Gbps Network</li>
+        <li>Instant Setup</li>
+        <li>Free DDoS Protection</li>
+      </ul>
+      <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
+    </article>
+    <article class="plan-card">
+      <h3>Pro</h3>
+      <p><strong>$36.00 / month</strong></p>
+      <ul>
+        <li>6 GB RAM</li>
+        <li>40 Player Slots</li>
+        <li>Unlimited SSD Storage</li>
+        <li>4 CPU Cores</li>
+        <li>1 Gbps Network</li>
+        <li>Instant Setup</li>
+        <li>Priority Support</li>
+        <li>Free DDoS Protection</li>
+      </ul>
+      <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
+    </article>
+    <article class="plan-card">
+      <h3>Ultimate</h3>
+      <p><strong>$72.00 / month</strong></p>
+      <ul>
+        <li>12 GB RAM</li>
+        <li>100 Player Slots</li>
+        <li>Unlimited SSD Storage</li>
+        <li>8 CPU Cores</li>
+        <li>10 Gbps Network</li>
+        <li>Instant Setup</li>
+        <li>Dedicated IP</li>
+        <li>24/7 Support & Monitoring</li>
+        <li>Free DDoS Protection</li>
+      </ul>
+      <a href="plans.html#ultimate" class="btn btn-secondary">Order Now</a>
+    </article>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Why Choose AceNodes?</h2>
+  <ul>
+    <li>99.99% Uptime Guarantee</li>
+    <li>Custom Control Panel</li>
+    <li>Supports All Minecraft Versions (Vanilla, Spigot, Bukkit, PaperMC)</li>
+    <li>1-Click Modpack & Plugin Installer</li>
+    <li>Full FTP Access & File Manager</li>
+    <li>Automated Backups & Snapshots</li>
+    <li>Instant Server Restarts</li>
+    <li>24/7 Customer Support</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div>
+      <h3>Support</h3>
+      <ul>
+        <li><a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener">Support Discord</a></li>
+      </ul>
     </div>
-    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
-  </footer>
+    <div>
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+</footer>
 
-  <script>
-    // Highlight current page nav link
-    const currentPath = window.location.pathname.split('/').pop(); 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      const linkPath = link.getAttribute('href');
-      if (linkPath === currentPath) {
-        link.classList.add('active');
-      }
-    });
-  </script>
+<script>
+  // Highlight current page nav link
+  const currentPath = window.location.pathname.split('/').pop();
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    }
+  });
+</script>
 </body>
 </html>
-
