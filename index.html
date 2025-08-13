@@ -6,23 +6,20 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* REMOVE animations for home page */
-    body.home-page .nav-links > li {
-      animation: none !important;
-      transform: none !important;
-      opacity: 1 !important;
+    /* Animations for hero & sections */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
     }
-    body.home-page .nav-links li a {
-      transition: none !important;
-      transform: none !important;
-    }
-    body.home-page .fade-in {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
+    .fade-in.delay-1 { animation-delay: 0.3s; }
+    .fade-in.delay-2 { animation-delay: 0.6s; }
+    .fade-in.delay-3 { animation-delay: 0.9s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* General styles */
     .plan-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -44,11 +41,8 @@
       opacity: 0;
       padding: 20px 0;
       background-color: #1a1a1a;
-      border: none;
-      border-top: none !important;
-      box-shadow: none !important;
-      margin-top: 0 !important;
     }
+
     @keyframes slideInUp {
       from { transform: translateY(40px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -66,10 +60,11 @@
       z-index: 100;
       min-height: 64px;
     }
+
+    /* Logo like Server Status */
     .logo {
       display: flex;
       align-items: center;
-      gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -77,19 +72,13 @@
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-    .logo span {
-      margin-left: -6px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-    }
+
     .logo img {
       height: 48px;
-      width: auto;
-      display: block;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
       transition: filter 0.3s ease;
     }
+
     .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
@@ -97,36 +86,44 @@
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
+
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
       margin: 0;
       padding: 0;
-      flex-wrap: nowrap;
       align-items: center;
     }
+
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
-      cursor: pointer;
       color: #34d058;
       text-decoration: none;
       transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-      display: flex;
-      align-items: center;
       font-weight: 500;
     }
+
     .nav-links li a:hover,
-    .nav-links li a:focus,
     .nav-links li a.active {
       background-color: #2ccf4f;
       color: white;
       transform: scale(1.05);
-      outline: none;
     }
 
-    /* BODY & Sections */
+    /* Remove navbar animations on home page only */
+    body.home-page .nav-links > li {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+    body.home-page .nav-links li a {
+      transition: none !important;
+      transform: none !important;
+    }
+
+    /* Body & Sections */
     body {
       margin: 0;
       background-color: #121212;
@@ -139,12 +136,7 @@
     }
     .features {
       background-color: #242424;
-      margin-bottom: 0;
       padding-bottom: 40px;
-    }
-    .features h2,
-    .features ul {
-      margin-bottom: 0;
     }
     .plans-container {
       display: flex;
@@ -162,7 +154,6 @@
       background-color: #00cc66;
       color: #fff;
       padding: 10px 20px;
-      border: none;
       border-radius: 6px;
       text-decoration: none;
       display: inline-block;
@@ -222,13 +213,13 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero fade-in delay-1">
     <h1>Reliable Minecraft Hosting with AceNodes</h1>
     <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
     <a href="plans.html" class="btn">View Plans</a>
   </section>
 
-  <section class="plans-overview">
+  <section class="plans-overview fade-in delay-2">
     <h2>Popular Plans</h2>
     <div class="plans-container">
       <article class="plan-card">
@@ -281,7 +272,7 @@
     </div>
   </section>
 
-  <section class="features">
+  <section class="features fade-in delay-3">
     <h2>Why Choose AceNodes?</h2>
     <ul>
       <li>99.99% Uptime Guarantee</li>
@@ -315,7 +306,6 @@
   </footer>
 
   <script>
-    // Highlight current page nav link
     const currentPath = window.location.pathname.split('/').pop();
     document.querySelectorAll('.nav-links a').forEach(link => {
       const linkPath = link.getAttribute('href');
