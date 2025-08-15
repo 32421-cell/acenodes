@@ -22,17 +22,6 @@
       min-height: 100vh;
     }
 
-    body.custom-plan-page .nav-links > li {
-      animation: none !important;
-      transform: none !important;
-      opacity: 1 !important;
-    }
-
-    body.custom-plan-page .nav-links li a {
-      transition: none !important;
-      transform: none !important;
-    }
-
     a {
       color: #1db954;
       text-decoration: none;
@@ -46,7 +35,7 @@
       outline: none;
     }
 
-    /* Navbar */
+    /* Navbar (matches home/plans) */
     .navbar {
       background: #222;
       display: flex;
@@ -116,13 +105,23 @@
       outline: none;
     }
 
+    /* Disable only entrance animation for navbar */
+    body.custom-plan-page .nav-links > li {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
     /* Animations */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .fade-in { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
     .delay-1 { animation-delay: 0.2s; }
     .delay-2 { animation-delay: 0.4s; }
     .delay-3 { animation-delay: 0.6s; }
@@ -142,10 +141,22 @@
       flex: 1;
     }
 
-    .custom-container { max-width: 900px; margin: 0 auto; }
+    .custom-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-    .custom-container h2 { font-size: 3rem; margin-bottom: 10px; color: #1db954; }
-    .custom-container p { font-size: 1.1rem; color: #ccc; margin-bottom: 50px; }
+    .custom-container h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #1db954;
+    }
+
+    .custom-container p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 50px;
+    }
 
     .selector-panel {
       background: #191919;
@@ -159,7 +170,10 @@
       margin-right: auto;
     }
 
-    .slider-box, .dropdown-box, .number-box { margin-bottom: 25px; }
+    .slider-box, .dropdown-box, .number-box {
+      margin-bottom: 25px;
+    }
+
     .slider-box label, .dropdown-box label, .number-box label {
       display: block;
       margin-bottom: 8px;
@@ -168,36 +182,15 @@
     }
 
     .slider-box input[type="range"] { width: 100%; }
-
     .number-box input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      background: #2b2b2b;
-      color: #eee;
-      font-size: 1rem;
+      width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2b2b2b; color: #eee; font-size: 1rem;
     }
-
     .range-display { margin-top: 5px; text-align: right; color: #1db954; font-weight: bold; }
-
     .dropdown-box select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      background: #2b2b2b;
-      color: #eee;
-      font-size: 1rem;
+      width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2b2b2b; color: #eee; font-size: 1rem;
     }
 
-    .price-box {
-      font-size: 1.2rem;
-      color: #1db954;
-      margin-top: 20px;
-      text-align: center;
-      font-weight: bold;
-    }
+    .price-box { font-size: 1.2rem; color: #1db954; margin-top: 20px; text-align: center; font-weight: bold; }
 
     .quote-form {
       background: #121212;
@@ -209,37 +202,13 @@
       text-align: left;
     }
 
-    .quote-form h3 {
-      margin-bottom: 20px;
-      font-size: 1.7rem;
-      color: #1db954;
-      text-align: center;
-    }
-
+    .quote-form h3 { margin-bottom: 20px; font-size: 1.7rem; color: #1db954; text-align: center; }
     .quote-form input, .quote-form textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 15px;
-      background: #2b2b2b;
-      color: #eee;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      resize: vertical;
+      width: 100%; padding: 14px; margin-bottom: 15px; background: #2b2b2b; color: #eee; border: none; border-radius: 6px; font-size: 1rem; resize: vertical;
     }
-
     .quote-form button {
-      background: #1db954;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-      width: 100%;
+      background: #1db954; padding: 12px 25px; border: none; border-radius: 6px; color: white; font-weight: bold; cursor: pointer; transition: background 0.3s; width: 100%;
     }
-
     .quote-form button:hover { background: #17a64a; }
 
     /* Footer */
@@ -261,9 +230,7 @@
     }
 
     .footer-columns div { text-align: center; }
-
     .footer-columns h4 { color: #00ff66; margin-bottom: 0.5rem; font-size: 1.1rem; }
-
     .footer-columns a { color: white; text-decoration: none; transition: color 0.3s ease; font-size: 0.95rem; }
     .footer-columns a:hover { color: #00ff66; }
 
@@ -303,32 +270,56 @@
         <!-- Sliders -->
         <div class="slider-box">
           <label for="cpuRange">CPU vCores</label>
-          <input type="range" min="1" max="32" step="1" value="1" id="cpuRange" aria-valuemin="1" aria-valuemax="32" aria-valuenow="1" />
-          <div class="range-display" id="cpuDisplay">1 vCPU</div>
+          <input type="range" min="1" max="32" step="1" value="1" id="cpuRange" />
+          <div class="range-display"><span id="cpuValue">1</span> vCore(s)</div>
         </div>
-
         <div class="slider-box">
-          <label for="ramRange">RAM (GB)</label>
-          <input type="range" min="1" max="64" step="1" value="1" id="ramRange" aria-valuemin="1" aria-valuemax="64" aria-valuenow="1" />
-          <div class="range-display" id="ramDisplay">1 GB</div>
+          <label for="ramRange">Memory (GB)</label>
+          <input type="range" min="1" max="64" step="1" value="4" id="ramRange" />
+          <div class="range-display"><span id="ramValue">4</span> GB</div>
         </div>
-
         <div class="slider-box">
-          <label for="diskRange">Disk Space (GB)</label>
-          <input type="range" min="10" max="500" step="10" value="10" id="diskRange" aria-valuemin="10" aria-valuemax="500" aria-valuenow="10" />
-          <div class="range-display" id="diskDisplay">10 GB</div>
+          <label for="storageRange">Storage (GB)</label>
+          <input type="range" min="1" max="200" step="1" value="20" id="storageRange" />
+          <div class="range-display"><span id="storageValue">20</span> GB</div>
         </div>
 
-        <div class="price-box" id="priceBox">$12 / month</div>
+        <!-- Number Inputs -->
+        <div class="number-box">
+          <label for="dbInput">Extra Databases</label>
+          <input type="number" min="0" step="1" value="0" id="dbInput" />
+        </div>
+        <div class="number-box">
+          <label for="backupInput">Extra Backups</label>
+          <input type="number" min="0" step="1" value="0" id="backupInput" />
+        </div>
+        <div class="number-box">
+          <label for="portsInput">Extra Ports</label>
+          <input type="number" min="0" step="1" value="0" id="portsInput" />
+        </div>
+
+        <!-- Duration -->
+        <div class="dropdown-box">
+          <label for="durationSelect">Duration</label>
+          <select id="durationSelect">
+            <option value="1">1 Month</option>
+            <option value="3">3 Months</option>
+            <option value="6">6 Months</option>
+            <option value="12">12 Months</option>
+          </select>
+        </div>
+
+        <div class="price-box">
+          <p><strong>Estimated Price:</strong> <span id="priceEstimate">$12.00</span></p>
+        </div>
       </div>
 
-      <!-- Quote Form -->
-      <form class="quote-form fade-in delay-5" aria-label="Request a custom hosting quote">
-        <h3>Request a Quote</h3>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Email Address" required />
-        <textarea rows="5" placeholder="Additional Details..."></textarea>
-        <button type="submit">Submit Quote</button>
+      <form id="customQuoteForm" class="quote-form fade-in delay-5" aria-label="Custom plan quote form">
+        <h3>Request Your Quote</h3>
+        <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+        <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
+        <textarea name="message" rows="4" placeholder="Additional details..."></textarea>
+        <button type="submit">Request Quote</button>
       </form>
     </div>
   </section>
@@ -351,34 +342,41 @@
 
   <!-- Custom Plan Script -->
   <script>
+    // Sliders
     const cpuRange = document.getElementById("cpuRange");
     const ramRange = document.getElementById("ramRange");
-    const diskRange = document.getElementById("diskRange");
+    const storageRange = document.getElementById("storageRange");
+    const dbInput = document.getElementById("dbInput");
+    const backupInput = document.getElementById("backupInput");
+    const portsInput = document.getElementById("portsInput");
+    const durationSelect = document.getElementById("durationSelect");
+    const priceEstimate = document.getElementById("priceEstimate");
 
-    const cpuDisplay = document.getElementById("cpuDisplay");
-    const ramDisplay = document.getElementById("ramDisplay");
-    const diskDisplay = document.getElementById("diskDisplay");
-    const priceBox = document.getElementById("priceBox");
+    function updatePrice() {
+      const cpu = parseInt(cpuRange.value);
+      const ram = parseInt(ramRange.value);
+      const storage = parseInt(storageRange.value);
+      const db = parseInt(dbInput.value);
+      const backup = parseInt(backupInput.value);
+      const ports = parseInt(portsInput.value);
+      const months = parseInt(durationSelect.value);
 
-    function updateCustomPrice() {
-      const cpu = parseInt(cpuRange.value, 10);
-      const ram = parseInt(ramRange.value, 10);
-      const disk = parseInt(diskRange.value, 10);
-
-      cpuDisplay.textContent = `${cpu} vCPU${cpu > 1 ? 's' : ''}`;
-      ramDisplay.textContent = `${ram} GB`;
-      diskDisplay.textContent = `${disk} GB`;
-
-      // Simple pricing formula
-      const price = cpu * 6 + ram * 4 + disk * 0.5;
-      priceBox.textContent = `$${price.toFixed(2)} / month`;
+      // Price calculation logic
+      const price = ((cpu * 5) + (ram * 3) + (storage * 0.5) + (db * 2) + (backup * 1.5) + (ports * 1)) * months;
+      priceEstimate.textContent = `$${price.toFixed(2)}`;
     }
 
-    cpuRange.addEventListener("input", updateCustomPrice);
-    ramRange.addEventListener("input", updateCustomPrice);
-    diskRange.addEventListener("input", updateCustomPrice);
+    [cpuRange, ramRange, storageRange, dbInput, backupInput, portsInput, durationSelect].forEach(el => {
+      el.addEventListener("input", updatePrice);
+    });
 
-    updateCustomPrice();
+    // Display range values
+    cpuRange.addEventListener("input", () => document.getElementById("cpuValue").textContent = cpuRange.value);
+    ramRange.addEventListener("input", () => document.getElementById("ramValue").textContent = ramRange.value);
+    storageRange.addEventListener("input", () => document.getElementById("storageValue").textContent = storageRange.value);
+
+    // Initialize price
+    updatePrice();
   </script>
 </body>
 </html>
