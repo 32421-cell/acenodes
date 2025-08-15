@@ -1,19 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ---------------------------
-  // Disable navbar animations on homepage
-  // ---------------------------
-  if (document.body.classList.contains('home')) {
-    const navItems = document.querySelectorAll('.nav-links > li');
-    navItems.forEach(item => {
-      item.style.opacity = '1';
-      item.style.transform = 'translateY(0)';
-      item.style.animation = 'none';
-    });
-  }
-
-  // ---------------------------
   // Plans Page billing cycle buttons
-  // ---------------------------
   const billingButtons = document.querySelectorAll(".billing-cycle-selector button");
   const planCards = document.querySelectorAll(".plan-card");
 
@@ -42,24 +28,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  updatePrices(1); // Initialize prices on page load
+  // Initialize prices on page load with 1 month selected
+  updatePrices(1);
 
-  // ---------------------------
   // Custom Plan price calculator
-  // ---------------------------
   const customPlanForm = document.getElementById('custom-plan-form');
   if (customPlanForm) {
     const quoteResult = document.getElementById('quote-result');
 
     function calculatePrice(ram, slots, cpu, storage, duration) {
-      const ramPrice = 3.5; // per GB
-      const slotPrice = 0.4; // per player slot
-      const cpuPrice = 7; // per core
-      const storagePrice = 0.1; // per GB SSD
+      const ramPrice = 3.5;
+      const slotPrice = 0.4;
+      const cpuPrice = 7;
+      const storagePrice = 0.1;
 
       let price = (ram * ramPrice) + (slots * slotPrice) + (cpu * cpuPrice) + (storage * storagePrice);
 
-      if (duration === 'yearly') price = price * 12 * 0.85; // 15% discount
+      if (duration === 'yearly') {
+        price = price * 12 * 0.85;
+      }
 
       return price.toFixed(2);
     }
@@ -87,9 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ---------------------------
-  // Contact form validation (basic)
-  // ---------------------------
+  // Contact form validation
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     const formStatus = document.getElementById('form-status');
@@ -124,4 +109,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1500);
     });
   }
+
+  // Smooth fade-in only for homepage sections (not navbar)
+  const fadeSections = document.querySelectorAll('.fade-in');
+  fadeSections.forEach((el, index) => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    }, 200 + index * 200); // stagger effect
+  });
 });
