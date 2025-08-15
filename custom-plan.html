@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AceNodes - Custom Hosting Plan</title>
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     /* Reset & base */
     * {
@@ -35,7 +36,7 @@
       outline: none;
     }
 
-    /* Navbar */
+    /* Navbar (copied from plans.html) */
     .navbar {
       background: #222;
       display: flex;
@@ -57,27 +58,22 @@
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-
     .logo span {
       margin-left: -6px;
       line-height: 1;
       display: flex;
       align-items: center;
     }
-
-    .logo img {
-      height: 48px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-      transition: filter 0.3s ease;
-    }
-
     .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
-
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      transition: filter 0.3s ease;
+    }
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
@@ -107,21 +103,14 @@
 
     /* Animations */
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .fade-in {
       opacity: 0;
       animation: fadeInUp 0.8s ease forwards;
     }
-
     .delay-1 { animation-delay: 0.2s; }
     .delay-2 { animation-delay: 0.4s; }
     .delay-3 { animation-delay: 0.6s; }
@@ -185,11 +174,9 @@
       color: #1db954;
     }
 
-    .slider-box input[type="range"] {
-      width: 100%;
-    }
-
-    .number-box input[type="number"] {
+    .slider-box input[type="range"],
+    .number-box input[type="number"],
+    .dropdown-box select {
       width: 100%;
       padding: 10px;
       border-radius: 5px;
@@ -204,16 +191,6 @@
       text-align: right;
       color: #1db954;
       font-weight: bold;
-    }
-
-    .dropdown-box select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      background: #2b2b2b;
-      color: #eee;
-      font-size: 1rem;
     }
 
     .price-box {
@@ -326,9 +303,9 @@
     }
   </style>
 </head>
-<body>
+<body class="custom-plan-page">
 
-  <!-- Plans Navbar -->
+  <!-- Navbar -->
   <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <a href="index.html" class="logo" aria-label="AceNodes Homepage">
       <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
@@ -336,8 +313,8 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="plans.html" class="active">Plans</a></li>
-      <li><a href="custom-plan.html">Custom Plan</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="custom-plan.html" class="active">Custom Plan</a></li>
       <li><a href="server-status.html">Server Status</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="about.html">About</a></li>
@@ -414,88 +391,50 @@
     <div class="footer-columns">
       <div>
         <h4>Support</h4>
-        <a href="#">Support Discord</a>
+        <a href="support-discord.html">Support Discord</a>
       </div>
       <div>
         <h4>Legal</h4>
-        <a href="#">Terms of Service</a><br>
-        <a href="#">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a><br />
+        <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
+  <!-- JS -->
   <script>
-    // Animate fade-ins
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('.fade-in').forEach(el => {
-        el.style.animationPlayState = 'running';
-      });
-    });
+    const cpuRange = document.getElementById("cpuRange");
+    const ramRange = document.getElementById("ramRange");
+    const storageRange = document.getElementById("storageRange");
+    const dbInput = document.getElementById("dbInput");
+    const backupInput = document.getElementById("backupInput");
+    const portsInput = document.getElementById("portsInput");
+    const durationSelect = document.getElementById("durationSelect");
+    const priceEstimate = document.getElementById("priceEstimate");
 
-    // Estimate Logic
-    const cpuSlider = document.getElementById('cpuRange');
-    const ramSlider = document.getElementById('ramRange');
-    const storageSlider = document.getElementById('storageRange');
-    const dbInput = document.getElementById('dbInput');
-    const backupInput = document.getElementById('backupInput');
-    const portsInput = document.getElementById('portsInput');
-    const durationSelect = document.getElementById('durationSelect');
-    const priceOutput = document.getElementById('priceEstimate');
+    function updatePrice() {
+      let cpu = parseInt(cpuRange.value);
+      let ram = parseInt(ramRange.value);
+      let storage = parseInt(storageRange.value);
+      let db = parseInt(dbInput.value);
+      let backups = parseInt(backupInput.value);
+      let ports = parseInt(portsInput.value);
+      let months = parseInt(durationSelect.value);
 
-    const cpuDisplay = document.getElementById('cpuValue');
-    const ramDisplay = document.getElementById('ramValue');
-    const storageDisplay = document.getElementById('storageValue');
-
-    const pricePerCpu = 5;
-    const pricePerRam = 3;
-    const pricePerStorage = 0.5;
-    const pricePerDb = 2;
-    const pricePerBackup = 1.5;
-    const pricePerPort = 1;
-
-    function updateEstimate() {
-      const cpu = parseInt(cpuSlider.value);
-      const ram = parseInt(ramSlider.value);
-      const storage = parseInt(storageSlider.value);
-      const db = parseInt(dbInput.value) || 0;
-      const backup = parseInt(backupInput.value) || 0;
-      const ports = parseInt(portsInput.value) || 0;
-      const duration = parseInt(durationSelect.value);
-
-      cpuDisplay.textContent = cpu;
-      ramDisplay.textContent = ram;
-      storageDisplay.textContent = storage;
-
-      const totalPrice = duration * (
-        cpu * pricePerCpu +
-        ram * pricePerRam +
-        storage * pricePerStorage +
-        db * pricePerDb +
-        backup * pricePerBackup +
-        ports * pricePerPort
-      );
-
-      priceOutput.textContent = `$${totalPrice.toFixed(2)}`;
+      let price = (cpu * 3 + ram * 2 + storage * 0.5 + db*1 + backups*0.5 + ports*0.25) * months;
+      priceEstimate.textContent = `$${price.toFixed(2)}`;
     }
 
-    [cpuSlider, ramSlider, storageSlider].forEach(el => el.addEventListener('input', updateEstimate));
-    [dbInput, backupInput, portsInput].forEach(el => el.addEventListener('input', () => {
-      if (parseInt(el.value) < 0 || isNaN(parseInt(el.value))) el.value = 0;
-      updateEstimate();
-    }));
-    durationSelect.addEventListener('change', updateEstimate);
-
-    updateEstimate();
-
-    document.getElementById('customQuoteForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Thank you! Your custom quote request has been submitted.');
-      this.reset();
-      updateEstimate();
+    [cpuRange, ramRange, storageRange, dbInput, backupInput, portsInput, durationSelect].forEach(el => {
+      el.addEventListener("input", updatePrice);
     });
+
+    updatePrice();
   </script>
 </body>
+</html>
+
 </html>
 
 </html>
