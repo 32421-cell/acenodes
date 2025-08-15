@@ -1,317 +1,619 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>AceNodes - Server Status</title>
-  <link rel="stylesheet" href="css/style.css" />
+
   <style>
-    /* You can keep the existing server status CSS here */
 
     /* Reset & base */
+
     * {
+
       margin: 0;
+
       padding: 0;
+
       box-sizing: border-box;
+
     }
+
+
 
     body {
+
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
       background: #121212;
+
       color: #eee;
+
       line-height: 1.6;
+
       min-height: 100vh;
+
       display: flex;
+
       flex-direction: column;
+
     }
+
+
 
     a {
+
       color: #1db954;
+
       text-decoration: none;
+
       transition: transform 0.3s ease;
+
     }
+
+
 
     a:hover,
+
     a:focus {
+
       text-decoration: underline;
+
       transform: scale(1.05);
+
       outline: none;
+
     }
 
-    /* The Navbar and Logo styles from the plans page, adjusted for server status */
+
+
+    /* Navbar */
+
     .navbar {
+
       background: #222;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       padding: 1rem 2rem;
+
       position: sticky;
+
       top: 0;
+
       z-index: 100;
+
     }
+
+
 
     .logo {
+
       display: flex;
+
       align-items: center;
+
       gap: 0;
+
       font-weight: 700;
+
       font-size: 1.6rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
       color: #34d058;
+
       text-decoration: none;
+
       transition: color 0.3s ease, text-shadow 0.3s ease;
+
     }
+
+
+
     .logo span {
-      margin-left: -6px; /* pull text closer to logo */
+
+      margin-left: -6px;
+
     }
+
+
+
     .logo:hover {
+
       color: #2ccf4f;
+
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
+
     }
+
+
+
     .logo img {
+
       height: 48px;
+
       width: auto;
+
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+
       transition: filter 0.3s ease;
+
     }
+
+
+
     .logo:hover img {
+
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
+
     }
+
+
+
     .nav-links {
+
       list-style: none;
+
       display: flex;
+
       gap: 1rem;
+
     }
+
+
+
     .nav-links li a {
+
       padding: 0.5rem 1rem;
+
       border-radius: 4px;
+
       display: block;
+
       transition: background 0.3s ease, transform 0.3s ease;
+
       cursor: pointer;
-      color: #fff;
+
     }
+
+
+
     .nav-links li a.active,
+
     .nav-links li a:hover,
+
     .nav-links li a:focus {
+
       background: #1db954;
+
       color: #121212;
+
       transform: scale(1.05);
+
     }
 
-    /* Disable nav link animations for this page */
-    body.server-status-page .nav-links > li {
-      animation: none !important;
-      transform: none !important;
-      opacity: 1 !important;
-    }
 
-    body.server-status-page .nav-links li a {
-      transition: none !important;
-      transform: none !important;
-    }
 
     /* Main container */
+
     main {
+
       flex-grow: 1;
+
       max-width: 900px;
+
       margin: 3rem auto 4rem auto;
+
       padding: 0 1rem;
+
       width: 100%;
+
       opacity: 0;
+
       animation: fadeInUp 0.8s ease forwards;
+
       animation-delay: 0.1s;
+
     }
+
+
 
     h1 {
+
       text-align: center;
+
       color: #1db954;
+
       margin-bottom: 1rem;
+
       font-size: 2.5rem;
+
     }
+
+
 
     p.subtitle {
+
       text-align: center;
+
       color: #aaa;
+
       margin-bottom: 3rem;
+
       font-size: 1.1rem;
+
     }
+
+
 
     /* Server status grid */
+
     .status-grid {
+
       display: grid;
+
       grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+
       gap: 1.75rem;
+
     }
+
+
 
     .server-card {
+
       background: #1e1e1e;
+
       border-radius: 12px;
+
       padding: 1.5rem 2rem;
+
       box-shadow: 0 0 15px rgba(29, 185, 84, 0.4);
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: space-between;
+
       color: #eee;
+
       transition: transform 0.3s ease;
+
       opacity: 0;
+
       animation: fadeInUp 0.6s ease forwards;
+
     }
+
+
 
     .server-card:nth-child(1) { animation-delay: 0.2s; }
+
     .server-card:nth-child(2) { animation-delay: 0.4s; }
+
     .server-card:nth-child(3) { animation-delay: 0.6s; }
 
+
+
     .server-card:hover {
+
       transform: translateY(-6px);
+
       box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
+
     }
+
+
 
     .server-name {
+
       font-size: 1.4rem;
+
       font-weight: 700;
+
       margin-bottom: 0.75rem;
+
       color: #1db954;
+
     }
+
+
 
     .status {
+
       font-weight: 600;
+
       margin-bottom: 1rem;
+
       font-size: 1.1rem;
+
       display: flex;
+
       align-items: center;
+
       gap: 10px;
+
     }
+
+
 
     .status.online { color: #17a64a; }
+
     .status.offline { color: #cc3333; }
 
+
+
     .players {
+
       font-size: 1rem;
+
       color: #ccc;
+
       margin-bottom: 1rem;
+
     }
+
+
 
     .last-updated {
+
       font-size: 0.85rem;
+
       color: #666;
+
       text-align: right;
+
       font-style: italic;
+
     }
+
+
 
     /* Footer */
+
     footer {
+
       text-align: center;
+
       padding: 2rem 1rem;
+
       background: #1a1a1a;
+
       color: #777;
+
       font-size: 0.9rem;
+
       margin-top: auto;
+
       box-shadow: inset 0 1px 0 #333;
+
     }
+
+
 
     .footer-columns {
+
       display: flex;
+
       justify-content: center;
+
       gap: 4rem;
+
       margin-bottom: 1rem;
+
     }
+
+
 
     .footer-columns div {
+
       text-align: center;
+
     }
+
+
 
     .footer-columns h4 {
+
       color: #00ff66;
+
       margin-bottom: 0.5rem;
+
       font-size: 1.1rem;
+
     }
+
+
 
     .footer-columns a {
+
       color: white;
+
       text-decoration: none;
+
       transition: color 0.3s ease;
+
       font-size: 0.95rem;
+
     }
+
+
 
     .footer-columns a:hover {
+
       color: #00ff66;
+
     }
+
+
 
     @media (max-width: 600px) {
+
       h1 { font-size: 2rem; }
+
       .server-card { padding: 1rem 1.25rem; }
+
       .footer-columns {
+
         flex-direction: column;
+
         gap: 1.5rem;
+
       }
+
     }
+
+
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body class="server-status-page">
-    <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo" aria-label="AceNodes Homepage">
-        <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
-        <span>AceNodes</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="plans.html">Plans</a></li>
-        <li><a href="custom-plan.html">Custom Plan</a></li>
-        <li><a href="server-status.html" class="active">Server Status</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-    <main>
+      from { opacity: 0; transform: translateY(20px); }
+
+      to { opacity: 1; transform: translateY(0); }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <!-- Navbar -->
+
+  <nav class="navbar">
+
+    <a href="index.html" class="logo">
+
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+
+      <span>AceNodes</span>
+
+    </a>
+
+    <ul class="nav-links">
+
+      <li><a href="index.html">Home</a></li>
+
+      <li><a href="plans.html">Plans</a></li>
+
+      <li><a href="custom-plan.html">Custom Plan</a></li>
+
+      <li><a href="server-status.html" class="active">Server Status</a></li>
+
+      <li><a href="faq.html">FAQ</a></li>
+
+      <li><a href="about.html">About</a></li>
+
+      <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+
+  </nav>
+
+
+
+  <!-- Main -->
+
+  <main>
+
     <h1>Server Status</h1>
+
     <p class="subtitle">Check the real-time status of your Minecraft servers hosted with AceNodes.</p>
 
+
+
     <div class="status-grid">
+
       <article class="server-card">
+
         <h2 class="server-name">Survival Server</h2>
+
         <div class="status online"><span>● Online</span></div>
+
         <div class="players">Players online: 18 / 50</div>
+
         <div class="last-updated">Last checked: 30 seconds ago</div>
+
       </article>
 
+
+
       <article class="server-card">
+
         <h2 class="server-name">Creative Server</h2>
+
         <div class="status online"><span>● Online</span></div>
+
         <div class="players">Players online: 5 / 30</div>
+
         <div class="last-updated">Last checked: 25 seconds ago</div>
+
       </article>
 
+
+
       <article class="server-card">
+
         <h2 class="server-name">Modded Server</h2>
+
         <div class="status offline"><span>● Offline</span></div>
+
         <div class="players">Players online: 0 / 40</div>
+
         <div class="last-updated">Last checked: 1 minute ago</div>
+
       </article>
+
     </div>
+
   </main>
 
-    <footer>
+
+
+  <!-- Footer -->
+
+  <footer>
+
     <div class="footer-columns">
+
       <div>
+
         <h4>Support</h4>
+
         <a href="support-discord.html">Support Discord</a>
+
       </div>
+
       <div>
+
         <h4>Legal</h4>
+
         <a href="terms.html">Terms of Service</a><br>
+
         <a href="privacy.html">Privacy Policy</a>
+
       </div>
+
     </div>
+
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+
   </footer>
+
+
+
 </body>
+
 </html>
