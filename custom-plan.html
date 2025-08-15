@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AceNodes - Custom Hosting Plan</title>
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     /* Reset & base */
     * {
@@ -35,7 +36,7 @@
       outline: none;
     }
 
-    /* Navbar (matches home/plans) */
+    /* Navbar (copied from plans.html) */
     .navbar {
       background: #222;
       display: flex;
@@ -57,27 +58,22 @@
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-
     .logo span {
       margin-left: -6px;
       line-height: 1;
       display: flex;
       align-items: center;
     }
-
-    .logo img {
-      height: 48px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-      transition: filter 0.3s ease;
-    }
-
     .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
-
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      transition: filter 0.3s ease;
+    }
     .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
@@ -105,12 +101,6 @@
       outline: none;
     }
 
-    /* Disable only entrance animation for navbar */
-    body.custom-plan-page .nav-links > li {
-      animation: none !important;
-      opacity: 1 !important;
-    }
-
     /* Animations */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px); }
@@ -121,7 +111,6 @@
       opacity: 0;
       animation: fadeInUp 0.8s ease forwards;
     }
-
     .delay-1 { animation-delay: 0.2s; }
     .delay-2 { animation-delay: 0.4s; }
     .delay-3 { animation-delay: 0.6s; }
@@ -170,27 +159,47 @@
       margin-right: auto;
     }
 
-    .slider-box, .dropdown-box, .number-box {
+    .slider-box,
+    .dropdown-box,
+    .number-box {
       margin-bottom: 25px;
     }
 
-    .slider-box label, .dropdown-box label, .number-box label {
+    .slider-box label,
+    .dropdown-box label,
+    .number-box label {
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
       color: #1db954;
     }
 
-    .slider-box input[type="range"] { width: 100%; }
-    .number-box input[type="number"] {
-      width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2b2b2b; color: #eee; font-size: 1rem;
-    }
-    .range-display { margin-top: 5px; text-align: right; color: #1db954; font-weight: bold; }
+    .slider-box input[type="range"],
+    .number-box input[type="number"],
     .dropdown-box select {
-      width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2b2b2b; color: #eee; font-size: 1rem;
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #2b2b2b;
+      color: #eee;
+      font-size: 1rem;
     }
 
-    .price-box { font-size: 1.2rem; color: #1db954; margin-top: 20px; text-align: center; font-weight: bold; }
+    .range-display {
+      margin-top: 5px;
+      text-align: right;
+      color: #1db954;
+      font-weight: bold;
+    }
+
+    .price-box {
+      font-size: 1.2rem;
+      color: #1db954;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
 
     .quote-form {
       background: #121212;
@@ -202,14 +211,41 @@
       text-align: left;
     }
 
-    .quote-form h3 { margin-bottom: 20px; font-size: 1.7rem; color: #1db954; text-align: center; }
-    .quote-form input, .quote-form textarea {
-      width: 100%; padding: 14px; margin-bottom: 15px; background: #2b2b2b; color: #eee; border: none; border-radius: 6px; font-size: 1rem; resize: vertical;
+    .quote-form h3 {
+      margin-bottom: 20px;
+      font-size: 1.7rem;
+      color: #1db954;
+      text-align: center;
     }
+
+    .quote-form input,
+    .quote-form textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      background: #2b2b2b;
+      color: #eee;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
     .quote-form button {
-      background: #1db954; padding: 12px 25px; border: none; border-radius: 6px; color: white; font-weight: bold; cursor: pointer; transition: background 0.3s; width: 100%;
+      background: #1db954;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
     }
-    .quote-form button:hover { background: #17a64a; }
+
+    .quote-form button:hover {
+      background: #17a64a;
+    }
 
     /* Footer */
     footer {
@@ -229,15 +265,41 @@
       margin-bottom: 1rem;
     }
 
-    .footer-columns div { text-align: center; }
-    .footer-columns h4 { color: #00ff66; margin-bottom: 0.5rem; font-size: 1.1rem; }
-    .footer-columns a { color: white; text-decoration: none; transition: color 0.3s ease; font-size: 0.95rem; }
-    .footer-columns a:hover { color: #00ff66; }
+    .footer-columns div {
+      text-align: center;
+    }
+
+    .footer-columns h4 {
+      color: #00ff66;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-columns a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-columns a:hover {
+      color: #00ff66;
+    }
 
     @media (max-width: 600px) {
-      .custom-container h2 { font-size: 2rem; }
-      .quote-form, .selector-panel { padding: 20px; }
-      .footer-columns { flex-direction: column; gap: 1.5rem; }
+      .custom-container h2 {
+        font-size: 2rem;
+      }
+
+      .quote-form,
+      .selector-panel {
+        padding: 20px;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -318,7 +380,7 @@
         <h3>Request Your Quote</h3>
         <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
         <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
-        <textarea name="message" rows="4" placeholder="Additional details..."></textarea>
+        <textarea name="requirements" placeholder="Tell us your requirements..." rows="4" required aria-required="true"></textarea>
         <button type="submit">Request Quote</button>
       </form>
     </div>
@@ -340,9 +402,8 @@
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
-  <!-- Custom Plan Script -->
+  <!-- JS -->
   <script>
-    // Sliders
     const cpuRange = document.getElementById("cpuRange");
     const ramRange = document.getElementById("ramRange");
     const storageRange = document.getElementById("storageRange");
@@ -353,16 +414,15 @@
     const priceEstimate = document.getElementById("priceEstimate");
 
     function updatePrice() {
-      const cpu = parseInt(cpuRange.value);
-      const ram = parseInt(ramRange.value);
-      const storage = parseInt(storageRange.value);
-      const db = parseInt(dbInput.value);
-      const backup = parseInt(backupInput.value);
-      const ports = parseInt(portsInput.value);
-      const months = parseInt(durationSelect.value);
+      let cpu = parseInt(cpuRange.value);
+      let ram = parseInt(ramRange.value);
+      let storage = parseInt(storageRange.value);
+      let db = parseInt(dbInput.value);
+      let backups = parseInt(backupInput.value);
+      let ports = parseInt(portsInput.value);
+      let months = parseInt(durationSelect.value);
 
-      // Price calculation logic
-      const price = ((cpu * 5) + (ram * 3) + (storage * 0.5) + (db * 2) + (backup * 1.5) + (ports * 1)) * months;
+      let price = (cpu * 3 + ram * 2 + storage * 0.5 + db*1 + backups*0.5 + ports*0.25) * months;
       priceEstimate.textContent = `$${price.toFixed(2)}`;
     }
 
@@ -370,13 +430,11 @@
       el.addEventListener("input", updatePrice);
     });
 
-    // Display range values
-    cpuRange.addEventListener("input", () => document.getElementById("cpuValue").textContent = cpuRange.value);
-    ramRange.addEventListener("input", () => document.getElementById("ramValue").textContent = ramRange.value);
-    storageRange.addEventListener("input", () => document.getElementById("storageValue").textContent = storageRange.value);
-
-    // Initialize price
     updatePrice();
+  </script>
+</body>
+</html>
+
   </script>
 </body>
 </html>
