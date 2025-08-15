@@ -6,7 +6,7 @@
   <title>AceNodes - Best Minecraft Hosting</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* === NAVBAR CSS from plans page === */
+    /* === Navbar exactly like plans page === */
     .navbar {
       background: #222;
       display: flex;
@@ -70,10 +70,10 @@
       cursor: pointer;
       color: #1db954;
       text-decoration: none;
-      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
       display: flex;
       align-items: center;
       font-weight: 500;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
     .nav-links li a:hover,
@@ -90,38 +90,82 @@
       transform: scale(1.05);
     }
 
-    /* === Disable nav link animations exactly like plans page === */
-    body.home .nav-links > li {
+    /* === Disable navbar animations completely on home page === */
+    body.home .nav-links > li,
+    body.home .nav-links li a {
       animation: none !important;
+      transition: none !important;
       transform: none !important;
       opacity: 1 !important;
     }
 
-    body.home .nav-links li a {
-      transition: none !important;
-      transform: none !important;
-    }
-
-    /* === Rest of your existing CSS === */
+    /* === Body and Hero styling === */
     body {
       margin: 0;
-      background-color: #0d0d0d;
+      background-color: #121212;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #f0f0f0;
     }
 
     .hero {
-      padding: 40px;
+      padding: 80px 20px;
       text-align: center;
     }
+
+    /* === Hero text animations === */
+    .fade-in-text {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    .fade-in-text.delay-1 { animation-delay: 0.4s; }
+    .fade-in-text.delay-2 { animation-delay: 0.8s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === Optional typing effect for heading === */
+    .typing {
+      display: inline-block;
+      overflow: hidden;
+      border-right: 3px solid #34d058;
+      white-space: nowrap;
+      animation: typing 2.5s steps(40, end), blink 0.7s step-end infinite alternate;
+      font-weight: 700;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* === Button styling === */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00cc66;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+
+    /* === Plans section === */
     .plans-overview {
-      padding: 40px;
+      padding: 60px 20px;
       text-align: center;
     }
     .plans-container {
       display: flex;
-      gap: 30px;
       justify-content: center;
+      gap: 30px;
       flex-wrap: wrap;
     }
     .plan-card {
@@ -130,30 +174,11 @@
       border-radius: 12px;
       width: 280px;
     }
-    .btn, .btn-secondary {
-      background-color: #00cc66;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
-    }
 
-    .features, .policy {
-      background-color: #242424;
-      margin-bottom: 0;
-      padding: 40px;
-    }
-    .features *:last-child,
-    .policy *:last-child {
-      margin-bottom: 0;
-    }
-
+    /* === Footer styling === */
     footer {
       background-color: #242424;
-      padding: 20px 0;
+      padding: 30px 0 20px;
       color: #fff;
     }
     .footer-container {
@@ -187,18 +212,18 @@
     }
   </style>
 </head>
+
 <body class="home">
 
-  <!-- Navbar exactly like plans page -->
+  <!-- Navbar -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo" aria-label="AceNodes Homepage">
-        <!-- Use the same logo image URL as plans page for consistency -->
         <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
         <span>AceNodes</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="plans.html">Plans</a></li>
         <li><a href="custom-plan.html">Custom Plan</a></li>
         <li><a href="server-status.html">Server Status</a></li>
@@ -209,13 +234,14 @@
     </nav>
   </header>
 
-  <!-- Your full home page content -->
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Reliable Minecraft Hosting with AceNodes</h1>
-    <p>Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
-    <a href="plans.html" class="btn">View Plans</a>
+    <h1 class="fade-in-text typing">Reliable Minecraft Hosting with AceNodes</h1>
+    <p class="fade-in-text delay-1">Fast, secure, and easy-to-use Minecraft servers with 24/7 support.</p>
+    <a href="plans.html" class="btn fade-in-text delay-2">View Plans</a>
   </section>
 
+  <!-- Plans Section -->
   <section class="plans-overview">
     <h2>Popular Plans</h2>
     <div class="plans-container">
@@ -231,7 +257,7 @@
           <li>Instant Setup</li>
           <li>Free DDoS Protection</li>
         </ul>
-        <a href="plans.html#starter" class="btn btn-secondary">Order Now</a>
+        <a href="plans.html#starter" class="btn">Order Now</a>
       </article>
 
       <article class="plan-card">
@@ -247,7 +273,7 @@
           <li>Priority Support</li>
           <li>Free DDoS Protection</li>
         </ul>
-        <a href="plans.html#pro" class="btn btn-secondary">Order Now</a>
+        <a href="plans.html#pro" class="btn">Order Now</a>
       </article>
 
       <article class="plan-card">
@@ -264,69 +290,12 @@
           <li>24/7 Support & Monitoring</li>
           <li>Free DDoS Protection</li>
         </ul>
-        <a href="plans.html#ultimate" class="btn btn-secondary">Order Now</a>
+        <a href="plans.html#ultimate" class="btn">Order Now</a>
       </article>
     </div>
   </section>
 
-  <section class="features">
-    <h2>Why Choose AceNodes?</h2>
-    <ul>
-      <li>99.99% Uptime Guarantee</li>
-      <li>Custom Control Panel</li>
-      <li>Supports All Minecraft Versions (Vanilla, Spigot, Bukkit, PaperMC)</li>
-      <li>1-Click Modpack & Plugin Installer</li>
-      <li>Full FTP Access & File Manager</li>
-      <li>Automated Backups & Snapshots</li>
-      <li>Instant Server Restarts</li>
-      <li>24/7 Customer Support</li>
-    </ul>
-  </section>
-
-  <section id="terms" class="policy">
-    <h2>Policies & Legal</h2>
-    <h3>Acceptable Use Policy</h3>
-    <p>Customers must not use our service to host or distribute any illegal content, spam, or harmful material.</p>
-    <ul>
-      <li>Unauthorized access attempts</li>
-      <li>Hosting malware or phishing content</li>
-      <li>Sending unsolicited bulk emails</li>
-      <li>Any activity violating laws or regulations</li>
-    </ul>
-    <h3>Cookie Policy</h3>
-    <p>We use cookies to improve site functionality.</p>
-    <ul>
-      <li>Essential cookies</li>
-      <li>Analytics cookies</li>
-      <li>Preference cookies</li>
-    </ul>
-    <h3>Data Retention & Deletion Policy</h3>
-    <ul>
-      <li>We retain customer data while accounts are active.</li>
-      <li>Data is deleted within 30 days after account termination.</li>
-      <li>Backups are retained for 14 days before deletion.</li>
-    </ul>
-    <h3>DMCA & Abuse Reporting</h3>
-    <p>Report abuse to: <a href="mailto:abuse@acenodes.co.uk">abuse@acenodes.co.uk</a></p>
-    <ul>
-      <li>Temporary suspension</li>
-      <li>Permanent termination</li>
-      <li>Notification to authorities if required</li>
-    </ul>
-    <h3>Security Policy</h3>
-    <ul>
-      <li>Firewalls and intrusion detection systems</li>
-      <li>Regular updates and encrypted backups</li>
-      <li>Role-based access control</li>
-    </ul>
-    <h3>Service Level Agreement (SLA)</h3>
-    <ul>
-      <li>Uptime Guarantee: 99.9%</li>
-      <li>Critical issues: &lt;1 hour response</li>
-      <li>Non-critical issues: &lt;24 hours response</li>
-    </ul>
-  </section>
-
+  <!-- Footer -->
   <footer>
     <div class="footer-container">
       <div class="footer-column">
@@ -354,15 +323,11 @@
       const currentPage = window.location.pathname.split('/').pop() || 'index.html';
       document.querySelectorAll('.nav-links a').forEach(link => {
         const href = link.getAttribute('href').split('/').pop() || 'index.html';
-        if (href === currentPage) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
+        if (href === currentPage) link.classList.add('active');
+        else link.classList.remove('active');
       });
     });
   </script>
 
 </body>
 </html>
-
