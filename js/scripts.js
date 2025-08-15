@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // ---------------------------
+  // Disable navbar animations on homepage
+  // ---------------------------
+  if (document.body.classList.contains('home')) {
+    const navItems = document.querySelectorAll('.nav-links > li');
+    navItems.forEach(item => {
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)';
+      item.style.animation = 'none';
+    });
+  }
+
+  // ---------------------------
   // Plans Page billing cycle buttons
+  // ---------------------------
   const billingButtons = document.querySelectorAll(".billing-cycle-selector button");
   const planCards = document.querySelectorAll(".plan-card");
 
@@ -28,16 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Initialize prices on page load with 1 month selected
-  updatePrices(1);
+  updatePrices(1); // Initialize prices on page load
 
+  // ---------------------------
   // Custom Plan price calculator
+  // ---------------------------
   const customPlanForm = document.getElementById('custom-plan-form');
   if (customPlanForm) {
     const quoteResult = document.getElementById('quote-result');
 
     function calculatePrice(ram, slots, cpu, storage, duration) {
-      // Base prices per unit
       const ramPrice = 3.5; // per GB
       const slotPrice = 0.4; // per player slot
       const cpuPrice = 7; // per core
@@ -45,9 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let price = (ram * ramPrice) + (slots * slotPrice) + (cpu * cpuPrice) + (storage * storagePrice);
 
-      if (duration === 'yearly') {
-        price = price * 12 * 0.85; // 15% discount
-      }
+      if (duration === 'yearly') price = price * 12 * 0.85; // 15% discount
 
       return price.toFixed(2);
     }
@@ -60,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const storage = parseInt(customPlanForm.storage.value);
       const duration = customPlanForm.duration.value;
 
-      // Validate values (already constrained by inputs but double check)
       if (ram < 1 || slots < 1 || cpu < 1 || storage < 10) {
         quoteResult.textContent = 'Please enter valid values.';
         return;
@@ -76,7 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ---------------------------
   // Contact form validation (basic)
+  // ---------------------------
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     const formStatus = document.getElementById('form-status');
@@ -95,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Simple email validation
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(email)) {
         formStatus.textContent = 'Please enter a valid email address.';
@@ -105,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       formStatus.textContent = 'Sending message...';
 
-      // Simulate sending form (you can replace with real backend call)
       setTimeout(() => {
         formStatus.textContent = 'Thank you for contacting AceNodes! We will get back to you shortly.';
         formStatus.style.color = 'green';
