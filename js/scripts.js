@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Disable navbar animations only on this page
+  const navbar = document.querySelector('nav'); 
+  if (navbar) {
+    navbar.style.transition = 'none';
+    navbar.classList.remove('fade-in'); // in case you added fade-in to navbar
+  }
+
   // Plans Page billing cycle buttons
   const billingButtons = document.querySelectorAll(".billing-cycle-selector button");
   const planCards = document.querySelectorAll(".plan-card");
@@ -113,6 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Smooth fade-in only for homepage sections (not navbar)
   const fadeSections = document.querySelectorAll('.fade-in');
   fadeSections.forEach((el, index) => {
+    // Skip navbar if it somehow has fade-in
+    if (el.closest('nav')) return;
+
     el.style.opacity = 0;
     el.style.transform = 'translateY(20px)';
     setTimeout(() => {
