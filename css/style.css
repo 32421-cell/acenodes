@@ -1,370 +1,432 @@
-/* ==========================
-   GLOBAL CSS - FIXED
-   Navbar animations removed
-========================== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AceNodes - Custom Hosting Plan</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Reset & base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #121212;
-  color: #eee;
-  line-height: 1.6;
-}
+    a {
+      color: #1db954;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
 
-/* Links */
-a {
-  color: #1db954;
-  text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      transform: scale(1.05);
+      outline: none;
+    }
 
-a:hover,
-a:focus {
-  text-decoration: underline;
-  transform: scale(1.05);
-  outline: none;
-}
+    /* Navbar */
+    .navbar {
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-/* Navbar */
-.navbar {
-  background: #222;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  min-height: 64px;
-}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .logo span {
+      margin-left: -6px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      transition: filter 0.3s ease;
+    }
+    .logo:hover {
+      color: #2ccf4f;
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
+    }
+    .logo:hover img {
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
+    }
 
-/* Logo Styling */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: #34d058;
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
 
-.logo span {
-  margin-left: -6px;
-  line-height: 1;
-}
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: block;
+      cursor: pointer;
+      color: #1db954;
+      background: transparent;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    }
 
-.logo img {
-  height: 48px;
-  width: auto;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-  transition: filter 0.3s ease;
-}
+    .nav-links li a.active,
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background: #1db954;
+      color: #121212;
+      transform: scale(1.05);
+      outline: none;
+    }
 
-.logo:hover {
-  color: #2ccf4f;
-  text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
-}
+    /* Custom Plan Section */
+    .custom-plan-section {
+      width: 100%;
+      background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
+      color: #eee;
+      padding: 80px 20px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      flex: 1;
+    }
 
-.logo:hover img {
-  filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
-}
+    .custom-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-/* Nav links container */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  flex-wrap: nowrap;
-  align-items: center;
-}
+    .custom-container h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #1db954;
+    }
 
-/* Nav links */
-.nav-links li a {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #1db954;
-  background: transparent;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-}
+    .custom-container p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 50px;
+    }
 
-/* Active, hover, and focus states */
-.nav-links li a.active,
-.nav-links li a:hover,
-.nav-links li a:focus {
-  background: #1db954;
-  color: #121212;
-  transform: scale(1.05);
-  outline: none;
-}
+    .selector-panel {
+      background: #191919;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 10px rgba(0,219,84,0.5);
+      text-align: left;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-/* ==========================
-   NAVBAR ANIMATIONS REMOVED
-========================== */
-.nav-links > li {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-}
+    .slider-box,
+    .dropdown-box,
+    .number-box {
+      margin-bottom: 25px;
+    }
 
-/* Hero Section */
-.hero {
-  background: url('https://i.imgur.com/J0kYqAv.jpg') no-repeat center center/cover;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 2rem;
-  color: #fff;
-}
+    .slider-box label,
+    .dropdown-box label,
+    .number-box label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #1db954;
+    }
 
-.hero h1 {
-  font-size: 3rem;
-  text-shadow: 0 0 10px rgba(0,0,0,0.7);
-}
+    .slider-box input[type="range"],
+    .number-box input[type="number"],
+    .dropdown-box select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #2b2b2b;
+      color: #eee;
+      font-size: 1rem;
+    }
 
-.hero p {
-  font-size: 1.25rem;
-  margin: 1rem 0 2rem;
-  text-shadow: 0 0 5px rgba(0,0,0,0.6);
-}
+    .range-display {
+      margin-top: 5px;
+      text-align: right;
+      color: #1db954;
+      font-weight: bold;
+    }
 
-/* Buttons */
-.btn {
-  background: #1db954;
-  color: #121212;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
+    .price-box {
+      font-size: 1.2rem;
+      color: #1db954;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
 
-.btn:hover,
-.btn:focus {
-  background: #17a64a;
-  transform: scale(1.05);
-  outline: none;
-}
+    .quote-form {
+      background: #121212;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,219,84,0.4);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
 
-.btn-secondary {
-  background: #444;
-  color: #eee;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
+    .quote-form h3 {
+      margin-bottom: 20px;
+      font-size: 1.7rem;
+      color: #1db954;
+      text-align: center;
+    }
 
-.btn-secondary:hover,
-.btn-secondary:focus {
-  background: #666;
-  transform: scale(1.03);
-  outline: none;
-}
+    .quote-form input,
+    .quote-form textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      background: #2b2b2b;
+      color: #eee;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
+    }
 
-/* Plans Overview */
-.plans-overview {
-  padding: 3rem 2rem;
-  background: #1e1e1e;
-}
+    .quote-form button {
+      background: #1db954;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
 
-.plans-overview h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  color: #1db954;
-}
+    .quote-form button:hover {
+      background: #17a64a;
+    }
 
-.plans-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1a1a1a;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: inset 0 1px 0 #333;
+    }
 
-.plan-card {
-  background: #292929;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 300px;
-  flex-grow: 1;
-  box-shadow: 0 0 15px rgba(0, 219, 84, 0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .footer-columns {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-bottom: 1rem;
+    }
 
-.plan-card:hover,
-.plan-card:focus-within {
-  transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
-  outline: none;
-}
+    .footer-columns div {
+      text-align: center;
+    }
 
-.plan-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #1db954;
-}
+    .footer-columns h4 {
+      color: #00ff66;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
 
-.plan-card p {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
+    .footer-columns a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
 
-.plan-card ul {
-  list-style: none;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-}
+    .footer-columns a:hover {
+      color: #00ff66;
+    }
 
-.plan-card ul li {
-  padding-left: 1rem;
-  position: relative;
-  margin-bottom: 0.5rem;
-}
+    @media (max-width: 600px) {
+      .custom-container h2 {
+        font-size: 2rem;
+      }
 
-.plan-card ul li::before {
-  content: '✔';
-  position: absolute;
-  left: 0;
-  color: #1db954;
-}
+      .quote-form,
+      .selector-panel {
+        padding: 20px;
+      }
 
-/* Features Section */
-.features {
-  padding: 3rem 2rem;
-  background: #121212;
-  text-align: center;
-}
+      .footer-columns {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
 
-.features h2 {
-  color: #1db954;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
+    /* ==========================
+       FIX: Disable navbar animations
+    ========================== */
+    .nav-links > li {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+  </style>
+</head>
+<body class="custom-plan-page">
 
-.features ul {
-  list-style: none;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0;
-}
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" class="logo" aria-label="AceNodes Homepage">
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+      <span>AceNodes</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="custom-plan.html" class="active">Custom Plan</a></li>
+      <li><a href="server-status.html">Server Status</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-.features ul li {
-  margin: 0.75rem 0;
-  font-size: 1.1rem;
-  position: relative;
-  padding-left: 1.5rem;
-}
+  <!-- Custom Plan Section -->
+  <section id="custom-plan" class="custom-plan-section" tabindex="-1">
+    <div class="custom-container">
+      <h2>Custom Hosting Plan</h2>
+      <p>Design your own Minecraft hosting plan tailored to your needs.</p>
 
-.features ul li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #1db954;
-  font-weight: bold;
-}
+      <div class="selector-panel" aria-label="Customize your hosting plan options">
+        <!-- Sliders -->
+        <div class="slider-box">
+          <label for="cpuRange">CPU vCores</label>
+          <input type="range" min="1" max="32" step="1" value="1" id="cpuRange" />
+          <div class="range-display"><span id="cpuValue">1</span> vCore(s)</div>
+        </div>
+        <div class="slider-box">
+          <label for="ramRange">Memory (GB)</label>
+          <input type="range" min="1" max="64" step="1" value="4" id="ramRange" />
+          <div class="range-display"><span id="ramValue">4</span> GB</div>
+        </div>
+        <div class="slider-box">
+          <label for="storageRange">Storage (GB)</label>
+          <input type="range" min="1" max="200" step="1" value="20" id="storageRange" />
+          <div class="range-display"><span id="storageValue">20</span> GB</div>
+        </div>
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 3rem 2rem 2rem;
-  background: #1a1a1a;
-  color: #ccc;
-  margin-top: 4rem;
-  font-size: 0.95rem;
-}
+        <!-- Number Inputs -->
+        <div class="number-box">
+          <label for="dbInput">Extra Databases</label>
+          <input type="number" min="0" step="1" value="0" id="dbInput" />
+        </div>
+        <div class="number-box">
+          <label for="backupInput">Extra Backups</label>
+          <input type="number" min="0" step="1" value="0" id="backupInput" />
+        </div>
+        <div class="number-box">
+          <label for="portsInput">Extra Ports</label>
+          <input type="number" min="0" step="1" value="0" id="portsInput" />
+        </div>
 
-.footer-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5rem;
-  margin-bottom: 2rem;
-}
+        <!-- Duration -->
+        <div class="dropdown-box">
+          <label for="durationSelect">Duration</label>
+          <select id="durationSelect">
+            <option value="1">1 Month</option>
+            <option value="3">3 Months</option>
+            <option value="6">6 Months</option>
+            <option value="12">12 Months</option>
+          </select>
+        </div>
 
-.footer-column {
-  min-width: 150px;
-  text-align: left;
-}
+        <div class="price-box">
+          <p><strong>Estimated Price:</strong> <span id="priceEstimate">$12.00</span></p>
+        </div>
+      </div>
 
-.footer-column h4 {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  color: #1db954;
-  border-bottom: 1px solid #333;
-  padding-bottom: 0.5rem;
-}
+      <form id="customQuoteForm" class="quote-form" aria-label="Custom plan quote form">
+        <h3>Request Your Quote</h3>
+        <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+        <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
+        <textarea name="requirements" placeholder="Tell us your requirements..." rows="4" required aria-required="true"></textarea>
+        <button type="submit">Request Quote</button>
+      </form>
+    </div>
+  </section>
 
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-}
+  <!-- Footer -->
+  <footer>
+    <div class="footer-columns">
+      <div>
+        <h4>Support</h4>
+        <a href="support-discord.html">Support Discord</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="terms.html">Terms of Service</a><br />
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+  </footer>
 
-.footer-column ul li {
-  margin-bottom: 0.75rem;
-}
+  <!-- JS -->
+  <script>
+    const cpuRange = document.getElementById("cpuRange");
+    const ramRange = document.getElementById("ramRange");
+    const storageRange = document.getElementById("storageRange");
+    const dbInput = document.getElementById("dbInput");
+    const backupInput = document.getElementById("backupInput");
+    const portsInput = document.getElementById("portsInput");
+    const durationSelect = document.getElementById("durationSelect");
+    const priceEstimate = document.getElementById("priceEstimate");
 
-.footer-column ul li a {
-  color: #34d058;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
+    function updatePrice() {
+      let cpu = parseInt(cpuRange.value);
+      let ram = parseInt(ramRange.value);
+      let storage = parseInt(storageRange.value);
+      let db = parseInt(dbInput.value);
+      let backups = parseInt(backupInput.value);
+      let ports = parseInt(portsInput.value);
+      let months = parseInt(durationSelect.value);
 
-.footer-column ul li a:hover {
-  color: #00ffcc;
-  text-decoration: underline;
-}
+      let price = (cpu * 3 + ram * 2 + storage * 0.5 + db*1 + backups*0.5 + ports*0.25) * months;
+      priceEstimate.textContent = `$${price.toFixed(2)}`;
+    }
 
-.footer-bottom {
-  text-align: center;
-  color: #777;
-  font-size: 0.85rem;
-  border-top: none;
-  background: transparent;
-  padding-top: 1rem;
-}
+    [cpuRange, ramRange, storageRange, dbInput, backupInput, portsInput, durationSelect].forEach(el => {
+      el.addEventListener("input", updatePrice);
+    });
 
-/* Responsive */
-@media (max-width: 768px) {
-  .plans-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 600px) {
-  .custom-form {
-    padding: 1.5rem;
-  }
-
-  .custom-container h2 {
-    font-size: 2rem;
-  }
-
-  .plans-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
+    updatePrice();
+  </script>
+</body>
+</html>
