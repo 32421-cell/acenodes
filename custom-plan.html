@@ -26,17 +26,15 @@
     a {
       color: #1db954;
       text-decoration: none;
-      transition: transform 0.3s ease;
     }
 
     a:hover,
     a:focus {
       text-decoration: underline;
-      transform: scale(1.05);
       outline: none;
     }
 
-    /* Navbar (copied from plans.html) */
+    /* Navbar */
     .navbar {
       background: #222;
       display: flex;
@@ -56,7 +54,6 @@
       font-size: 1.6rem;
       color: #34d058;
       text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     .logo span {
       margin-left: -6px;
@@ -64,18 +61,10 @@
       display: flex;
       align-items: center;
     }
-    .logo:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
-    }
     .logo img {
       height: 48px;
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-      transition: filter 0.3s ease;
-    }
-    .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
     }
 
     .nav-links {
@@ -88,7 +77,6 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
-      transition: background 0.3s ease, transform 0.3s ease;
       cursor: pointer;
     }
 
@@ -97,25 +85,8 @@
     .nav-links li a:focus {
       background: #1db954;
       color: #121212;
-      transform: scale(1.05);
       outline: none;
     }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards;
-    }
-    .delay-1 { animation-delay: 0.2s; }
-    .delay-2 { animation-delay: 0.4s; }
-    .delay-3 { animation-delay: 0.6s; }
-    .delay-4 { animation-delay: 0.8s; }
-    .delay-5 { animation-delay: 1s; }
 
     /* Custom Plan Section */
     .custom-plan-section {
@@ -323,12 +294,12 @@
   </nav>
 
   <!-- Custom Plan Section -->
-  <section id="custom-plan" class="custom-plan-section fade-in delay-1" tabindex="-1">
+  <section id="custom-plan" class="custom-plan-section" tabindex="-1">
     <div class="custom-container">
-      <h2 class="fade-in delay-2">Custom Hosting Plan</h2>
-      <p class="fade-in delay-3">Design your own Minecraft hosting plan tailored to your needs.</p>
+      <h2>Custom Hosting Plan</h2>
+      <p>Design your own Minecraft hosting plan tailored to your needs.</p>
 
-      <div class="selector-panel fade-in delay-4" aria-label="Customize your hosting plan options">
+      <div class="selector-panel" aria-label="Customize your hosting plan options">
         <!-- Sliders -->
         <div class="slider-box">
           <label for="cpuRange">CPU vCores</label>
@@ -376,7 +347,7 @@
         </div>
       </div>
 
-      <form id="customQuoteForm" class="quote-form fade-in delay-5" aria-label="Custom plan quote form">
+      <form id="customQuoteForm" class="quote-form" aria-label="Custom plan quote form">
         <h3>Request Your Quote</h3>
         <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
         <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
@@ -431,10 +402,6 @@
     });
 
     updatePrice();
-  </script>
-</body>
-</html>
-
   </script>
 </body>
 </html>
