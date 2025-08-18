@@ -6,9 +6,7 @@
   <title>AceNodes - Custom Hosting Plan</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* =======================================
-       Global Reset & Base
-    ======================================= */
+    /* Reset & base */
     * {
       margin: 0;
       padding: 0;
@@ -28,18 +26,15 @@
     a {
       color: #1db954;
       text-decoration: none;
-      transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       text-decoration: underline;
-      transform: scale(1.05);
       outline: none;
     }
 
-    /* =======================================
-       Navbar
-    ======================================= */
+    /* Navbar */
     .navbar {
       background: #222;
       display: flex;
@@ -49,7 +44,6 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      min-height: 64px;
     }
 
     .logo {
@@ -61,47 +55,29 @@
       color: #34d058;
       text-decoration: none;
     }
-
     .logo span {
       margin-left: -6px;
       line-height: 1;
+      display: flex;
+      align-items: center;
     }
-
     .logo img {
       height: 48px;
       width: auto;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
-      transition: filter 0.3s ease;
-    }
-
-    .logo:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76,220,100,0.4);
-    }
-
-    .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76,220,100,0.4));
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
     }
 
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
-      flex-wrap: nowrap;
-      align-items: center;
     }
 
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
+      display: block;
       cursor: pointer;
-      color: #1db954;
-      background: transparent;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-      display: flex;
-      align-items: center;
-      font-weight: 500;
     }
 
     .nav-links li a.active,
@@ -109,20 +85,10 @@
     .nav-links li a:focus {
       background: #1db954;
       color: #121212;
-      transform: scale(1.05);
       outline: none;
     }
 
-    /* Disable navbar animations on this page */
-    .custom-plan-page .nav-links > li {
-      opacity: 1 !important;
-      transform: none !important;
-      animation: none !important;
-    }
-
-    /* =======================================
-       Custom Plan Section
-    ======================================= */
+    /* Custom Plan Section */
     .custom-plan-section {
       width: 100%;
       background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
@@ -244,18 +210,15 @@
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s ease;
+      transition: background 0.3s;
       width: 100%;
     }
 
     .quote-form button:hover {
       background: #17a64a;
-      transform: scale(1.03);
     }
 
-    /* =======================================
-       Footer
-    ======================================= */
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -292,15 +255,6 @@
 
     .footer-columns a:hover {
       color: #00ff66;
-    }
-
-    /* =======================================
-       Responsive
-    ======================================= */
-    @media (max-width: 768px) {
-      .custom-container {
-        padding: 0 1rem;
-      }
     }
 
     @media (max-width: 600px) {
@@ -441,11 +395,6 @@
 
       let price = (cpu * 3 + ram * 2 + storage * 0.5 + db*1 + backups*0.5 + ports*0.25) * months;
       priceEstimate.textContent = `$${price.toFixed(2)}`;
-
-      // Update individual slider displays
-      document.getElementById("cpuValue").textContent = cpu;
-      document.getElementById("ramValue").textContent = ram;
-      document.getElementById("storageValue").textContent = storage;
     }
 
     [cpuRange, ramRange, storageRange, dbInput, backupInput, portsInput, durationSelect].forEach(el => {
