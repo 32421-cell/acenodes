@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AceNodes - Custom Hosting Plan</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AceNodes - Custom Plan</title>
   <style>
-    /* Reset & base */
+    /* ==========================
+       RESET & BASE STYLES
+    ========================== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
+    body.custom-plan {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #121212;
       color: #eee;
       line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
+    /* ==========================
+       LINKS
+    ========================== */
     a {
       color: #1db954;
       text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     a:hover,
     a:focus {
       text-decoration: underline;
-      outline: none;
+      transform: scale(1.05);
     }
 
-    /* Navbar */
+    /* ==========================
+       NAVBAR
+    ========================== */
     .navbar {
       background: #222;
       display: flex;
@@ -44,40 +48,52 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      min-height: 64px;
     }
 
+    /* Logo */
     .logo {
       display: flex;
       align-items: center;
-      gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
       color: #34d058;
       text-decoration: none;
     }
+
     .logo span {
       margin-left: -6px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
     }
+
     .logo img {
       height: 48px;
       width: auto;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
     }
 
+    /* Nav Links */
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-links li {
+      opacity: 1; /* Remove navbar animation */
+      transform: none;
+      animation: none;
     }
 
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
-      display: block;
       cursor: pointer;
+      color: #1db954;
+      background: transparent;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
     .nav-links li a.active,
@@ -85,201 +101,231 @@
     .nav-links li a:focus {
       background: #1db954;
       color: #121212;
-      outline: none;
+      transform: scale(1.05);
     }
 
-    /* Custom Plan Section */
-    .custom-plan-section {
-      width: 100%;
-      background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
-      color: #eee;
-      padding: 80px 20px;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      flex: 1;
-    }
-
-    .custom-container {
+    /* ==========================
+       MAIN CONTENT
+    ========================== */
+    main {
       max-width: 900px;
-      margin: 0 auto;
+      margin: 3rem auto 4rem auto;
+      padding: 0 1rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
     }
 
-    .custom-container h2 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #1db954;
+    .plans-overview {
+      padding: 3rem 2rem;
+      background: #1e1e1e;
     }
 
-    .custom-container p {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-bottom: 50px;
-    }
-
-    .selector-panel {
-      background: #191919;
-      padding: 30px;
-      border-radius: 12px;
-      margin-bottom: 40px;
-      box-shadow: 0 0 10px rgba(0,219,84,0.5);
-      text-align: left;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .slider-box,
-    .dropdown-box,
-    .number-box {
-      margin-bottom: 25px;
-    }
-
-    .slider-box label,
-    .dropdown-box label,
-    .number-box label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #1db954;
-    }
-
-    .slider-box input[type="range"],
-    .number-box input[type="number"],
-    .dropdown-box select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      background: #2b2b2b;
-      color: #eee;
-      font-size: 1rem;
-    }
-
-    .range-display {
-      margin-top: 5px;
-      text-align: right;
-      color: #1db954;
-      font-weight: bold;
-    }
-
-    .price-box {
-      font-size: 1.2rem;
-      color: #1db954;
-      margin-top: 20px;
+    .plans-overview h2 {
       text-align: center;
-      font-weight: bold;
-    }
-
-    .quote-form {
-      background: #121212;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,219,84,0.4);
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .quote-form h3 {
-      margin-bottom: 20px;
-      font-size: 1.7rem;
+      margin-bottom: 2rem;
+      font-size: 2rem;
       color: #1db954;
-      text-align: center;
     }
 
-    .quote-form input,
-    .quote-form textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 15px;
-      background: #2b2b2b;
-      color: #eee;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      resize: vertical;
-    }
-
-    .quote-form button {
-      background: #1db954;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-      width: 100%;
-    }
-
-    .quote-form button:hover {
-      background: #17a64a;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #1a1a1a;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: auto;
-      box-shadow: inset 0 1px 0 #333;
-    }
-
-    .footer-columns {
+    .plans-container {
       display: flex;
       justify-content: center;
-      gap: 4rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .plan-card {
+      background: #292929;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 300px;
+      flex-grow: 1;
+      box-shadow: 0 0 15px rgba(0, 219, 84, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .plan-card:nth-child(1) { animation-delay: 0.2s; }
+    .plan-card:nth-child(2) { animation-delay: 0.4s; }
+    .plan-card:nth-child(3) { animation-delay: 0.6s; }
+
+    .plan-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #1db954;
+    }
+
+    .plan-card p {
+      font-size: 1.4rem;
+      font-weight: bold;
       margin-bottom: 1rem;
     }
 
-    .footer-columns div {
+    .plan-card ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .plan-card ul li {
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-card ul li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: #1db954;
+    }
+
+    /* Buttons */
+    .btn {
+      background: #1db954;
+      color: #121212;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      background: #17a64a;
+      transform: scale(1.05);
+    }
+
+    /* ==========================
+       FEATURES SECTION
+    ========================== */
+    .features {
+      padding: 3rem 2rem;
+      background: #121212;
       text-align: center;
     }
 
-    .footer-columns h4 {
-      color: #00ff66;
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
+    .features h2 {
+      color: #1db954;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
 
-    .footer-columns a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    .features ul {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .features ul li {
+      margin: 0.75rem 0;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .features ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #1db954;
+      font-weight: bold;
+    }
+
+    /* ==========================
+       FOOTER
+    ========================== */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      background: #1a1a1a;
+      color: #ccc;
       font-size: 0.95rem;
     }
 
-    .footer-columns a:hover {
-      color: #00ff66;
+    .footer-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-column {
+      min-width: 150px;
+      text-align: left;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #1db954;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-column ul li a {
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .footer-column ul li a:hover {
+      color: #00ffcc;
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      color: #777;
+      font-size: 0.85rem;
+      background: transparent;
+      padding-top: 1rem;
+    }
+
+    /* ==========================
+       ANIMATIONS
+    ========================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 768px) {
+      .plans-container { flex-direction: column; align-items: center; }
     }
 
     @media (max-width: 600px) {
-      .custom-container h2 {
-        font-size: 2rem;
-      }
-
-      .quote-form,
-      .selector-panel {
-        padding: 20px;
-      }
-
-      .footer-columns {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
+      .custom-container h2 { font-size: 2rem; }
+      .plans-container { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
-<body class="custom-plan-page">
+<body class="custom-plan">
 
   <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <a href="index.html" class="logo" aria-label="AceNodes Homepage">
-      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo">
       <span>AceNodes</span>
     </a>
     <ul class="nav-links">
@@ -293,115 +339,74 @@
     </ul>
   </nav>
 
-  <!-- Custom Plan Section -->
-  <section id="custom-plan" class="custom-plan-section" tabindex="-1">
-    <div class="custom-container">
-      <h2>Custom Hosting Plan</h2>
-      <p>Design your own Minecraft hosting plan tailored to your needs.</p>
-
-      <div class="selector-panel" aria-label="Customize your hosting plan options">
-        <!-- Sliders -->
-        <div class="slider-box">
-          <label for="cpuRange">CPU vCores</label>
-          <input type="range" min="1" max="32" step="1" value="1" id="cpuRange" />
-          <div class="range-display"><span id="cpuValue">1</span> vCore(s)</div>
+  <!-- Main -->
+  <main>
+    <section class="plans-overview">
+      <h2>Custom Plans</h2>
+      <div class="plans-container">
+        <div class="plan-card">
+          <h3>Starter Plan</h3>
+          <p>$5 / month</p>
+          <ul>
+            <li>2GB RAM</li>
+            <li>10 Slots</li>
+            <li>Basic Support</li>
+          </ul>
+          <button class="btn">Select</button>
         </div>
-        <div class="slider-box">
-          <label for="ramRange">Memory (GB)</label>
-          <input type="range" min="1" max="64" step="1" value="4" id="ramRange" />
-          <div class="range-display"><span id="ramValue">4</span> GB</div>
+        <div class="plan-card">
+          <h3>Advanced Plan</h3>
+          <p>$12 / month</p>
+          <ul>
+            <li>6GB RAM</li>
+            <li>50 Slots</li>
+            <li>Priority Support</li>
+          </ul>
+          <button class="btn">Select</button>
         </div>
-        <div class="slider-box">
-          <label for="storageRange">Storage (GB)</label>
-          <input type="range" min="1" max="200" step="1" value="20" id="storageRange" />
-          <div class="range-display"><span id="storageValue">20</span> GB</div>
-        </div>
-
-        <!-- Number Inputs -->
-        <div class="number-box">
-          <label for="dbInput">Extra Databases</label>
-          <input type="number" min="0" step="1" value="0" id="dbInput" />
-        </div>
-        <div class="number-box">
-          <label for="backupInput">Extra Backups</label>
-          <input type="number" min="0" step="1" value="0" id="backupInput" />
-        </div>
-        <div class="number-box">
-          <label for="portsInput">Extra Ports</label>
-          <input type="number" min="0" step="1" value="0" id="portsInput" />
-        </div>
-
-        <!-- Duration -->
-        <div class="dropdown-box">
-          <label for="durationSelect">Duration</label>
-          <select id="durationSelect">
-            <option value="1">1 Month</option>
-            <option value="3">3 Months</option>
-            <option value="6">6 Months</option>
-            <option value="12">12 Months</option>
-          </select>
-        </div>
-
-        <div class="price-box">
-          <p><strong>Estimated Price:</strong> <span id="priceEstimate">$12.00</span></p>
+        <div class="plan-card">
+          <h3>Ultimate Plan</h3>
+          <p>$25 / month</p>
+          <ul>
+            <li>12GB RAM</li>
+            <li>150 Slots</li>
+            <li>24/7 Support</li>
+          </ul>
+          <button class="btn">Select</button>
         </div>
       </div>
+    </section>
 
-      <form id="customQuoteForm" class="quote-form" aria-label="Custom plan quote form">
-        <h3>Request Your Quote</h3>
-        <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
-        <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
-        <textarea name="requirements" placeholder="Tell us your requirements..." rows="4" required aria-required="true"></textarea>
-        <button type="submit">Request Quote</button>
-      </form>
-    </div>
-  </section>
+    <section class="features">
+      <h2>Why Choose AceNodes?</h2>
+      <ul>
+        <li>Instant setup</li>
+        <li>High-performance servers</li>
+        <li>24/7 customer support</li>
+        <li>Easy-to-use control panel</li>
+      </ul>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-columns">
-      <div>
+    <div class="footer-container">
+      <div class="footer-column">
         <h4>Support</h4>
-        <a href="support-discord.html">Support Discord</a>
+        <ul>
+          <li><a href="support-discord.html">Support Discord</a></li>
+        </ul>
       </div>
-      <div>
+      <div class="footer-column">
         <h4>Legal</h4>
-        <a href="terms.html">Terms of Service</a><br />
-        <a href="privacy.html">Privacy Policy</a>
+        <ul>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
       </div>
     </div>
-    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+    <div class="footer-bottom">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</div>
   </footer>
 
-  <!-- JS -->
-  <script>
-    const cpuRange = document.getElementById("cpuRange");
-    const ramRange = document.getElementById("ramRange");
-    const storageRange = document.getElementById("storageRange");
-    const dbInput = document.getElementById("dbInput");
-    const backupInput = document.getElementById("backupInput");
-    const portsInput = document.getElementById("portsInput");
-    const durationSelect = document.getElementById("durationSelect");
-    const priceEstimate = document.getElementById("priceEstimate");
-
-    function updatePrice() {
-      let cpu = parseInt(cpuRange.value);
-      let ram = parseInt(ramRange.value);
-      let storage = parseInt(storageRange.value);
-      let db = parseInt(dbInput.value);
-      let backups = parseInt(backupInput.value);
-      let ports = parseInt(portsInput.value);
-      let months = parseInt(durationSelect.value);
-
-      let price = (cpu * 3 + ram * 2 + storage * 0.5 + db*1 + backups*0.5 + ports*0.25) * months;
-      priceEstimate.textContent = `$${price.toFixed(2)}`;
-    }
-
-    [cpuRange, ramRange, storageRange, dbInput, backupInput, portsInput, durationSelect].forEach(el => {
-      el.addEventListener("input", updatePrice);
-    });
-
-    updatePrice();
-  </script>
 </body>
 </html>
