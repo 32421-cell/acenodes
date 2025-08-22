@@ -1,4 +1,6 @@
-/* Reset & base */
+/* ==========================
+   RESET & BASE STYLES
+========================== */
 * {
   margin: 0;
   padding: 0;
@@ -12,11 +14,13 @@ body {
   line-height: 1.6;
 }
 
-/* Links */
+/* ==========================
+   LINKS
+========================== */
 a {
   color: #1db954;
   text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 a:hover,
@@ -26,9 +30,11 @@ a:focus {
   outline: none;
 }
 
-/* Navbar */
+/* ==========================
+   NAVBAR
+========================== */
 .navbar {
-  background: #222; /* unified dark gray */
+  background: #222;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,17 +45,15 @@ a:focus {
   min-height: 64px;
 }
 
-/* Logo Styling */
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
-  gap: 0;
   font-weight: 700;
   font-size: 1.6rem;
   color: #34d058;
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logo span {
@@ -73,18 +77,16 @@ a:focus {
   filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
 }
 
-/* Nav links container */
+/* Nav Links */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1rem;
   margin: 0;
   padding: 0;
-  flex-wrap: nowrap;
   align-items: center;
 }
 
-/* Nav links */
 .nav-links > li {
   opacity: 0;
   transform: translateY(-10px);
@@ -99,21 +101,18 @@ a:focus {
 .nav-links > li:nth-child(6) { animation-delay: 0.85s; }
 .nav-links > li:nth-child(7) { animation-delay: 1s; }
 
-/* Nav links styling */
 .nav-links li a {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   color: #1db954;
   background: transparent;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-/* Active, hover, and focus states */
 .nav-links li a.active,
 .nav-links li a:hover,
 .nav-links li a:focus {
@@ -123,7 +122,9 @@ a:focus {
   outline: none;
 }
 
-/* Hero Section */
+/* ==========================
+   HERO SECTION
+========================== */
 .hero {
   background: url('https://i.imgur.com/J0kYqAv.jpg') no-repeat center center/cover;
   height: 60vh;
@@ -147,7 +148,9 @@ a:focus {
   text-shadow: 0 0 5px rgba(0,0,0,0.6);
 }
 
-/* Buttons */
+/* ==========================
+   BUTTONS
+========================== */
 .btn {
   background: #1db954;
   color: #121212;
@@ -182,13 +185,12 @@ a:focus {
   outline: none;
 }
 
-/* Plans Overview Section */
+/* ==========================
+   PLANS OVERVIEW
+========================== */
 .plans-overview {
   padding: 3rem 2rem;
   background: #1e1e1e;
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-  animation-delay: 0.1s;
 }
 
 .plans-overview h2 {
@@ -196,9 +198,6 @@ a:focus {
   margin-bottom: 2rem;
   font-size: 2rem;
   color: #1db954;
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-  animation-delay: 0.2s;
 }
 
 .plans-container {
@@ -259,23 +258,19 @@ a:focus {
   color: #1db954;
 }
 
-/* Features Section */
+/* ==========================
+   FEATURES
+========================== */
 .features {
   padding: 3rem 2rem;
   background: #121212;
   text-align: center;
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-  animation-delay: 0.1s;
 }
 
 .features h2 {
   color: #1db954;
   font-size: 2rem;
   margin-bottom: 1rem;
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-  animation-delay: 0.2s;
 }
 
 .features ul {
@@ -300,7 +295,9 @@ a:focus {
   font-weight: bold;
 }
 
-/* Footer */
+/* ==========================
+   FOOTER
+========================== */
 footer {
   text-align: center;
   padding: 3rem 2rem 2rem;
@@ -308,9 +305,6 @@ footer {
   color: #ccc;
   margin-top: 4rem;
   font-size: 0.95rem;
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-  animation-delay: 0.3s;
 }
 
 .footer-container {
@@ -358,12 +352,13 @@ footer {
   text-align: center;
   color: #777;
   font-size: 0.85rem;
-  border-top: none;
   background: transparent;
   padding-top: 1rem;
 }
 
-/* Simple Fade-In Animation */
+/* ==========================
+   ANIMATIONS
+========================== */
 .fade-in {
   opacity: 0;
   transform: translateY(10px);
@@ -374,7 +369,6 @@ footer {
 .delay-2 { animation-delay: 0.6s; }
 .delay-3 { animation-delay: 0.9s; }
 
-/* Keyframes for fadeInUp */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -386,7 +380,9 @@ footer {
   }
 }
 
-/* Responsive */
+/* ==========================
+   RESPONSIVE
+========================== */
 @media (max-width: 768px) {
   .plans-container {
     flex-direction: column;
@@ -395,26 +391,16 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .custom-form {
-    padding: 1.5rem;
-  }
-
-  .custom-container h2 {
-    font-size: 2rem;
-  }
-
-  .plans-container {
-    flex-direction: column;
-    align-items: center;
-  }
+  .custom-form { padding: 1.5rem; }
+  .custom-container h2 { font-size: 2rem; }
+  .plans-container { flex-direction: column; align-items: center; }
 }
 
 /* ==========================
    HOMEPAGE NAVBAR FIX
-   Disable animations for homepage nav
-=========================== */
+========================== */
 .home .nav-links > li {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
