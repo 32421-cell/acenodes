@@ -410,3 +410,22 @@
 
 </body>
 </html>
+
+/* ==========================
+   DISABLE NAVBAR ANIMATIONS GLOBALLY
+========================== */
+.nav-links > li {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.nav-links li a {
+  transition: none !important; /* disables hover scale/transform if you want */
+}
+
+.nav-links li a:hover,
+.nav-links li a:focus,
+.nav-links li a.active {
+  transform: none !important; /* ensures no scale effect */
+}
