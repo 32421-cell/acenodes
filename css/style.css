@@ -397,10 +397,18 @@ footer {
 }
 
 /* ==========================
-   HOMEPAGE NAVBAR FIX
+   NAVBAR FIXES PER PAGE
 ========================== */
+/* Homepage - keep navbar animation */
 .home .nav-links > li {
   opacity: 1;
   transform: none;
   animation: none;
+}
+
+/* Server Status - disable navbar animation */
+.server-status .nav-links > li {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
 }
