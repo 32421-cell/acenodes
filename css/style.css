@@ -1,414 +1,412 @@
-/* ==========================
-   RESET & BASE STYLES
-========================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AceNodes - Custom Plan</title>
+  <style>
+    /* ==========================
+       RESET & BASE STYLES
+    ========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #121212;
-  color: #eee;
-  line-height: 1.6;
-}
+    body.custom-plan {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+    }
 
-/* ==========================
-   LINKS
-========================== */
-a {
-  color: #1db954;
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
+    /* ==========================
+       LINKS
+    ========================== */
+    a {
+      color: #1db954;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
 
-a:hover,
-a:focus {
-  text-decoration: underline;
-  transform: scale(1.05);
-  outline: none;
-}
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      transform: scale(1.05);
+    }
 
-/* ==========================
-   NAVBAR
-========================== */
-.navbar {
-  background: #222;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  min-height: 64px;
-}
+    /* ==========================
+       NAVBAR
+    ========================== */
+    .navbar {
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 64px;
+    }
 
-/* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: #34d058;
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #34d058;
+      text-decoration: none;
+    }
 
-.logo span {
-  margin-left: -6px;
-  line-height: 1;
-}
+    .logo span {
+      margin-left: -6px;
+    }
 
-.logo img {
-  height: 48px;
-  width: auto;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
-  transition: filter 0.3s ease;
-}
+    .logo img {
+      height: 48px;
+      width: auto;
+    }
 
-.logo:hover {
-  color: #2ccf4f;
-  text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
-}
+    /* Nav Links */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
 
-.logo:hover img {
-  filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
-}
+    .nav-links li {
+      opacity: 1; /* Remove navbar animation */
+      transform: none;
+      animation: none;
+    }
 
-/* Nav Links */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #1db954;
+      background: transparent;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
 
-.nav-links > li {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: fadeInUp 0.6s ease forwards;
-}
+    .nav-links li a.active,
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background: #1db954;
+      color: #121212;
+      transform: scale(1.05);
+    }
 
-.nav-links > li:nth-child(1) { animation-delay: 0.1s; }
-.nav-links > li:nth-child(2) { animation-delay: 0.25s; }
-.nav-links > li:nth-child(3) { animation-delay: 0.4s; }
-.nav-links > li:nth-child(4) { animation-delay: 0.55s; }
-.nav-links > li:nth-child(5) { animation-delay: 0.7s; }
-.nav-links > li:nth-child(6) { animation-delay: 0.85s; }
-.nav-links > li:nth-child(7) { animation-delay: 1s; }
+    /* ==========================
+       MAIN CONTENT
+    ========================== */
+    main {
+      max-width: 900px;
+      margin: 3rem auto 4rem auto;
+      padding: 0 1rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
 
-.nav-links li a {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #1db954;
-  background: transparent;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
+    .plans-overview {
+      padding: 3rem 2rem;
+      background: #1e1e1e;
+    }
 
-.nav-links li a.active,
-.nav-links li a:hover,
-.nav-links li a:focus {
-  background: #1db954;
-  color: #121212;
-  transform: scale(1.05);
-  outline: none;
-}
+    .plans-overview h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #1db954;
+    }
 
-/* ==========================
-   HERO SECTION
-========================== */
-.hero {
-  background: url('https://i.imgur.com/J0kYqAv.jpg') no-repeat center center/cover;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 2rem;
-  color: #fff;
-}
+    .plans-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
 
-.hero h1 {
-  font-size: 3rem;
-  text-shadow: 0 0 10px rgba(0,0,0,0.7);
-}
+    .plan-card {
+      background: #292929;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 300px;
+      flex-grow: 1;
+      box-shadow: 0 0 15px rgba(0, 219, 84, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
 
-.hero p {
-  font-size: 1.25rem;
-  margin: 1rem 0 2rem;
-  text-shadow: 0 0 5px rgba(0,0,0,0.6);
-}
+    .plan-card:nth-child(1) { animation-delay: 0.2s; }
+    .plan-card:nth-child(2) { animation-delay: 0.4s; }
+    .plan-card:nth-child(3) { animation-delay: 0.6s; }
 
-/* ==========================
-   BUTTONS
-========================== */
-.btn {
-  background: #1db954;
-  color: #121212;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
+    .plan-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #1db954;
+    }
 
-.btn:hover,
-.btn:focus {
-  background: #17a64a;
-  transform: scale(1.05);
-  outline: none;
-}
+    .plan-card p {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
 
-.btn-secondary {
-  background: #444;
-  color: #eee;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
+    .plan-card ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
 
-.btn-secondary:hover,
-.btn-secondary:focus {
-  background: #666;
-  transform: scale(1.03);
-  outline: none;
-}
+    .plan-card ul li {
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
 
-/* ==========================
-   PLANS OVERVIEW
-========================== */
-.plans-overview {
-  padding: 3rem 2rem;
-  background: #1e1e1e;
-}
+    .plan-card ul li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: #1db954;
+    }
 
-.plans-overview h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  color: #1db954;
-}
+    /* Buttons */
+    .btn {
+      background: #1db954;
+      color: #121212;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
 
-.plans-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
+    .btn:hover,
+    .btn:focus {
+      background: #17a64a;
+      transform: scale(1.05);
+    }
 
-.plan-card {
-  background: #292929;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 300px;
-  flex-grow: 1;
-  box-shadow: 0 0 15px rgba(0, 219, 84, 0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    /* ==========================
+       FEATURES SECTION
+    ========================== */
+    .features {
+      padding: 3rem 2rem;
+      background: #121212;
+      text-align: center;
+    }
 
-.plan-card:hover,
-.plan-card:focus-within {
-  transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
-  outline: none;
-}
+    .features h2 {
+      color: #1db954;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
 
-.plan-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #1db954;
-}
+    .features ul {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0;
+    }
 
-.plan-card p {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
+    .features ul li {
+      margin: 0.75rem 0;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
 
-.plan-card ul {
-  list-style: none;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-}
+    .features ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #1db954;
+      font-weight: bold;
+    }
 
-.plan-card ul li {
-  padding-left: 1rem;
-  position: relative;
-  margin-bottom: 0.5rem;
-}
+    /* ==========================
+       FOOTER
+    ========================== */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      background: #1a1a1a;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
 
-.plan-card ul li::before {
-  content: '✔';
-  position: absolute;
-  left: 0;
-  color: #1db954;
-}
+    .footer-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5rem;
+      margin-bottom: 2rem;
+    }
 
-/* ==========================
-   FEATURES
-========================== */
-.features {
-  padding: 3rem 2rem;
-  background: #121212;
-  text-align: center;
-}
+    .footer-column {
+      min-width: 150px;
+      text-align: left;
+    }
 
-.features h2 {
-  color: #1db954;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
+    .footer-column h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #1db954;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
 
-.features ul {
-  list-style: none;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0;
-}
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
 
-.features ul li {
-  margin: 0.75rem 0;
-  font-size: 1.1rem;
-  position: relative;
-  padding-left: 1.5rem;
-}
+    .footer-column ul li {
+      margin-bottom: 0.75rem;
+    }
 
-.features ul li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #1db954;
-  font-weight: bold;
-}
+    .footer-column ul li a {
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
 
-/* ==========================
-   FOOTER
-========================== */
-footer {
-  text-align: center;
-  padding: 3rem 2rem 2rem;
-  background: #1a1a1a;
-  color: #ccc;
-  margin-top: 4rem;
-  font-size: 0.95rem;
-}
+    .footer-column ul li a:hover {
+      color: #00ffcc;
+      text-decoration: underline;
+    }
 
-.footer-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5rem;
-  margin-bottom: 2rem;
-}
+    .footer-bottom {
+      text-align: center;
+      color: #777;
+      font-size: 0.85rem;
+      background: transparent;
+      padding-top: 1rem;
+    }
 
-.footer-column {
-  min-width: 150px;
-  text-align: left;
-}
+    /* ==========================
+       ANIMATIONS
+    ========================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.footer-column h4 {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  color: #1db954;
-  border-bottom: 1px solid #333;
-  padding-bottom: 0.5rem;
-}
+    /* ==========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 768px) {
+      .plans-container { flex-direction: column; align-items: center; }
+    }
 
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-}
+    @media (max-width: 600px) {
+      .custom-container h2 { font-size: 2rem; }
+      .plans-container { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body class="custom-plan">
 
-.footer-column ul li {
-  margin-bottom: 0.75rem;
-}
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo">
+      <span>AceNodes</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="custom-plan.html" class="active">Custom Plan</a></li>
+      <li><a href="server-status.html">Server Status</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-.footer-column ul li a {
-  color: #34d058;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
+  <!-- Main -->
+  <main>
+    <section class="plans-overview">
+      <h2>Custom Plans</h2>
+      <div class="plans-container">
+        <div class="plan-card">
+          <h3>Starter Plan</h3>
+          <p>$5 / month</p>
+          <ul>
+            <li>2GB RAM</li>
+            <li>10 Slots</li>
+            <li>Basic Support</li>
+          </ul>
+          <button class="btn">Select</button>
+        </div>
+        <div class="plan-card">
+          <h3>Advanced Plan</h3>
+          <p>$12 / month</p>
+          <ul>
+            <li>6GB RAM</li>
+            <li>50 Slots</li>
+            <li>Priority Support</li>
+          </ul>
+          <button class="btn">Select</button>
+        </div>
+        <div class="plan-card">
+          <h3>Ultimate Plan</h3>
+          <p>$25 / month</p>
+          <ul>
+            <li>12GB RAM</li>
+            <li>150 Slots</li>
+            <li>24/7 Support</li>
+          </ul>
+          <button class="btn">Select</button>
+        </div>
+      </div>
+    </section>
 
-.footer-column ul li a:hover {
-  color: #00ffcc;
-  text-decoration: underline;
-}
+    <section class="features">
+      <h2>Why Choose AceNodes?</h2>
+      <ul>
+        <li>Instant setup</li>
+        <li>High-performance servers</li>
+        <li>24/7 customer support</li>
+        <li>Easy-to-use control panel</li>
+      </ul>
+    </section>
+  </main>
 
-.footer-bottom {
-  text-align: center;
-  color: #777;
-  font-size: 0.85rem;
-  background: transparent;
-  padding-top: 1rem;
-}
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="support-discord.html">Support Discord</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</div>
+  </footer>
 
-/* ==========================
-   ANIMATIONS
-========================== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.delay-1 { animation-delay: 0.3s; }
-.delay-2 { animation-delay: 0.6s; }
-.delay-3 { animation-delay: 0.9s; }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ==========================
-   RESPONSIVE
-========================== */
-@media (max-width: 768px) {
-  .plans-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 600px) {
-  .custom-form { padding: 1.5rem; }
-  .custom-container h2 { font-size: 2rem; }
-  .plans-container { flex-direction: column; align-items: center; }
-}
-
-/* ==========================
-   NAVBAR FIXES PER PAGE
-========================== */
-/* Homepage - keep navbar animation */
-.home .nav-links > li {
-  opacity: 1;
-  transform: none;
-  animation: none;
-}
-
-/* Server Status - disable navbar animation */
-.server-status .nav-links > li {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-}
+</body>
+</html>
