@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AceNodes - Server Status</title>
   <style>
-    /* RESET & BASE */
+    /* ==========================
+       RESET & BASE STYLES
+    ========================== */
     * {
       margin: 0;
       padding: 0;
@@ -25,17 +27,20 @@
     a {
       color: #1db954;
       text-decoration: none;
-      transition: transform 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
-    a:hover, a:focus {
+    a:hover,
+    a:focus {
       text-decoration: underline;
       transform: scale(1.05);
       outline: none;
     }
 
-    /* NAVBAR (copied from Plans page) */
-    nav.navbar {
+    /* ==========================
+       NAVBAR
+    ========================== */
+    .navbar {
       background: #222;
       display: flex;
       justify-content: space-between;
@@ -44,9 +49,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      min-height: 64px;
     }
 
-    nav .logo {
+    .logo {
       display: flex;
       align-items: center;
       font-weight: 700;
@@ -56,54 +62,78 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    nav .logo span {
+    .logo span {
       margin-left: -6px;
+      line-height: 1;
     }
 
-    nav .logo img {
+    .logo img {
       height: 48px;
       width: auto;
-      margin-right: 8px;
       filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
       transition: filter 0.3s ease;
     }
 
-    nav .logo:hover {
+    .logo:hover {
       color: #2ccf4f;
       text-shadow: 0 0 4px rgba(76,220,100,0.4);
     }
 
-    nav .logo:hover img {
+    .logo:hover img {
       filter: drop-shadow(0 0 4px rgba(76,220,100,0.4));
     }
 
-    ul.nav-links {
+    .nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
+      margin: 0;
+      padding: 0;
+      align-items: center;
     }
 
-    ul.nav-links li a {
+    .nav-links > li {
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .nav-links > li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links > li:nth-child(2) { animation-delay: 0.25s; }
+    .nav-links > li:nth-child(3) { animation-delay: 0.4s; }
+    .nav-links > li:nth-child(4) { animation-delay: 0.55s; }
+    .nav-links > li:nth-child(5) { animation-delay: 0.7s; }
+    .nav-links > li:nth-child(6) { animation-delay: 0.85s; }
+    .nav-links > li:nth-child(7) { animation-delay: 1s; }
+
+    .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
-      display: block;
-      transition: background 0.3s ease, transform 0.3s ease;
       cursor: pointer;
+      color: #1db954;
+      background: transparent;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
-    ul.nav-links li a.active,
-    ul.nav-links li a:hover,
-    ul.nav-links li a:focus {
+    .nav-links li a.active,
+    .nav-links li a:hover,
+    .nav-links li a:focus {
       background: #1db954;
       color: #121212;
       transform: scale(1.05);
+      outline: none;
     }
 
-    /* MAIN */
+    /* ==========================
+       MAIN CONTENT
+    ========================== */
     main {
       flex-grow: 1;
       max-width: 1000px;
-      margin: 3rem auto 4rem auto;
+      margin: 5rem auto 6rem auto; /* taller page spacing */
       padding: 0 1rem;
       width: 100%;
       opacity: 0;
@@ -125,25 +155,25 @@
       font-size: 1.1rem;
     }
 
-    /* SERVER CARDS */
     .status-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
     }
 
     .server-card {
       background: #1e1e1e;
       border-radius: 12px;
-      padding: 1.5rem 2rem;
+      padding: 2rem;
       box-shadow: 0 0 15px rgba(29,185,84,0.4);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       color: #eee;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
       opacity: 0;
       animation: fadeInUp 0.6s ease forwards;
+      min-height: 220px;
     }
 
     .server-card:nth-child(1) { animation-delay: 0.2s; }
@@ -189,49 +219,79 @@
       font-style: italic;
     }
 
-    /* FOOTER */
+    /* ==========================
+       FOOTER
+    ========================== */
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 2rem 2rem;
       background: #1a1a1a;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: auto;
-      box-shadow: inset 0 1px 0 #333;
-    }
-
-    .footer-columns {
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-columns div { text-align: center; }
-    .footer-columns h4 {
-      color: #00ff66;
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-    }
-
-    .footer-columns a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s ease;
+      color: #ccc;
+      margin-top: 4rem;
       font-size: 0.95rem;
     }
 
-    .footer-columns a:hover { color: #00ff66; }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .server-card { padding: 1rem 1.25rem; }
-      .footer-columns { flex-direction: column; gap: 1.5rem; }
+    .footer-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5rem;
+      margin-bottom: 2rem;
     }
 
+    .footer-column {
+      min-width: 150px;
+      text-align: left;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #1db954;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-column ul li a {
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .footer-column ul li a:hover {
+      color: #00ffcc;
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      color: #777;
+      font-size: 0.85rem;
+      background: transparent;
+      padding-top: 1rem;
+    }
+
+    /* ==========================
+       ANIMATIONS
+    ========================== */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      main { margin: 4rem 1rem 5rem 1rem; }
+      .server-card { padding: 1.5rem; }
+      .nav-links { flex-direction: column; gap: 0.5rem; }
     }
   </style>
 </head>
@@ -240,7 +300,7 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="logo">
-      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo">
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
       <span>AceNodes</span>
     </a>
     <ul class="nav-links">
@@ -254,7 +314,7 @@
     </ul>
   </nav>
 
-  <!-- MAIN -->
+  <!-- MAIN CONTENT -->
   <main>
     <h1>Server Status</h1>
     <p class="subtitle">Check the real-time status of your Minecraft servers hosted with AceNodes.</p>
@@ -262,55 +322,68 @@
     <div class="status-grid">
       <article class="server-card">
         <h2 class="server-name">Survival Server</h2>
-        <div class="status online">● Online</div>
+        <div class="status online"><span>● Online</span></div>
         <div class="players">Players online: 18 / 50</div>
         <div class="last-updated">Last checked: 30 seconds ago</div>
       </article>
 
       <article class="server-card">
         <h2 class="server-name">Creative Server</h2>
-        <div class="status online">● Online</div>
+        <div class="status online"><span>● Online</span></div>
         <div class="players">Players online: 5 / 30</div>
         <div class="last-updated">Last checked: 25 seconds ago</div>
       </article>
 
       <article class="server-card">
         <h2 class="server-name">Modded Server</h2>
-        <div class="status offline">● Offline</div>
+        <div class="status offline"><span>● Offline</span></div>
         <div class="players">Players online: 0 / 40</div>
         <div class="last-updated">Last checked: 1 minute ago</div>
       </article>
 
+      <!-- Extra placeholder servers to increase height -->
       <article class="server-card">
-        <h2 class="server-name">Minigames Server</h2>
-        <div class="status online">● Online</div>
-        <div class="players">Players online: 12 / 50</div>
-        <div class="last-updated">Last checked: 40 seconds ago</div>
+        <h2 class="server-name">Test Server 1</h2>
+        <div class="status online"><span>● Online</span></div>
+        <div class="players">Players online: 0 / 20</div>
+        <div class="last-updated">Last checked: 10 seconds ago</div>
       </article>
 
       <article class="server-card">
-        <h2 class="server-name">Skyblock Server</h2>
-        <div class="status offline">● Offline</div>
-        <div class="players">Players online: 0 / 35</div>
-        <div class="last-updated">Last checked: 2 minutes ago</div>
+        <h2 class="server-name">Test Server 2</h2>
+        <div class="status offline"><span>● Offline</span></div>
+        <div class="players">Players online: 0 / 15</div>
+        <div class="last-updated">Last checked: 1 minute ago</div>
       </article>
     </div>
   </main>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-columns">
-      <div>
+    <div class="footer-container">
+      <div class="footer-column">
         <h4>Support</h4>
-        <a href="support-discord.html">Support Discord</a>
+        <ul>
+          <li><a href="support-discord.html">Support Discord</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
       </div>
-      <div>
+      <div class="footer-column">
         <h4>Legal</h4>
-        <a href="terms.html">Terms of Service</a><br>
-        <a href="privacy.html">Privacy Policy</a>
+        <ul>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="plans.html">Plans</a></li>
+        </ul>
       </div>
     </div>
-    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+    <div class="footer-bottom">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</div>
   </footer>
 
 </body>
