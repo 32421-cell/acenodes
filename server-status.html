@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AceNodes - Server Status</title>
   <style>
-    /* Reset & Base */
+    /* RESET & BASE */
     * {
       margin: 0;
       padding: 0;
@@ -34,8 +34,8 @@
       outline: none;
     }
 
-    /* Navbar */
-    .navbar {
+    /* NAVBAR (copied from Plans page) */
+    nav.navbar {
       background: #222;
       display: flex;
       justify-content: space-between;
@@ -46,10 +46,9 @@
       z-index: 100;
     }
 
-    .logo {
+    nav .logo {
       display: flex;
       align-items: center;
-      gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
       color: #34d058;
@@ -57,33 +56,34 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    .logo span {
+    nav .logo span {
       margin-left: -6px;
     }
 
-    .logo:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
-    }
-
-    .logo img {
+    nav .logo img {
       height: 48px;
       width: auto;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      margin-right: 8px;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
       transition: filter 0.3s ease;
     }
 
-    .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
+    nav .logo:hover {
+      color: #2ccf4f;
+      text-shadow: 0 0 4px rgba(76,220,100,0.4);
     }
 
-    .nav-links {
+    nav .logo:hover img {
+      filter: drop-shadow(0 0 4px rgba(76,220,100,0.4));
+    }
+
+    ul.nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
     }
 
-    .nav-links li a {
+    ul.nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
@@ -91,15 +91,15 @@
       cursor: pointer;
     }
 
-    .nav-links li a.active,
-    .nav-links li a:hover,
-    .nav-links li a:focus {
+    ul.nav-links li a.active,
+    ul.nav-links li a:hover,
+    ul.nav-links li a:focus {
       background: #1db954;
       color: #121212;
       transform: scale(1.05);
     }
 
-    /* Main Container */
+    /* MAIN */
     main {
       flex-grow: 1;
       max-width: 1000px;
@@ -125,7 +125,7 @@
       font-size: 1.1rem;
     }
 
-    /* Server Cards Grid */
+    /* SERVER CARDS */
     .status-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -136,7 +136,7 @@
       background: #1e1e1e;
       border-radius: 12px;
       padding: 1.5rem 2rem;
-      box-shadow: 0 0 15px rgba(29, 185, 84, 0.4);
+      box-shadow: 0 0 15px rgba(29,185,84,0.4);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -154,7 +154,7 @@
 
     .server-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
+      box-shadow: 0 0 25px rgba(29,185,84,0.7);
     }
 
     .server-name {
@@ -189,7 +189,7 @@
       font-style: italic;
     }
 
-    /* Footer */
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -207,10 +207,7 @@
       margin-bottom: 1rem;
     }
 
-    .footer-columns div {
-      text-align: center;
-    }
-
+    .footer-columns div { text-align: center; }
     .footer-columns h4 {
       color: #00ff66;
       margin-bottom: 0.5rem;
@@ -224,17 +221,12 @@
       font-size: 0.95rem;
     }
 
-    .footer-columns a:hover {
-      color: #00ff66;
-    }
+    .footer-columns a:hover { color: #00ff66; }
 
     @media (max-width: 600px) {
       h1 { font-size: 2rem; }
       .server-card { padding: 1rem 1.25rem; }
-      .footer-columns {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
+      .footer-columns { flex-direction: column; gap: 1.5rem; }
     }
 
     @keyframes fadeInUp {
@@ -245,10 +237,10 @@
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="logo">
-      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo">
       <span>AceNodes</span>
     </a>
     <ul class="nav-links">
@@ -262,7 +254,7 @@
     </ul>
   </nav>
 
-  <!-- Main -->
+  <!-- MAIN -->
   <main>
     <h1>Server Status</h1>
     <p class="subtitle">Check the real-time status of your Minecraft servers hosted with AceNodes.</p>
@@ -270,42 +262,42 @@
     <div class="status-grid">
       <article class="server-card">
         <h2 class="server-name">Survival Server</h2>
-        <div class="status online"><span>● Online</span></div>
+        <div class="status online">● Online</div>
         <div class="players">Players online: 18 / 50</div>
         <div class="last-updated">Last checked: 30 seconds ago</div>
       </article>
 
       <article class="server-card">
         <h2 class="server-name">Creative Server</h2>
-        <div class="status online"><span>● Online</span></div>
+        <div class="status online">● Online</div>
         <div class="players">Players online: 5 / 30</div>
         <div class="last-updated">Last checked: 25 seconds ago</div>
       </article>
 
       <article class="server-card">
         <h2 class="server-name">Modded Server</h2>
-        <div class="status offline"><span>● Offline</span></div>
+        <div class="status offline">● Offline</div>
         <div class="players">Players online: 0 / 40</div>
         <div class="last-updated">Last checked: 1 minute ago</div>
       </article>
 
       <article class="server-card">
         <h2 class="server-name">Minigames Server</h2>
-        <div class="status online"><span>● Online</span></div>
+        <div class="status online">● Online</div>
         <div class="players">Players online: 12 / 50</div>
         <div class="last-updated">Last checked: 40 seconds ago</div>
       </article>
 
       <article class="server-card">
         <h2 class="server-name">Skyblock Server</h2>
-        <div class="status offline"><span>● Offline</span></div>
+        <div class="status offline">● Offline</div>
         <div class="players">Players online: 0 / 35</div>
         <div class="last-updated">Last checked: 2 minutes ago</div>
       </article>
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-columns">
       <div>
