@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FAQ | AceNodes Minecraft Hosting</title>
   <style>
-    /* Reset & base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* ==========================
+       RESET & BASE STYLES
+    ========================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #121212;
@@ -21,21 +18,20 @@
       display: flex;
       flex-direction: column;
     }
-
     a {
       color: #1db954;
       text-decoration: none;
       transition: transform 0.3s ease;
     }
-
-    a:hover,
-    a:focus {
+    a:hover, a:focus {
       text-decoration: underline;
       transform: scale(1.05);
       outline: none;
     }
 
-    /* Navbar */
+    /* ==========================
+       NAVBAR
+    ========================== */
     .navbar {
       background: #222;
       display: flex;
@@ -46,49 +42,37 @@
       top: 0;
       z-index: 100;
     }
-
-    /* Logo style */
     .logo {
       display: flex;
       align-items: center;
       gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #34d058;
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-    .logo span {
-      margin-left: -6px;
-    }
-    .logo:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
-    }
     .logo img {
       height: 48px;
       width: auto;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
       transition: filter 0.3s ease;
     }
-    .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
-    }
+    .logo span { margin-left: -6px; }
+    .logo:hover { color: #2ccf4f; text-shadow: 0 0 4px rgba(76,220,100,0.4); }
+    .logo:hover img { filter: drop-shadow(0 0 4px rgba(76,220,100,0.4)); }
 
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
     }
-
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
       transition: background 0.3s, transform 0.3s;
     }
-
     .nav-links li a.active,
     .nav-links li a:hover,
     .nav-links li a:focus {
@@ -97,27 +81,24 @@
       transform: scale(1.05);
     }
 
-    /* Animation Keyframes */
+    /* ==========================
+       ANIMATIONS
+    ========================== */
     @keyframes fadeSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* FAQ Section */
+    /* ==========================
+       FAQ SECTION
+    ========================== */
     .faq-section {
       max-width: 800px;
-      margin: 3rem auto 4rem auto;
+      margin: 3rem auto 6rem auto;
       padding: 0 1rem;
       width: 100%;
       animation: fadeSlideUp 0.8s ease-out both;
     }
-
     .faq-section h1 {
       text-align: center;
       color: #1db954;
@@ -125,22 +106,17 @@
       font-size: 2.8rem;
       text-shadow: 0 0 6px rgba(29,185,84,0.8);
     }
-
     details {
       background: #1e1e1e;
       border-radius: 10px;
       margin-bottom: 1rem;
       padding: 1.25rem 1.5rem;
-      box-shadow: 0 0 15px rgba(29, 185, 84, 0.3);
+      box-shadow: 0 0 15px rgba(29,185,84,0.3);
       cursor: pointer;
       transition: box-shadow 0.3s ease;
       overflow: hidden;
     }
-
-    details[open] {
-      box-shadow: 0 0 25px rgba(29, 185, 84, 0.6);
-    }
-
+    details[open] { box-shadow: 0 0 25px rgba(29,185,84,0.6); }
     summary {
       font-size: 1.25rem;
       font-weight: 700;
@@ -148,11 +124,7 @@
       outline: none;
       list-style: none;
     }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
+    summary::-webkit-details-marker { display: none; }
     summary::before {
       content: '➤';
       display: inline-block;
@@ -161,11 +133,7 @@
       transition: transform 0.3s ease;
       color: #1db954;
     }
-
-    details[open] summary::before {
-      transform: rotate(90deg);
-    }
-
+    details[open] summary::before { transform: rotate(90deg); }
     details p {
       margin-top: 1rem;
       color: #ccc;
@@ -175,71 +143,60 @@
       max-height: 0;
       transition: opacity 0.4s ease, max-height 0.4s ease;
     }
+    details[open] p { opacity: 1; max-height: 1000px; }
 
-    details[open] p {
-      opacity: 1;
-      max-height: 1000px;
-    }
-
-    /* Footer */
+    /* ==========================
+       FOOTER
+    ========================== */
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 2rem 2rem;
       background: #1a1a1a;
-      color: #777;
-      font-size: 0.9rem;
+      color: #ccc;
+      font-size: 0.95rem;
       margin-top: auto;
-      box-shadow: inset 0 1px 0 #333;
     }
-
-    .footer-columns {
+    .footer-container {
       display: flex;
       justify-content: center;
-      gap: 4rem;
+      flex-wrap: wrap;
+      gap: 5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-column {
+      min-width: 150px;
+      text-align: left;
+    }
+    .footer-column h4 {
       margin-bottom: 1rem;
-    }
-
-    .footer-columns div {
-      text-align: center;
-    }
-
-    .footer-columns h4 {
-      color: #00ff66;
-      margin-bottom: 0.5rem;
       font-size: 1.1rem;
+      color: #1db954;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
     }
-
-    .footer-columns a {
-      color: white;
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-column ul li { margin-bottom: 0.75rem; }
+    .footer-column ul li a {
+      color: #34d058;
       text-decoration: none;
-      transition: color 0.3s ease;
-      font-size: 0.95rem;
+      transition: color 0.2s ease-in-out;
     }
-
-    .footer-columns a:hover {
-      color: #00ff66;
-    }
+    .footer-column ul li a:hover { color: #00ffcc; text-decoration: underline; }
 
     @media (max-width: 600px) {
-      .faq-section h1 {
-        font-size: 2rem;
-      }
-
-      details {
-        padding: 1rem 1.2rem;
-      }
-
-      .footer-columns {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
+      .faq-section h1 { font-size: 2rem; }
+      details { padding: 1rem 1.2rem; }
+      .footer-container { flex-direction: column; gap: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <a href="index.html" class="logo" aria-label="AceNodes Homepage">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
       <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
       <span>AceNodes</span>
     </a>
@@ -254,7 +211,7 @@
     </ul>
   </nav>
 
-  <!-- FAQ Section -->
+  <!-- FAQ SECTION -->
   <section class="faq-section">
     <h1>Frequently Asked Questions</h1>
 
@@ -289,20 +246,33 @@
     </details>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-columns">
-      <div>
+    <div class="footer-container">
+      <div class="footer-column">
         <h4>Support</h4>
-        <a href="#">Support Discord</a>
+        <ul>
+          <li><a href="#">Support Discord</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
       </div>
-      <div>
+      <div class="footer-column">
         <h4>Legal</h4>
-        <a href="#">Terms of Service</a><br>
-        <a href="#">Privacy Policy</a>
+        <ul>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="plans.html">Plans</a></li>
+        </ul>
       </div>
     </div>
-    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+    <div class="footer-bottom">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</div>
   </footer>
 </body>
 </html>
+
