@@ -27,7 +27,7 @@
     a {
       color: #1db954;
       text-decoration: none;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
 
     a:hover,
@@ -38,7 +38,7 @@
     }
 
     /* ==========================
-       NAVBAR
+       NAVBAR (SAME AS CUSTOM PLAN)
     ========================== */
     .navbar {
       background: #222;
@@ -52,15 +52,14 @@
       min-height: 64px;
     }
 
-    /* Logo */
     .logo {
       display: flex;
       align-items: center;
+      gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
       color: #34d058;
       text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
     .logo span {
@@ -71,34 +70,38 @@
     .logo img {
       height: 48px;
       width: auto;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
       transition: filter 0.3s ease;
     }
 
     .logo:hover {
       color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
+      text-shadow: 0 0 4px rgba(76,220,100,0.4);
     }
 
     .logo:hover img {
-      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
+      filter: drop-shadow(0 0 4px rgba(76,220,100,0.4));
     }
 
-    /* Nav Links */
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
-      margin: 0;
-      padding: 0;
+      flex-wrap: nowrap;
       align-items: center;
     }
 
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
-      display: block;
-      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+      color: #1db954;
+      background: transparent;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
     }
 
     .nav-links li a.active,
@@ -107,6 +110,14 @@
       background: #1db954;
       color: #121212;
       transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Disable navbar animations */
+    .faq-page .nav-links > li {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
     }
 
     /* ==========================
@@ -122,6 +133,8 @@
       text-align: center;
       padding: 0 2rem;
       color: #fff;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
     }
 
     .hero h1 {
@@ -170,12 +183,12 @@
       animation: fadeInUp 0.6s forwards;
     }
 
-    details:nth-child(1) { animation-delay: 0.2s; }
-    details:nth-child(2) { animation-delay: 0.35s; }
-    details:nth-child(3) { animation-delay: 0.5s; }
-    details:nth-child(4) { animation-delay: 0.65s; }
-    details:nth-child(5) { animation-delay: 0.8s; }
-    details:nth-child(6) { animation-delay: 0.95s; }
+    details:nth-child(2) { animation-delay: 0.2s; }
+    details:nth-child(3) { animation-delay: 0.35s; }
+    details:nth-child(4) { animation-delay: 0.5s; }
+    details:nth-child(5) { animation-delay: 0.65s; }
+    details:nth-child(6) { animation-delay: 0.8s; }
+    details:nth-child(7) { animation-delay: 0.95s; }
 
     details[open] {
       box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
@@ -268,11 +281,11 @@
     }
   </style>
 </head>
-<body>
+<body class="faq-page">
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <a href="index.html" class="logo">
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" class="logo" aria-label="AceNodes Homepage">
       <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
       <span>AceNodes</span>
     </a>
@@ -326,7 +339,6 @@
       <summary>How do I contact support?</summary>
       <p>We offer 24/7 live chat and ticket support accessible from your control panel or our contact page.</p>
     </details>
-
   </main>
 
   <!-- Footer -->
@@ -334,12 +346,12 @@
     <div class="footer-columns">
       <div>
         <h4>Support</h4>
-        <a href="#">Support Discord</a>
+        <a href="support-discord.html">Support Discord</a>
       </div>
       <div>
         <h4>Legal</h4>
-        <a href="#">Terms of Service</a><br>
-        <a href="#">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a><br>
+        <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
@@ -347,4 +359,3 @@
 
 </body>
 </html>
-
