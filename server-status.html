@@ -59,6 +59,7 @@
       font-size: 1.6rem;
       color: #34d058;
       text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
     .logo span {
@@ -70,6 +71,7 @@
       height: 48px;
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+      transition: filter 0.3s ease;
     }
 
     .logo:hover {
@@ -151,8 +153,8 @@
       flex-direction: column;
       justify-content: space-between;
       color: #eee;
-      min-height: 220px;
       transition: transform 0.3s ease;
+      min-height: 220px;
     }
 
     .server-card:hover {
@@ -253,6 +255,14 @@
       padding-top: 1rem;
     }
 
+    /* ==========================
+       ANIMATIONS
+    ========================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 600px) {
       main { margin: 4rem 1rem 5rem 1rem; }
       .server-card { padding: 1.5rem; }
@@ -349,6 +359,37 @@
     </div>
     <div class="footer-bottom">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</div>
   </footer>
+
+  <!-- ANIMATION SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Utility: add fade-in animation
+      function addFadeIn(el, delay = 0) {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`;
+
+        requestAnimationFrame(() => {
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+        });
+      }
+
+      // Animate everything but navbar
+      const elements = document.querySelectorAll('body *:not(nav):not(nav *)');
+      elements.forEach((el, index) => {
+        addFadeIn(el, index * 0.05);
+      });
+
+      // Keep navbar static
+      const navbar = document.querySelector('nav');
+      if (navbar) {
+        navbar.style.opacity = 1;
+        navbar.style.transform = 'none';
+        navbar.style.transition = 'none';
+      }
+    });
+  </script>
 
 </body>
 </html>
