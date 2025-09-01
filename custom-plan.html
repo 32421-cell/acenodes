@@ -113,7 +113,7 @@
       outline: none;
     }
 
-    /* Disable navbar animations on this page */
+    /* Disable navbar animations */
     .custom-plan-page .nav-links > li {
       opacity: 1 !important;
       transform: none !important;
@@ -128,11 +128,10 @@
       background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
       color: #eee;
       padding: 80px 20px;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 1;
       text-align: center;
       flex: 1;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
     }
 
     .custom-container {
@@ -144,12 +143,18 @@
       font-size: 3rem;
       margin-bottom: 10px;
       color: #1db954;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.2s;
     }
 
     .custom-container p {
       font-size: 1.1rem;
       color: #ccc;
       margin-bottom: 50px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.35s;
     }
 
     .selector-panel {
@@ -162,6 +167,9 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.5s;
     }
 
     .slider-box,
@@ -214,6 +222,9 @@
       max-width: 600px;
       margin: 0 auto;
       text-align: left;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.7s;
     }
 
     .quote-form h3 {
@@ -264,6 +275,9 @@
       font-size: 0.9rem;
       margin-top: auto;
       box-shadow: inset 0 1px 0 #333;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.9s;
     }
 
     .footer-columns {
@@ -292,6 +306,20 @@
 
     .footer-columns a:hover {
       color: #00ff66;
+    }
+
+    /* =======================================
+       Animations
+    ======================================= */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* =======================================
@@ -442,7 +470,7 @@
       let price = (cpu * 3 + ram * 2 + storage * 0.5 + db*1 + backups*0.5 + ports*0.25) * months;
       priceEstimate.textContent = `$${price.toFixed(2)}`;
 
-      // Update individual slider displays
+      // Update slider displays
       document.getElementById("cpuValue").textContent = cpu;
       document.getElementById("ramValue").textContent = ram;
       document.getElementById("storageValue").textContent = storage;
