@@ -34,6 +34,9 @@
       outline: none;
     }
 
+    /* ==========================
+       NAVBAR
+    ========================== */
     .navbar {
       background: #222;
       display: flex;
@@ -43,12 +46,12 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      min-height: 64px;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0;
       font-weight: 700;
       font-size: 1.6rem;
       color: #34d058;
@@ -58,11 +61,7 @@
 
     .logo span {
       margin-left: -6px;
-    }
-
-    .logo:hover {
-      color: #2ccf4f;
-      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
+      line-height: 1;
     }
 
     .logo img {
@@ -70,7 +69,11 @@
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
       transition: filter 0.3s ease;
-      display: block;
+    }
+
+    .logo:hover {
+      color: #2ccf4f;
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
     }
 
     .logo:hover img {
@@ -81,16 +84,16 @@
       list-style: none;
       display: flex;
       gap: 1rem;
+      margin: 0;
+      padding: 0;
+      align-items: center;
     }
 
     .nav-links li a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: block;
-      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-      color: #34d058;
-      font-weight: 600;
-      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
     }
 
     .nav-links li a.active,
@@ -99,9 +102,11 @@
       background: #1db954;
       color: #121212;
       transform: scale(1.05);
-      outline: none;
     }
 
+    /* ==========================
+       ABOUT SECTION
+    ========================== */
     .about-section {
       max-width: 800px;
       margin: 3rem auto 4rem auto;
@@ -110,10 +115,6 @@
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(29, 185, 84, 0.2);
       text-align: left;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.8s ease forwards;
-      animation-delay: 0.3s;
     }
 
     .about-section h1 {
@@ -162,6 +163,9 @@
       line-height: 1;
     }
 
+    /* ==========================
+       FOOTER
+    ========================== */
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -179,9 +183,7 @@
       margin-bottom: 1rem;
     }
 
-    .footer-columns div {
-      text-align: center;
-    }
+    .footer-columns div { text-align: center; }
 
     .footer-columns h4 {
       color: #00ff66;
@@ -196,16 +198,7 @@
       font-size: 0.95rem;
     }
 
-    .footer-columns a:hover {
-      color: #00ff66;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    .footer-columns a:hover { color: #00ff66; }
 
     @media (max-width: 600px) {
       .about-section {
@@ -213,33 +206,18 @@
         padding: 1.5rem;
       }
 
-      .about-section h1 {
-        font-size: 2rem;
-      }
+      .about-section h1 { font-size: 2rem; }
+      .about-section h2 { font-size: 1.5rem; }
 
-      .about-section h2 {
-        font-size: 1.5rem;
-      }
-
-      .nav-links {
-        gap: 0.5rem;
-      }
-
-      .nav-links li a {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-      }
-
-      .footer-columns {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
+      .nav-links { flex-direction: column; gap: 0.5rem; }
+      .footer-columns { flex-direction: column; gap: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <a href="index.html" class="logo" aria-label="AceNodes Homepage">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
       <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
       <span>AceNodes</span>
     </a>
@@ -254,7 +232,8 @@
     </ul>
   </nav>
 
-  <section class="about-section" tabindex="-1">
+  <!-- About Section -->
+  <section class="about-section">
     <h1>About AceNodes</h1>
     <p>Founded in 2018, AceNodes is a premium Minecraft hosting provider dedicated to delivering high-performance servers at affordable prices.</p>
     <p>Our mission is to empower gamers worldwide with reliable, scalable, and user-friendly hosting services. We operate multiple data centers globally to ensure low latency and redundancy.</p>
@@ -269,11 +248,12 @@
     </ul>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-columns">
       <div>
         <h4>Support</h4>
-        <a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener">Support Discord</a>
+        <a href="#">Support Discord</a>
       </div>
       <div>
         <h4>Legal</h4>
@@ -283,6 +263,30 @@
     </div>
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
+
+  <!-- Animations Script -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    function addFadeIn(el, delay = 0) {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`;
+      requestAnimationFrame(() => {
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+      });
+    }
+
+    const elements = document.querySelectorAll('body *:not(nav):not(nav *)');
+    elements.forEach((el, i) => addFadeIn(el, i * 0.05));
+
+    const navbar = document.querySelector('nav');
+    if (navbar) {
+      navbar.style.opacity = 1;
+      navbar.style.transform = 'none';
+      navbar.style.transition = 'none';
+    }
+  });
+  </script>
 </body>
 </html>
-
