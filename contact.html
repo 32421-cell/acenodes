@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Us | AceNodes Minecraft Hosting</title>
   <style>
+    /* Reset & base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,8 +16,8 @@
       display: flex;
       flex-direction: column;
     }
-    a { color: #1db954; text-decoration: none; transition: transform 0.3s ease; }
-    a:hover, a:focus { transform: scale(1.05); text-decoration: underline; outline: none; }
+    a { text-decoration: none; transition: all 0.3s ease; }
+    a:hover, a:focus { outline: none; }
 
     /* Navbar */
     .navbar {
@@ -30,27 +31,46 @@
       z-index: 100;
       box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
-    .logo { display: flex; align-items: center; font-weight: 700; font-size: 1.6rem; color: #34d058; text-decoration: none; transition: color 0.3s, text-shadow 0.3s; }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
     .logo span { margin-left: -6px; }
     .logo:hover { color: #2ccf4f; text-shadow: 0 0 4px rgba(76,220,100,0.4); }
-    .logo img { height: 48px; width: auto; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4)); transition: filter 0.3s; }
+    .logo img { height: 48px; width: auto; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4)); transition: filter 0.3s ease; }
     .logo:hover img { filter: drop-shadow(0 0 4px rgba(76,220,100,0.4)); }
-    .nav-links { list-style: none; display: flex; gap: 1rem; }
-    .nav-links li a { padding: 0.5rem 1rem; border-radius: 4px; display: block; transition: background 0.3s, transform 0.3s; }
-    .nav-links li a.active, .nav-links li a:hover { background: #1db954; color: #121212; transform: scale(1.1); box-shadow: 0 0 8px #1db954; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: block;
+      transition: all 0.3s ease;
+      color: #eee;
+    }
+    .nav-links li a.active,
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background: #1db954;
+      color: #121212;
+      transform: scale(1.1);
+      box-shadow: 0 0 8px #1db954;
+    }
 
     /* Contact Section */
-    .contact-section {
-      max-width: 600px;
-      margin: 3rem auto 4rem;
-      padding: 0 1rem;
-      width: 100%;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-    }
+    .contact-section { max-width: 600px; margin: 3rem auto 4rem; padding: 0 1rem; text-align: center; opacity: 0; transform: translateY(20px); }
     .contact-section.show { opacity: 1; transform: translateY(0); transition: all 0.8s ease; }
-
     .contact-section h1 { font-size: 2.8rem; color: #1db954; margin-bottom: 2rem; text-shadow: 0 0 6px rgba(29,185,84,0.8); }
 
     form {
@@ -68,10 +88,10 @@
     form.show { opacity: 1; transform: translateY(0); transition: all 0.8s ease 0.2s; }
 
     label { color: #1db954; font-weight: 600; margin-bottom: 6px; display: block; }
-    input, textarea { width: 100%; padding: 12px 14px; border-radius: 8px; border: none; background: #292929; color: #eee; font-size: 1rem; transition: box-shadow 0.3s, transform 0.3s; resize: vertical; }
+    input, textarea { width: 100%; padding: 12px 14px; border-radius: 8px; border: none; background: #292929; color: #eee; font-size: 1rem; transition: all 0.3s ease; resize: vertical; }
     input:focus, textarea:focus { outline: none; box-shadow: 0 0 6px 2px #1db954aa; transform: scale(1.01); background: #333; }
 
-    button.btn { background: #1db954; color: #121212; font-weight: bold; padding: 14px; font-size: 1.1rem; border: none; border-radius: 10px; cursor: pointer; transition: background 0.3s, transform 0.3s; margin-top: 10px; }
+    button.btn { background: #1db954; color: #121212; font-weight: bold; padding: 14px; font-size: 1.1rem; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; margin-top: 10px; }
     button.btn:hover { background: #17a64a; transform: scale(1.05); }
 
     #form-status { margin-top: 20px; font-weight: 600; color: #1db954; min-height: 24px; text-align: center; }
@@ -128,19 +148,14 @@
     <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
-  <!-- JS: Fade-in sequence + form -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const section = document.querySelector('.contact-section');
       const form = document.querySelector('form');
 
-      // Fade in contact section
       setTimeout(() => section.classList.add('show'), 100);
-
-      // Fade in form slightly delayed
       setTimeout(() => form.classList.add('show'), 300);
 
-      // Form submission simulation
       const status = document.getElementById('form-status');
       form.addEventListener('submit', e => {
         e.preventDefault();
