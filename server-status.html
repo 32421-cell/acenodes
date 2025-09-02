@@ -62,10 +62,7 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    .logo span {
-      margin-left: -6px;
-      line-height: 1;
-    }
+    .logo span { margin-left: -6px; line-height: 1; }
 
     .logo img {
       height: 48px;
@@ -194,8 +191,8 @@
       font-style: italic;
     }
 
-  /* ==========================
-       FOOTER — same as About page
+    /* ==========================
+       FOOTER — About page style
     ========================== */
     footer {
       text-align: center;
@@ -238,19 +235,12 @@
       .footer-columns { flex-direction: column; gap: 1.5rem; }
     }
 
-
     /* ==========================
        ANIMATIONS
     ========================== */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      main { margin: 4rem 1rem 5rem 1rem; }
-      .server-card { padding: 1.5rem; }
-      .nav-links { flex-direction: column; gap: 0.5rem; }
     }
   </style>
 </head>
@@ -316,56 +306,38 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (from About page) -->
   <footer>
-    <div class="footer-container">
-      <div class="footer-column">
+    <div class="footer-columns">
+      <div>
         <h4>Support</h4>
-        <ul>
-          <li><a href="support-discord.html">Support Discord</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
+        <a href="#">Support Discord</a>
       </div>
-      <div class="footer-column">
+      <div>
         <h4>Legal</h4>
-        <ul>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="plans.html">Plans</a></li>
-        </ul>
+        <a href="#">Terms of Service</a><br>
+        <a href="#">Privacy Policy</a>
       </div>
     </div>
-    <div class="footer-bottom">&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</div>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
   </footer>
 
   <!-- ANIMATION SCRIPT -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Utility: add fade-in animation
       function addFadeIn(el, delay = 0) {
         el.style.opacity = 0;
         el.style.transform = 'translateY(20px)';
         el.style.transition = `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`;
-
         requestAnimationFrame(() => {
           el.style.opacity = 1;
           el.style.transform = 'translateY(0)';
         });
       }
 
-      // Animate everything but navbar
       const elements = document.querySelectorAll('body *:not(nav):not(nav *)');
-      elements.forEach((el, index) => {
-        addFadeIn(el, index * 0.05);
-      });
+      elements.forEach((el, i) => addFadeIn(el, i * 0.05));
 
-      // Keep navbar static
       const navbar = document.querySelector('nav');
       if (navbar) {
         navbar.style.opacity = 1;
