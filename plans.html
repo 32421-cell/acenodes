@@ -109,6 +109,12 @@
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
   }
 
   .plan-card h3 {
@@ -133,14 +139,21 @@
     margin: 10px 0;
   }
 
-  .btn {
+  /* Order Now button - green */
+  .plan-card .btn {
     display: inline-block;
     padding: 8px 14px;
-    background: #007bff;
+    background: #28a745;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     margin-top: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .plan-card .btn:hover {
+    background: #20c851;
+    transform: scale(1.05);
   }
 
   /* Footer */
