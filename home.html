@@ -210,6 +210,70 @@
       color: #999;
       font-size: 0.9rem;
     }
+
+    /* === Cart System === */
+    .cart-button {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background: #1db954;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    .cart-button:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100%;
+      background: #1a1a1a;
+      color: #fff;
+      transition: right 0.3s ease;
+      z-index: 1001;
+      padding: 20px;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    }
+    .cart-panel.open {
+      right: 0;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .cart-items {
+      max-height: 60%;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #1db954;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
   </style>
 </head>
 
@@ -317,6 +381,19 @@
     </div>
   </footer>
 
+  <!-- Cart System -->
+  <div class="cart-button" id="cart-btn">
+    🛒
+  </div>
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="close-cart">✖</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+
   <script>
     // Highlight active nav link exactly like plans page
     document.addEventListener('DOMContentLoaded', () => {
@@ -327,9 +404,19 @@
         else link.classList.remove('active');
       });
     });
+
+    // Cart system logic
+    const cartBtn = document.getElementById('cart-btn');
+    const cartPanel = document.getElementById('cart-panel');
+    const closeCart = document.getElementById('close-cart');
+
+    cartBtn.addEventListener('click', () => {
+      cartPanel.classList.add('open');
+    });
+    closeCart.addEventListener('click', () => {
+      cartPanel.classList.remove('open');
+    });
   </script>
 
 </body>
 </html>
-
-<script src="cart-system.js"></script>
