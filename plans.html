@@ -1,291 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AceNodes - Hosting Plans</title>
-<style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #121212;
-    color: #eee;
-  }
-
-  /* Header / Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: #1a1a1a;
-  }
-
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-
-  .nav-links a {
-    color: #eee;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: 0.3s;
-  }
-
-  .nav-links a.active,
-  .nav-links a:hover {
-    background: #222;
-    border-radius: 5px;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #34d058;
-    font-weight: bold;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-
-  .logo img {
-    height: 40px;
-  }
-
-  /* Hero */
-  .hero {
-    text-align: center;
-    padding: 3rem 1rem;
-    background: #111;
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero p {
-    font-size: 1.2rem;
-    color: #aaa;
-  }
-
-  /* Billing selector */
-  .billing-cycle-selector {
-    text-align: center;
-    margin: 2rem 0;
-  }
-
-  .billing-cycle-selector button {
-    background-color: #222;
-    color: #fff;
-    border: 1px solid #444;
-    padding: 8px 16px;
-    margin: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  .billing-cycle-selector button.active,
-  .billing-cycle-selector button:hover {
-    background-color: #444;
-  }
-
-  /* Plans grid */
-  .plans-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  .plan-card {
-    background: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .plan-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
-  }
-
-  .plan-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.4rem;
-  }
-
-  .plan-card ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 10px 0;
-  }
-
-  .plan-card li {
-    padding: 4px 0;
-    font-size: 0.95rem;
-  }
-
-  .plan-card .price {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin: 10px 0;
-  }
-
-  /* Order Now button - green */
-  .plan-card .btn {
-    display: inline-block;
-    padding: 8px 14px;
-    background: #28a745;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .plan-card .btn:hover {
-    background: #20c851;
-    transform: scale(1.05);
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: #1a1a1a;
-    color: #777;
-    font-size: 0.9rem;
-  }
-
-  .footer-columns {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    margin-bottom: 1rem;
-  }
-
-  .footer-columns div {
-    text-align: center;
-  }
-
-  .footer-columns h4 {
-    color: #00ff66;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
-
-  .footer-columns a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 0.95rem;
-  }
-
-  .footer-columns a:hover {
-    color: #00ff66;
-  }
-</style>
-</head>
-<body>
-<header>
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-      <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="Logo">
-      AceNodes
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="plans.html" class="active">Plans</a></li>
-      <li><a href="custom-plan.html">Custom Plan</a></li>
-      <li><a href="server-status.html">Server Status</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>Hosting Plans</h1>
-  <p>Choose a plan that fits your server's power and community needs.</p>
-</section>
-
-<div class="billing-cycle-selector">
-  <button class="active" data-months="1">1 Month</button>
-  <button data-months="3">3 Months</button>
-  <button data-months="6">6 Months</button>
-  <button data-months="12">12 Months</button>
-</div>
-
-<section class="plans-overview">
-  <div class="plans-container">
-    <article class="plan-card" data-price="12"><h3>AceLite</h3><p class="price">$12.00 / month</p><ul><li>1 GB RAM</li><li>10 GB SSD</li><li>1 vCPU</li><li>1 Slot</li><li>First-timers, test servers</li></ul><a href="custom-plan.html" class="btn">Order Now</a></article>
-    <article class="plan-card" data-price="24"><h3>AcePlus</h3><p class="price">$24.00 / month</p><ul><li>2 GB RAM</li><li>20 GB SSD</li><li>1 vCPU</li><li>2 Slots</li><li>Plugin-based SMPs, 2–5 friends</li></ul><a href="custom-plan.html" class="btn">Order Now</a></article>
-    <article class="plan-card" data-price="48"><h3>AceBoost</h3><p class="price">$48.00 / month</p><ul><li>4 GB RAM</li><li>40 GB SSD</li><li>2 vCPU</li><li>3 Slots</li><li>Growing SMPs, public mini-servers</li></ul><a href="custom-plan.html" class="btn">Order Now</a></article>
-    <article class="plan-card" data-price="72"><h3>AceEdge</h3><p class="price">$72.00 / month</p><ul><li>6 GB RAM</li><li>60 GB SSD</li><li>3 vCPU</li><li>5 Slots</li><li>Small modded, survival, or community</li></ul><a href="custom-plan.html" class="btn">Order Now</a></article>
-    <article class="plan-card" data-price="96"><h3>AcePrime</h3><p class="price">$96.00 / month</p><ul><li>8 GB RAM</li><li>80 GB SSD</li><li>4 vCPU</li><li>Unlimited Slots</li><li>Mid-size servers, 15–30 players</li></ul><a href="custom-plan.html" class="btn">Order Now</a></article>
-    <article class="plan-card" data-price="144"><h3>AceXtreme</h3><p class="price">$144.00 / month</p><ul><li>12 GB RAM</li><li>120 GB SSD</li><li>4 vCPU</li><li>Unlimited Slots</li><li>Modpacks (BetterMC, Pixelmon), events</li></ul><a href="custom-plan.html" class="btn">Order Now</a></article>
-    <article class="plan-card" data-price="192"><h3>AceForge</h3><p class="price">$192.00 / month</p><ul><li>16 GB RAM</li><li>160 GB SSD</li><li>6 vCPU</li><li>Unlimited Slots</li><li>Modded networks, heavy world use</li></ul><a href="custom-plan.html" class="btn">Order Now</a></article>
-    <article class="plan-card" data-price="288"><h3>AceTitan</h3><p class="price">$288.00 / month</p><ul><li>24 GB RAM</li><li>240 GB SSD</li><li>8 vCPU</li><li>Unlimited Slots</li><li>Large networks, streamers, minigames</li></ul><a href="custom-plan.html" class="btn">Order Now</a></article>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-columns">
-    <div>
-      <h4>Support</h4>
-      <a href="support-discord.html">Support Discord</a>
-    </div>
-    <div>
-      <h4>Legal</h4>
-      <a href="terms.html">Terms of Service</a><br />
-      <a href="privacy.html">Privacy Policy</a>
-    </div>
-  </div>
-  <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
-</footer>
-
-<script>
-const buttons = document.querySelectorAll(".billing-cycle-selector button");
-const prices = document.querySelectorAll(".plan-card");
-
-function updatePrices(months, event) {
-  if(event) {
-    buttons.forEach(btn => btn.classList.remove("active"));
-    event.target.classList.add("active");
-  }
-
-  prices.forEach(card => {
-    const monthly = parseFloat(card.dataset.price);
-    const total = (monthly * months).toFixed(2);
-    const perMonth = monthly.toFixed(2);
-    const priceEl = card.querySelector(".price");
-
-    if (months === 1) {
-      priceEl.textContent = `$${total} / month`;
-    } else {
-      priceEl.textContent = `$${total} (${perMonth}/mo x${months})`;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AceNodes - Hosting Plans</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Inline CSS for plans page */
+    .billing-cycle-selector {
+      text-align: center;
+      margin: 20px 0;
     }
-  });
-}
 
-buttons.forEach(button => {
-  button.addEventListener('click', (event) => {
-    const months = parseInt(button.dataset.months, 10);
-    updatePrices(months, event);
-  });
-});
+    .billing-cycle-selector button {
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 8px 16px;
+      margin: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      
+      /* Animation */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
 
-// Initialize prices
-updatePrices(1);
-</script>
+    /* Staggered animation delays for billing buttons */
+    .billing-cycle-selector button:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+    .billing-cycle-selector button:nth-child(2) {
+      animation-delay: 0.45s;
+    }
+    .billing-cycle-selector button:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    .billing-cycle-selector button:nth-child(4) {
+      animation-delay: 0.75s;
+    }
+
+    .billing-cycle-selector button.active,
+    .billing-cycle-selector button:hover {
+      background-color: #444;
+    }
+
+    .plans-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .plan-card {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .plan-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0;
+    }
+
+    .plan-card li {
+      padding: 4px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .hero {
+      background: #111;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    /* Animate hero heading and paragraph */
+    .hero h1,
+    .hero p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .hero h1 {
+      animation-delay: 0.2s;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      animation-delay: 0.35s;
+      font-size: 1.2rem;
+    }
+
+    /* Disable nav link animations only on Plans page */
+    body.plans-page .nav-links > li {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    body.plans-page .nav-links li a {
+      transition: none !important;
+      transform: none !important;
+    }
+
+    /* FadeInUp keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Logo style (added) */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #34d058;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .logo span {
+      margin-left: -6px; /* pull text closer to logo */
+    }
+    .logo:hover {
+      color: #2ccf4f;
+      text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
+    }
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      transition: filter 0.3s ease;
+    }
+    .logo:hover img {
+      filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1a1a1a;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: inset 0 1px 0 #333;
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-columns div {
+      text-align: center;
+    }
+
+    .footer-columns h4 {
+      color: #00ff66;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-columns a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-columns a:hover {
+      color: #00ff66;
+    }
+
+    @media (max-width: 600px) {
+      .footer-columns {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="plans-page">
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo" aria-label="AceNodes Homepage">
+        <img src="https://i.postimg.cc/HWvg93ZN/Chat-GPT-Image-Aug-8-2025-10-06-33-AM.png" alt="AceNodes Logo" />
+        <span>AceNodes</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="plans.html" class="active">Plans</a></li>
+        <li><a href="custom-plan.html">Custom Plan</a></li>
+        <li><a href="server-status.html">Server Status</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Hosting Plans</h1>
+    <p>Choose a plan that fits your server's power and community needs.</p>
+  </section>
+
+  <!-- Billing Cycle Selector -->
+  <div class="billing-cycle-selector">
+    <button class="active" data-months="1">1 Month</button>
+    <button data-months="3">3 Months</button>
+    <button data-months="6">6 Months</button>
+    <button data-months="12">12 Months</button>
+  </div>
+
+  <!-- Plans -->
+  <section class="plans-overview">
+    <div class="plans-container">
+
+      <article class="plan-card" data-price="12" id="starter">
+        <h3>AceLite</h3>
+        <p><strong class="price">$12.00 / month</strong></p>
+        <ul>
+          <li>1 GB RAM</li>
+          <li>10 GB SSD</li>
+          <li>1 vCPU</li>
+          <li>1 Slot</li>
+          <li>First-timers, test servers</li>
+        </ul>
+        <a href="custom-plan.html" class="btn">Order Now</a>
+      </article>
+
+      <article class="plan-card" data-price="24" id="pro">
+        <h3>AcePlus</h3>
+        <p><strong class="price">$24.00 / month</strong></p>
+        <ul>
+          <li>2 GB RAM</li>
+          <li>20 GB SSD</li>
+          <li>1 vCPU</li>
+          <li>2 Slots</li>
+          <li>Plugin-based SMPs, 2–5 friends</li>
+        </ul>
+        <a href="custom-plan.html" class="btn">Order Now</a>
+      </article>
+
+      <article class="plan-card" data-price="48">
+        <h3>AceBoost</h3>
+        <p><strong class="price">$48.00 / month</strong></p>
+        <ul>
+          <li>4 GB RAM</li>
+          <li>40 GB SSD</li>
+          <li>2 vCPU</li>
+          <li>3 Slots</li>
+          <li>Growing SMPs, public mini-servers</li>
+        </ul>
+        <a href="custom-plan.html" class="btn">Order Now</a>
+      </article>
+
+      <article class="plan-card" data-price="72" id="ultimate">
+        <h3>AceEdge</h3>
+        <p><strong class="price">$72.00 / month</strong></p>
+        <ul>
+          <li>6 GB RAM</li>
+          <li>60 GB SSD</li>
+          <li>3 vCPU</li>
+          <li>5 Slots</li>
+          <li>Small modded, survival, or community</li>
+        </ul>
+        <a href="custom-plan.html" class="btn">Order Now</a>
+      </article>
+
+      <article class="plan-card" data-price="96">
+        <h3>AcePrime</h3>
+        <p><strong class="price">$96.00 / month</strong></p>
+        <ul>
+          <li>8 GB RAM</li>
+          <li>80 GB SSD</li>
+          <li>4 vCPU</li>
+          <li>Unlimited Slots</li>
+          <li>Mid-size servers, 15–30 players</li>
+        </ul>
+        <a href="custom-plan.html" class="btn">Order Now</a>
+      </article>
+
+      <article class="plan-card" data-price="144">
+        <h3>AceXtreme</h3>
+        <p><strong class="price">$144.00 / month</strong></p>
+        <ul>
+          <li>12 GB RAM</li>
+          <li>120 GB SSD</li>
+          <li>4 vCPU</li>
+          <li>Unlimited Slots</li>
+          <li>Modpacks (BetterMC, Pixelmon), events</li>
+        </ul>
+        <a href="custom-plan.html" class="btn">Order Now</a>
+      </article>
+
+      <article class="plan-card" data-price="192">
+        <h3>AceForge</h3>
+        <p><strong class="price">$192.00 / month</strong></p>
+        <ul>
+          <li>16 GB RAM</li>
+          <li>160 GB SSD</li>
+          <li>6 vCPU</li>
+          <li>Unlimited Slots</li>
+          <li>Modded networks, heavy world use</li>
+        </ul>
+        <a href="custom-plan.html" class="btn">Order Now</a>
+      </article>
+
+      <article class="plan-card" data-price="288">
+        <h3>AceTitan</h3>
+        <p><strong class="price">$288.00 / month</strong></p>
+        <ul>
+          <li>24 GB RAM</li>
+          <li>240 GB SSD</li>
+          <li>8 vCPU</li>
+          <li>Unlimited Slots</li>
+          <li>Large networks, streamers, minigames</li>
+        </ul>
+        <a href="custom-plan.html" class="btn">Order Now</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-columns">
+      <div>
+        <h4>Support</h4>
+        <a href="support-discord.html">Support Discord</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="terms.html">Terms of Service</a><br />
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <p>&copy; 2025 AceNodes Minecraft Hosting. All rights reserved.</p>
+  </footer>
+
+  <!-- Pricing Script -->
+  <script>
+    const buttons = document.querySelectorAll(".billing-cycle-selector button");
+    const prices = document.querySelectorAll(".plan-card");
+
+    function updatePrices(months, event) {
+      if(event) {
+        buttons.forEach(btn => btn.classList.remove("active"));
+        event.target.classList.add("active");
+      }
+
+      prices.forEach(card => {
+        const monthly = parseFloat(card.dataset.price);
+        const total = (monthly * months).toFixed(2);
+        const perMonth = monthly.toFixed(2);
+        const priceEl = card.querySelector(".price");
+
+        if (months === 1) {
+          priceEl.textContent = `$${total} / month`;
+        } else {
+          priceEl.textContent = `$${total} (${perMonth}/mo x${months})`;
+        }
+      });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const months = parseInt(button.dataset.months, 10);
+        updatePrices(months, event);
+      });
+    });
+
+    // Initialize prices to 1 month on load
+    updatePrices(1);
+  </script>
 </body>
 </html>
