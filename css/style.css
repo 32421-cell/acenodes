@@ -124,7 +124,7 @@ a:focus {
    HERO SECTION
 ========================== */
 .hero {
-  background: #000; /* solid black */
+  background: #1e1e1e; /* solid black */
   background-image: none;
   height: 60vh;
   display: flex;
