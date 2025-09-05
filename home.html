@@ -107,11 +107,11 @@
       color: #f0f0f0;
     }
 
-    /* === Hero Section with black background === */
+    /* === Hero Section with solid black background === */
     .hero {
       padding: 80px 20px;
       text-align: center;
-      background-color: #000; /* Black background */
+      background-color: #000 !important; /* Force black background */
     }
 
     /* === Hero text animations === */
@@ -384,9 +384,7 @@
   </footer>
 
   <!-- Cart System -->
-  <div class="cart-button" id="cart-btn">
-    🛒
-  </div>
+  <div class="cart-button" id="cart-btn">🛒</div>
   <div class="cart-panel" id="cart-panel">
     <div class="cart-header">
       <h3>Your Cart</h3>
@@ -397,7 +395,7 @@
   </div>
 
   <script>
-    // Highlight active nav link exactly like plans page
+    // Highlight active nav link
     document.addEventListener('DOMContentLoaded', () => {
       const currentPage = window.location.pathname.split('/').pop() || 'index.html';
       document.querySelectorAll('.nav-links a').forEach(link => {
