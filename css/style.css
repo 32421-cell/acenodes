@@ -45,7 +45,6 @@ a:focus {
   min-height: 64px;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -64,20 +63,19 @@ a:focus {
 .logo img {
   height: 48px;
   width: auto;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
   transition: filter 0.3s ease;
 }
 
 .logo:hover {
   color: #2ccf4f;
-  text-shadow: 0 0 4px rgba(76, 220, 100, 0.4);
+  text-shadow: 0 0 4px rgba(76,220,100,0.4);
 }
 
 .logo:hover img {
-  filter: drop-shadow(0 0 4px rgba(76, 220, 100, 0.4));
+  filter: drop-shadow(0 0 4px rgba(76,220,100,0.4));
 }
 
-/* Nav Links */
 .nav-links {
   list-style: none;
   display: flex;
@@ -126,7 +124,8 @@ a:focus {
    HERO SECTION
 ========================== */
 .hero {
-  background: url('https://i.imgur.com/J0kYqAv.jpg') no-repeat center center/cover;
+  background: #000; /* solid black */
+  background-image: none;
   height: 60vh;
   display: flex;
   flex-direction: column;
@@ -213,7 +212,7 @@ a:focus {
   border-radius: 8px;
   max-width: 300px;
   flex-grow: 1;
-  box-shadow: 0 0 15px rgba(0, 219, 84, 0.3);
+  box-shadow: 0 0 15px rgba(0,219,84,0.3);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -223,7 +222,7 @@ a:focus {
 .plan-card:hover,
 .plan-card:focus-within {
   transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(29, 185, 84, 0.7);
+  box-shadow: 0 0 25px rgba(29,185,84,0.7);
   outline: none;
 }
 
@@ -370,14 +369,8 @@ footer {
 .delay-3 { animation-delay: 0.9s; }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================
@@ -404,4 +397,3 @@ footer {
   transform: none;
   animation: none;
 }
-
