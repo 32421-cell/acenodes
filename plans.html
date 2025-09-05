@@ -21,7 +21,7 @@
       border-radius: 4px;
       cursor: pointer;
       transition: background 0.3s ease;
-      
+
       /* Animation */
       opacity: 0;
       transform: translateY(20px);
@@ -29,18 +29,10 @@
     }
 
     /* Staggered animation delays for billing buttons */
-    .billing-cycle-selector button:nth-child(1) {
-      animation-delay: 0.3s;
-    }
-    .billing-cycle-selector button:nth-child(2) {
-      animation-delay: 0.45s;
-    }
-    .billing-cycle-selector button:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-    .billing-cycle-selector button:nth-child(4) {
-      animation-delay: 0.75s;
-    }
+    .billing-cycle-selector button:nth-child(1) { animation-delay: 0.3s; }
+    .billing-cycle-selector button:nth-child(2) { animation-delay: 0.45s; }
+    .billing-cycle-selector button:nth-child(3) { animation-delay: 0.6s; }
+    .billing-cycle-selector button:nth-child(4) { animation-delay: 0.75s; }
 
     .billing-cycle-selector button.active,
     .billing-cycle-selector button:hover {
@@ -80,14 +72,21 @@
       padding: 4px 0;
     }
 
+    /* === Updated Order Now button style like first code === */
     .btn {
       display: inline-block;
-      padding: 8px 14px;
-      background: #007bff;
-      color: white;
+      padding: 10px 20px;
+      background-color: #00cc66;
+      color: #fff;
+      border-radius: 6px;
       text-decoration: none;
-      border-radius: 5px;
-      margin-top: 10px;
+      margin-top: 20px;
+      cursor: default; /* non-clickable */
+    }
+
+    .btn:hover {
+      background-color: #00cc66; /* no hover change */
+      transform: none;
     }
 
     .hero {
@@ -130,14 +129,8 @@
 
     /* FadeInUp keyframes */
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Logo style (added) */
@@ -153,7 +146,7 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     .logo span {
-      margin-left: -6px; /* pull text closer to logo */
+      margin-left: -6px;
     }
     .logo:hover {
       color: #2ccf4f;
@@ -253,7 +246,6 @@
   <!-- Plans -->
   <section class="plans-overview">
     <div class="plans-container">
-
       <article class="plan-card" data-price="12" id="starter">
         <h3>AceLite</h3>
         <p><strong class="price">$12.00 / month</strong></p>
@@ -264,7 +256,7 @@
           <li>1 Slot</li>
           <li>First-timers, test servers</li>
         </ul>
-        <a href="custom-plan.html" class="btn">Order Now</a>
+        <a class="btn" onclick="return false;">Order Now</a>
       </article>
 
       <article class="plan-card" data-price="24" id="pro">
@@ -277,7 +269,7 @@
           <li>2 Slots</li>
           <li>Plugin-based SMPs, 2–5 friends</li>
         </ul>
-        <a href="custom-plan.html" class="btn">Order Now</a>
+        <a class="btn" onclick="return false;">Order Now</a>
       </article>
 
       <article class="plan-card" data-price="48">
@@ -290,7 +282,7 @@
           <li>3 Slots</li>
           <li>Growing SMPs, public mini-servers</li>
         </ul>
-        <a href="custom-plan.html" class="btn">Order Now</a>
+        <a class="btn" onclick="return false;">Order Now</a>
       </article>
 
       <article class="plan-card" data-price="72" id="ultimate">
@@ -303,7 +295,7 @@
           <li>5 Slots</li>
           <li>Small modded, survival, or community</li>
         </ul>
-        <a href="custom-plan.html" class="btn">Order Now</a>
+        <a class="btn" onclick="return false;">Order Now</a>
       </article>
 
       <article class="plan-card" data-price="96">
@@ -316,7 +308,7 @@
           <li>Unlimited Slots</li>
           <li>Mid-size servers, 15–30 players</li>
         </ul>
-        <a href="custom-plan.html" class="btn">Order Now</a>
+        <a class="btn" onclick="return false;">Order Now</a>
       </article>
 
       <article class="plan-card" data-price="144">
@@ -329,7 +321,7 @@
           <li>Unlimited Slots</li>
           <li>Modpacks (BetterMC, Pixelmon), events</li>
         </ul>
-        <a href="custom-plan.html" class="btn">Order Now</a>
+        <a class="btn" onclick="return false;">Order Now</a>
       </article>
 
       <article class="plan-card" data-price="192">
@@ -342,7 +334,7 @@
           <li>Unlimited Slots</li>
           <li>Modded networks, heavy world use</li>
         </ul>
-        <a href="custom-plan.html" class="btn">Order Now</a>
+        <a class="btn" onclick="return false;">Order Now</a>
       </article>
 
       <article class="plan-card" data-price="288">
@@ -355,9 +347,8 @@
           <li>Unlimited Slots</li>
           <li>Large networks, streamers, minigames</li>
         </ul>
-        <a href="custom-plan.html" class="btn">Order Now</a>
+        <a class="btn" onclick="return false;">Order Now</a>
       </article>
-
     </div>
   </section>
 
